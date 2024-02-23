@@ -2,8 +2,8 @@
 
 void	*ft_memchr(const void *str, int c, size_t n)
 {
-	char	*ptr;
-	size_t	i;
+	char *ptr;
+	size_t i;
 
 	i = 0;
 	ptr = (char *)str;
