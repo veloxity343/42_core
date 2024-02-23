@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/23 13:04:38 by rcheong           #+#    #+#             */
+/*   Updated: 2024/02/23 16:33:30 by rcheong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int	count_digits(int n)
+static int	count_digits(int n)
 {
 	int	count;
 
@@ -15,7 +27,7 @@ int	count_digits(int n)
 	return (count);
 }
 
-void	convert_to_string(char *str, int n, int num_digits, int is_negative)
+static void	convert_to_string(char *str, int n, int num_digits, int is_negative)
 {
 	str[num_digits] = '\0';
 	while (n > 0)
@@ -29,9 +41,9 @@ void	convert_to_string(char *str, int n, int num_digits, int is_negative)
 
 char	*ft_itoa(int n)
 {
-	int num_digits;
-	char *result;
-	int is_negative;
+	int		num_digits;
+	char	*result;
+	int		is_negative;
 
 	num_digits = count_digits(n);
 	result = (char *)malloc((num_digits + 1) * sizeof(char));
@@ -53,3 +65,16 @@ char	*ft_itoa(int n)
 	convert_to_string(result, n, num_digits, is_negative);
 	return (result);
 }
+
+/*#include <stdio.h>
+
+int	main(int argc, char *argv[])
+{
+	if (argc == 2)
+	{
+		int n = ft_atoi(argv[1]);
+		char *result = ft_itoa(n);
+		printf("%s\n", result);
+	}
+	return (0);
+}*/
