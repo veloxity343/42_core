@@ -6,15 +6,15 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:41:22 by rcheong           #+#    #+#             */
-/*   Updated: 2024/02/23 13:36:44 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/02/26 12:40:38 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprint(int i)
+int	ft_isprint(int c)
 {
-	if (i >= 32 && i <= 126)
+	if (c >= 32 && c <= 126)
 		return (1);
 	return (0);
 }

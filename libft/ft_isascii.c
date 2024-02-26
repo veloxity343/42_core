@@ -6,15 +6,15 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:41:09 by rcheong           #+#    #+#             */
-/*   Updated: 2024/02/23 13:36:22 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/02/26 12:37:40 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int i)
+int	ft_isascii(int c)
 {
-	if (i >= 0 && i <= 127)
+	if (c >= 0 && c <= 127)
 		return (1);
 	return (0);
 }
