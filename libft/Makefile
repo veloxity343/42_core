@@ -1,7 +1,5 @@
 #SRCDIR			= srcs/
 SRC				= 	\
-					strendptr	\
-					isspace		\
 					isalpha		\
 					isdigit		\
 					isalnum		\
