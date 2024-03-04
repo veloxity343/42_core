@@ -24,9 +24,9 @@ int	main(void)
 	int size;
 
 	list = NULL;
-	node1 = ft_lstnew("Node 1", sizeof("Node 1"));
-	node2 = ft_lstnew("Node 2", sizeof("Node 2"));
-	node3 = ft_lstnew("Node 3", sizeof("Node 3"));
+	node1 = ft_lstnew("Node 1", 7);
+	node2 = ft_lstnew("Node 2", 7);
+	node3 = ft_lstnew("Node 3", 7);
 	ft_lstadd_front(&list, node3);
 	ft_lstadd_front(&list, node2);
 	ft_lstadd_front(&list, node1);
