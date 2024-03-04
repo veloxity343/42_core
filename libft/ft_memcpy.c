@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:44:05 by rcheong           #+#    #+#             */
-/*   Updated: 2024/03/04 15:50:20 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/03/04 16:02:34 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	char		*dst_ptr;
 	const char	*src_ptr;
 
+	if (n && !dst && !src)
+		return (0);
 	dstcpy = dst;
 	dst_ptr = dst;
 	src_ptr = src;
