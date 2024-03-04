@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:54:52 by rcheong           #+#    #+#             */
-/*   Updated: 2024/02/23 17:16:44 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/03/04 14:56:31 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,21 @@
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*str;
-	size_t	i;
-	size_t	j;
+	size_t	slen;
 
-	str = (char *)malloc(sizeof(*s) * (len + 1));
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	j = 0;
-	while (s[i])
-	{
-		if (i >= start && j < len)
-		{
-			str[j] = s[i];
-			j++;
-		}
-		i++;
-	}
-	str[j] = '\0';
+	if (!s)
+		return (0);
+	while (start-- && *s)
+		++s;
+	slen = ft_strlen(s);
+	if (len > 2147483646)
+		return (0);
+	else if (len > slen)
+		len = slen;
+	str = (char *) malloc(len + 1);
+	if (!str)
+		return (0);
+	ft_strlcpy(str, s, len + 1);
 	return (str);
 }
 

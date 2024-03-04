@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:53:30 by rcheong           #+#    #+#             */
-/*   Updated: 2024/02/23 16:26:36 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/03/04 14:48:31 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,20 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*alloc_mem;
+	void	*ptr;
 
-	alloc_mem = malloc(size * count);
-	if (!alloc_mem)
-		return (NULL);
-	ft_bzero(alloc_mem, count);
-	return (alloc_mem);
+	if (!count || !size)
+	{
+		count = 1;
+		size = 1;
+	}
+	if (size > 2147483647 / count)
+		return (0);
+	ptr = (void *)malloc(size * count);
+	if (!ptr)
+		return (0);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }
 
 /*#include <stdio.h>

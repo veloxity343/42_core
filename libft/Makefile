@@ -1,4 +1,4 @@
-#SRCDIR			= srcs/
+# Source files
 SRC				= 	\
 					isalpha		\
 					isdigit		\
@@ -37,11 +37,7 @@ SRC				= 	\
 
 SRC_P			= $(addprefix ft_, $(SRC))
 SRC_F			= $(addsuffix .c, $(SRC_P))
-#SRCS			= $(addprefix $(SRCDIR), $(SRC_F))
-#HEADER_DIR 	= includes/
 HEADER			= libft.h
-#HEADERS		= $(addprefix $(HEADER_DIR), $(HEADER))
-#OBJDIR			= objs/
 OBJS			= $(subst .c,.o,$(SRC_F))
 
 SRC_BONUS		= 	\
@@ -74,7 +70,6 @@ $(NAME): $(OBJS)
 bonus: $(OBJS_BONUS) 
 	$(AR) $(NAME) $(OBJS_BONUS)
 
-#$(OBJDIR)%.o: $(SRCDIR)%.c
 %.o: %.c
 	$(CC) $(CFLAGS) $(IFLAGS) $< -o $@
 

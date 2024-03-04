@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/04 11:49:01 by rcheong           #+#    #+#             */
+/*   Updated: 2024/03/04 12:18:49 by rcheong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *str;
-	int i;
-	int j;
+	char	*str;
+	int		i;
+	int		j;
 
 	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (str == NULL)
 		return (NULL);
-    i = 0;
-    j = 0;
+	i = 0;
+	j = 0;
 	while (s1[i] != '\0')
 	{
 		str[i] = s1[i];
@@ -27,15 +39,15 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 /*#include <stdio.h>
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-    if (argc == 3)
-    {
-        char *dest = argv[1];
-        char *src = argv[2];
-        char *result = ft_strjoin(dest, src);
-        printf("%s\n", result);
-        free (result);
-    }
-    return (0);
+	if (argc == 3)
+	{
+		char *dest = argv[1];
+		char *src = argv[2];
+		char *result = ft_strjoin(dest, src);
+		printf("%s\n", result);
+		free (result);
+	}
+	return (0);
 }*/

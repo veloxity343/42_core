@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:48:21 by rcheong           #+#    #+#             */
-/*   Updated: 2024/02/26 12:48:41 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/03/04 14:22:27 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,24 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
+	size_t	dstlen;
+	size_t	srclen;
 	size_t	i;
-	size_t	j;
 
+	if (!dst && !size)
+		return (0);
+	dstlen = ft_strlen(dst);
+	srclen = ft_strlen(src);
+	if (size <= dstlen)
+		return (srclen + size);
 	i = 0;
-	while (dst[i] && i < size - 1)
-		i++;
-	j = 0;
-	while (src[j] && (i + j + 1) < size)
+	while (src[i] && (dstlen + i + 1) < size)
 	{
-		dst[i + j] = src[j];
-		j++;
+		dst[dstlen + i] = src[i];
+		++i;
 	}
-	if (i < size - 1)
-		dst[i + j] = '\0';
-	return (i + ft_strlen(src));
+	dst[dstlen + i] = 0;
+	return (srclen + dstlen);
 }
 
 /*#include <stdio.h>

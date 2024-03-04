@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 12:53:41 by rcheong           #+#    #+#             */
-/*   Updated: 2024/03/04 14:49:10 by rcheong          ###   ########.fr       */
+/*   Created: 2024/03/04 11:50:36 by rcheong           #+#    #+#             */
+/*   Updated: 2024/03/04 11:50:37 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+t_list	*ft_lstnew(void *content)
 {
-	void	*ptr;
-	size_t	len;
+	t_list	*node;
 
-	len = ft_strlen(s1);
-	ptr = malloc(len + 1);
-	if (!ptr)
+	node = (t_list *)malloc(sizeof(t_list));
+	if (!node)
 		return (0);
-	return ((char *) ft_memmove(ptr, s1, len + 1));
+	node->content = content;
+	node->next = 0;
+	return (node);
 }
 
 /*#include <stdio.h>
@@ -30,14 +30,18 @@ int	main(int argc, char *argv[])
 {
 	if (argc == 2)
 	{
-		char *result = ft_strdup(argv[1]);
-		if (result == NULL)
+		char *data = argv[1];
+		t_list *node = ft_lstnew(data);
+		if (node)
 		{
-			printf("Memory allocation failed\n");
-			return (1);
+			printf("%s\n", (char *)node->content);
+			printf("%p\n", node->next);
 		}
-		printf("%s\n", result);
-		free(result);
+		else
+		{
+			printf("Failed to create node.\n");
+		}
+		free(node);
 	}
 	return (0);
 }*/

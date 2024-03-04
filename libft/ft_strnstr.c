@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:52:28 by rcheong           #+#    #+#             */
-/*   Updated: 2024/02/26 12:50:52 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/03/04 14:23:34 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,29 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
+	size_t	i;
 	size_t	needle_len;
 
-	if (*needle == '\0')
+	if (!haystack && !len)
+		return (0);
+	needle_len = ft_strlen(needle);
+	if (!needle_len)
+		return ((char *) haystack);
+	while (*haystack && len)
 	{
-		return ((char *)haystack);
-	}
-	needle_len = 0;
-	while (needle[needle_len] != '\0')
-		++needle_len;
-	while (*haystack != '\0' && len >= needle_len)
-	{
-		if (*haystack == *needle && ft_strncmp(haystack, needle,
-				needle_len) == 0)
+		if (*needle == *haystack)
 		{
-			return ((char *)haystack);
+			i = 1;
+			while ((len - i) && needle[i] \
+					&& needle[i] == haystack[i])
+				++i;
+			if (i == needle_len)
+				return ((char *) haystack);
 		}
 		++haystack;
 		--len;
 	}
-	return (NULL);
+	return (0);
 }
 
 /*#include <stdio.h>

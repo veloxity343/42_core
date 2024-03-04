@@ -6,64 +6,55 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:04:38 by rcheong           #+#    #+#             */
-/*   Updated: 2024/02/23 16:33:30 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/03/04 14:25:24 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_digits(int n)
+static int	ft_i_strlen(int n)
 {
-	int	count;
+	int	len;
 
-	count = 0;
-	if (n == 0)
-		return (1);
-	while (n != 0)
+	len = 0;
+	if (n <= 0)
 	{
-		count++;
-		n /= 10;
+		++len;
+		n = -n;
 	}
-	return (count);
-}
-
-static void	convert_to_string(char *str, int n, int num_digits, int is_negative)
-{
-	str[num_digits] = '\0';
-	while (n > 0)
+	while (n)
 	{
-		str[--num_digits] = '0' + (n % 10);
 		n /= 10;
+		++len;
 	}
-	if (is_negative)
-		str[0] = '-';
+	return (len);
 }
 
 char	*ft_itoa(int n)
 {
-	int		num_digits;
-	char	*result;
-	int		is_negative;
+	int				len;
+	char			*s;
+	unsigned int	nbr;
 
-	num_digits = count_digits(n);
-	result = (char *)malloc((num_digits + 1) * sizeof(char));
-	if (!result)
-		return (NULL);
-	if (n == 0)
-	{
-		result[0] = '0';
-		result[1] = '\0';
-		return (result);
-	}
-	is_negative = 0;
+	len = ft_i_strlen(n);
+	s = (char *)malloc(sizeof(char) * len + 1);
+	if (!s)
+		return (0);
+	s[len] = 0;
+	if (!n)
+		s[0] = '0';
 	if (n < 0)
+		nbr = -n;
+	else
+		nbr = n;
+	while (nbr)
 	{
-		is_negative = 1;
-		n = -n;
-		num_digits++;
+		s[--len] = nbr % 10 + '0';
+		nbr /= 10;
 	}
-	convert_to_string(result, n, num_digits, is_negative);
-	return (result);
+	if (n < 0)
+		s[--len] = '-';
+	return (s);
 }
 
 /*#include <stdio.h>

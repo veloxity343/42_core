@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 12:53:41 by rcheong           #+#    #+#             */
-/*   Updated: 2024/03/04 14:49:10 by rcheong          ###   ########.fr       */
+/*   Created: 2024/03/04 11:51:27 by rcheong           #+#    #+#             */
+/*   Updated: 2024/03/04 11:51:27 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+t_list	*ft_lstlast(t_list *lst)
 {
-	void	*ptr;
-	size_t	len;
-
-	len = ft_strlen(s1);
-	ptr = malloc(len + 1);
-	if (!ptr)
-		return (0);
-	return ((char *) ft_memmove(ptr, s1, len + 1));
+	if (lst)
+		while (lst->next)
+			lst = lst->next;
+	return (lst);
 }
 
 /*#include <stdio.h>
 
-int	main(int argc, char *argv[])
+int	main(void)
 {
-	if (argc == 2)
+	t_list *list = NULL;
+
+	ft_lstadd_front(&list, ft_lstnew("Node 3", 7));
+	ft_lstadd_front(&list, ft_lstnew("Node 2", 7));
+	ft_lstadd_front(&list, ft_lstnew("Node 1", 7));
+
+	t_list *last = ft_lstlast(list);
+
+	if (last)
 	{
-		char *result = ft_strdup(argv[1]);
-		if (result == NULL)
-		{
-			printf("Memory allocation failed\n");
-			return (1);
-		}
-		printf("%s\n", result);
-		free(result);
+		printf("%s\n", (char *)last->content);
 	}
+
+	ft_lstclear(&list, free);
 	return (0);
 }*/

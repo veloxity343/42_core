@@ -1,43 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 12:53:41 by rcheong           #+#    #+#             */
-/*   Updated: 2024/03/04 14:49:10 by rcheong          ###   ########.fr       */
+/*   Created: 2024/03/04 11:52:06 by rcheong           #+#    #+#             */
+/*   Updated: 2024/03/04 12:08:40 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s1)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	void	*ptr;
-	size_t	len;
-
-	len = ft_strlen(s1);
-	ptr = malloc(len + 1);
-	if (!ptr)
-		return (0);
-	return ((char *) ft_memmove(ptr, s1, len + 1));
+	if (f)
+	{
+		while (lst)
+		{
+			f(lst->content);
+			lst = lst->next;
+		}
+	}
 }
 
 /*#include <stdio.h>
 
-int	main(int argc, char *argv[])
+void	print_int(void *data)
 {
-	if (argc == 2)
-	{
-		char *result = ft_strdup(argv[1]);
-		if (result == NULL)
-		{
-			printf("Memory allocation failed\n");
-			return (1);
-		}
-		printf("%s\n", result);
-		free(result);
-	}
+	printf("%d ", *(int *)data);
+}
+
+int	main(void)
+{
+	t_list *list = ft_lstnew(ft_strdup("hello"));
+	ft_lstadd_back(&list, ft_lstnew(ft_strdup("world")));
+	ft_lstadd_back(&list, ft_lstnew(ft_strdup("example")));
+
+	ft_lstiter(list, ft_toupper);
+	ft_lstiter(list, print_int);
+	printf("\n");
+
+	ft_lstclear(&list, free);
 	return (0);
 }*/
