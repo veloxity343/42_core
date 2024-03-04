@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 16:54:52 by rcheong           #+#    #+#             */
-/*   Updated: 2024/03/04 14:56:31 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/03/04 15:53:30 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (0);
 	while (start-- && *s)
-		++s;
+		s++;
 	slen = ft_strlen(s);
 	if (len > 2147483646)
 		return (0);

@@ -6,26 +6,26 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:04:38 by rcheong           #+#    #+#             */
-/*   Updated: 2024/03/04 14:25:24 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/03/04 15:49:13 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_i_strlen(int n)
+static int	digit_count(int n)
 {
 	int	len;
 
 	len = 0;
 	if (n <= 0)
 	{
-		++len;
+		len++;
 		n = -n;
 	}
 	while (n)
 	{
 		n /= 10;
-		++len;
+		len++;
 	}
 	return (len);
 }
@@ -36,7 +36,7 @@ char	*ft_itoa(int n)
 	char			*s;
 	unsigned int	nbr;
 
-	len = ft_i_strlen(n);
+	len = digit_count(n);
 	s = (char *)malloc(sizeof(char) * len + 1);
 	if (!s)
 		return (0);

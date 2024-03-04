@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 12:52:28 by rcheong           #+#    #+#             */
-/*   Updated: 2024/03/04 14:23:34 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/03/04 15:52:25 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 			i = 1;
 			while ((len - i) && needle[i] \
 					&& needle[i] == haystack[i])
-				++i;
+				i++;
 			if (i == needle_len)
 				return ((char *) haystack);
 		}
-		++haystack;
-		--len;
+		haystack++;
+		len--;
 	}
 	return (0);
 }
