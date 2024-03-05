@@ -52,7 +52,7 @@ SRC_BONUS		= 	\
 					lstmap			\
 
 SRC_BONUS_P		= $(addprefix ft_, $(SRC_BONUS))
-SRC_BONUS_F		= $(addsuffix _bonus.c, $(SRC_BONUS_P))
+SRC_BONUS_F		= $(addsuffix .c, $(SRC_BONUS_P))
 OBJS_BONUS		= $(subst .c,.o,$(SRC_BONUS_F))
 
 NAME			= libft.a
