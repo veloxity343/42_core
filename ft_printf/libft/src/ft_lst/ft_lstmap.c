@@ -51,25 +51,3 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 	return (head);
 }
-
-/*#include <stdio.h>
-
-int	main(void)
-{
-	t_list *lst = NULL;
-	ft_lstadd_back(&lst, ft_lstnew(ft_strdup("hello")));
-	ft_lstadd_back(&lst, ft_lstnew(ft_strdup("world")));
-
-	t_list *new_lst = ft_lstmap(lst, (void *(*)(void *))ft_toupper, free);
-
-	t_list *tmp = new_lst;
-	while (tmp)
-	{
-		printf("%s\n", (char *)(tmp->content));
-		tmp = tmp->next;
-	}
-
-	ft_lstclear(&lst, free);
-	ft_lstclear(&new_lst, free);
-	return (0);
-}*/

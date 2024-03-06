@@ -29,24 +29,3 @@ void	*ft_calloc(size_t count, size_t size)
 	ft_bzero(ptr, count * size);
 	return (ptr);
 }
-
-/*#include <stdio.h>
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 3)
-	{
-		size_t count = atoi(argv[1]);
-		size_t size = atoi(argv[2]);
-		void *ptr = ft_calloc(count, size);
-		if (ptr == NULL)
-		{
-			printf("Memory allocation failed.\n");
-			return (1);
-		}
-		printf("Memory allocated for %d elements of size %d bytes each.\n",
-			count, size);
-		free(ptr);
-	}
-	return (0);
-}*/

@@ -27,18 +27,3 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 		*dst_ptr++ = *src_ptr++;
 	return (dstcpy);
 }
-
-/*#include <stdio.h>
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 4)
-	{
-		char *dest = argv[1];
-		char *src = argv[2];
-		size_t n = ft_atoi(argv[3]);
-		char *result = ft_memcpy(dest, src, n);
-		printf("%s\n", result);
-	}
-	return (0);
-}*/

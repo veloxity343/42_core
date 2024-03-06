@@ -30,18 +30,3 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	ft_memcpy(dst, src, len);
 	return (dst);
 }
-
-/*#include <stdio.h>
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 4)
-	{
-		char *dest = argv[1];
-		char *src = argv[2];
-		size_t size = ft_atoi(argv[3]);
-		ft_memmove(dest, src, size);
-		printf("%s\n", dest);
-	}
-	return (0);
-}*/

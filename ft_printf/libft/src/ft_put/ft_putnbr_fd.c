@@ -29,18 +29,3 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(n / 10, fd);
 	ft_putchar_fd(n % 10 + '0', fd);
 }
-
-/*#include <stdio.h>
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 3)
-	{
-		int n = ft_atoi(argv[1]);
-		int fd = ft_atoi(argv[2]);
-		printf("%d\n%d\n", n, fd);
-		printf("%d\n", fd);
-		ft_putnbr_fd(n, fd);
-	}
-	return (0);
-}*/

@@ -34,15 +34,3 @@ int	ft_atoi(const char *str)
 	}
 	return (i * sign);
 }
-
-/*#include <stdio.h>
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 2)
-	{
-		int result = ft_atoi(argv[1]);
-		printf("%d\n", result);
-	}
-	return (0);
-}*/

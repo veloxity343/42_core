@@ -34,20 +34,3 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 		i++;
 	return (i);
 }
-
-/*#include <stdio.h>
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 4)
-	{
-		char *src = argv[1];
-		char dest[100];
-		size_t size = ft_atoi(argv[3]);
-		size_t copied = ft_strlcpy(dest, src, size);
-		printf("Source: %s\n", src);
-		printf("Destination: %s\n", dest);
-		printf("Length copied: %zu\n", copied);
-	}
-	return (0);
-}*/

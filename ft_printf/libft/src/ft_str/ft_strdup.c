@@ -23,21 +23,3 @@ char	*ft_strdup(const char *s1)
 		return (0);
 	return ((char *) ft_memmove(ptr, s1, len + 1));
 }
-
-/*#include <stdio.h>
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 2)
-	{
-		char *result = ft_strdup(argv[1]);
-		if (result == NULL)
-		{
-			printf("Memory allocation failed\n");
-			return (1);
-		}
-		printf("%s\n", result);
-		free(result);
-	}
-	return (0);
-}*/

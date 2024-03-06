@@ -27,17 +27,3 @@ char	*ft_strrchr(const char *s, int c)
 		return ((char *) s);
 	return (ptr);
 }
-
-/*#include <stdio.h>
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 3)
-	{
-		char *str = argv[1];
-		int i = argv[2][0];
-		char *result = ft_strrchr(str, i);
-		printf("%s\n", result);
-	}
-	return (0);
-}*/

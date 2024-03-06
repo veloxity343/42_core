@@ -38,18 +38,3 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (0);
 }
-
-/*#include <stdio.h>
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 4)
-	{
-		char *haystack = argv[1];
-		char *needle = argv[2];
-		size_t n = ft_atoi(argv[3]);
-		int result = ft_strnstr(haystack, needle, n);
-		printf("%s\n", result);
-	}
-	return (0);
-}*/

@@ -27,18 +27,3 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
-
-/*#include <stdio.h>
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 4)
-	{
-		char *str = argv[1];
-		int c = ft_atoi(argv[2]);
-		size_t n = ft_atoi(argv[3]);
-		char *result = ft_memchr(str, c, n);
-		printf("%s\n", result);
-	}
-	return (0);
-}*/

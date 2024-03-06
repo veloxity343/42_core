@@ -25,23 +25,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 		len--;
 	return (ft_substr(s1, 0, len));
 }
-
-/*#include <stdio.h>
-
-int main(int argc, char *argv[])
-{
-    if (argc == 3)
-    {
-        char *str = argv[1];
-        char *trim = argv[2];
-        char *result = ft_strtrim(str, trim);
-        if (result == NULL)
-        {
-            printf("Trim failed\n");
-            return (1);
-        }
-        printf("%s\n", result);
-        free (result);
-    }
-    return (0);
-}*/

@@ -23,24 +23,3 @@ void	ft_lstiter(t_list *lst, void (*f)(void *))
 		}
 	}
 }
-
-/*#include <stdio.h>
-
-void	print_int(void *data)
-{
-	printf("%d ", *(int *)data);
-}
-
-int	main(void)
-{
-	t_list *list = ft_lstnew(ft_strdup("hello"));
-	ft_lstadd_back(&list, ft_lstnew(ft_strdup("world")));
-	ft_lstadd_back(&list, ft_lstnew(ft_strdup("example")));
-
-	ft_lstiter(list, ft_toupper);
-	ft_lstiter(list, print_int);
-	printf("\n");
-
-	ft_lstclear(&list, free);
-	return (0);
-}*/

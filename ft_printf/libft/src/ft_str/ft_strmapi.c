@@ -29,24 +29,3 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	str[i] = 0;
 	return (str);
 }
-
-/*#include <stdio.h>
-
-char	to_upper(unsigned int index, char c)
-{
-    if (c >= 'a' && c <= 'z')
-		c -= 32;
-	return (c);
-}
-
-int main(int argc, char *argv[])
-{
-	if (argc == 2)
-	{
-		char *input_string = argv[1];
-		char *result = ft_strmapi(input_string, &to_upper);
-		printf("%s\n", result);
-		free(result);
-	}
-	return (0);
-}*/

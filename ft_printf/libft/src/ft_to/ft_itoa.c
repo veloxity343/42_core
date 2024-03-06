@@ -56,16 +56,3 @@ char	*ft_itoa(int n)
 		s[--len] = '-';
 	return (s);
 }
-
-/*#include <stdio.h>
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 2)
-	{
-		int n = ft_atoi(argv[1]);
-		char *result = ft_itoa(n);
-		printf("%s\n", result);
-	}
-	return (0);
-}*/

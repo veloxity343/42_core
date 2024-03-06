@@ -16,18 +16,3 @@ void	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
 }
-
-/*#include <stdio.h>
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 3)
-	{
-		char input_char = argv[1][0];
-		int fd = ft_atoi(argv[2]);
-		printf("%c\n", input_char);
-		printf("%d\n", fd);
-		ft_putstr_fd(string, fd);
-	}
-	return (0);
-}*/

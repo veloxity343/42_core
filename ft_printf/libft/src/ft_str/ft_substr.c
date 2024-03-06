@@ -32,24 +32,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ft_strlcpy(str, s, len + 1);
 	return (str);
 }
-
-/*#include <stdio.h>
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 4)
-	{
-		char *s = argv[1];
-		int start = ft_atoi(argv[2]);
-		size_t len = ft_atoi(argv[3]);
-		char *result = ft_substr(s, start, len);
-		if (result == NULL)
-		{
-			printf("Memory allocation failed\n");
-			return (1);
-		}
-		printf("%s\n", result);
-		free(result);
-	}
-	return (0);
-}*/

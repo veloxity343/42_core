@@ -70,24 +70,3 @@ char	**ft_split(char const *s, char c)
 	array[++n] = 0;
 	return (array);
 }
-
-/*#include <stdio.h>
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 3)
-	{
-		char *s = argv[1];
-		char c = argv[2][0];
-		char **result = ft_split(s, c);
-		int i = 0;
-		while (result[i] != NULL)
-		{
-			printf("%s\n", result[i]);
-			free(result[i]);
-			i++;
-		}
-        free(result);
-	}
-    return (0);
-}*/

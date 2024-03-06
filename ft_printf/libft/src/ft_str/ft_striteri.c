@@ -22,20 +22,3 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 	while (*s)
 		f(i++, s++);
 }
-
-/*#include <stdio.h>
-
-void	print_index_char(unsigned int index, char *c)
-{
-	printf("%c\n", *c);
-}
-
-int	main(int argc, char *argv[])
-{
-	if (argc == 2)
-	{
-		char *input_string = argv[1];
-		ft_striteri(input_string, &print_index_char);
-	}
-	return (0);
-}*/
