@@ -11,8 +11,8 @@ AR			=	ar rcs
 
 #Sources
 
-FTCHAR_DIR	=	ft_char/
-FTCHAR		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint ft_tolower ft_toupper
+FTIS_DIR	=	ft_is/
+FTIS		=	ft_isalnum ft_isalpha ft_isascii ft_isdigit ft_isprint
 
 FTMEM_DIR	=	ft_mem/
 FTMEM		=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memmove ft_memset
@@ -20,8 +20,8 @@ FTMEM		=	ft_bzero ft_calloc ft_memchr ft_memcmp ft_memmove ft_memset
 FTPUT_DIR	=	ft_put/
 FTPUT		=	ft_putchar_fd ft_putendl_fd ft_putnbr_fd ft_putstr_fd
 
-FTINT_DIR	=	ft_int/
-FTINT		=	ft_atoi ft_itoa
+FTTO_DIR	=	ft_to/
+FTTO		=	ft_atoi ft_itoa ft_tolower ft_toupper
 
 FTSTR_DIR	=	ft_str/
 FTSTR		=	ft_split ft_strchr ft_strdup ft_striteri ft_strjoin \
@@ -32,10 +32,10 @@ FTLST_DIR	=	ft_lst/
 FTLST		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone \
 				ft_lstiter ft_lstlast ft_lstmap ft_lstnew ft_lstsize
 
-SRC_FILES+=$(addprefix $(FTCHAR_DIR),$(FTCHAR))
+SRC_FILES+=$(addprefix $(FTIS_DIR),$(FTIS))
 SRC_FILES+=$(addprefix $(FTMEM_DIR),$(FTMEM))
 SRC_FILES+=$(addprefix $(FTPUT_DIR),$(FTPUT))
-SRC_FILES+=$(addprefix $(FTINT_DIR),$(FTINT))
+SRC_FILES+=$(addprefix $(FTTO_DIR),$(FTTO))
 SRC_FILES+=$(addprefix $(FTSTR_DIR),$(FTSTR))
 SRC_FILES+=$(addprefix $(FTLST_DIR),$(FTLST))
 
@@ -57,10 +57,10 @@ $(OBJS_DIR)%.o : $(SRCS_DIR)%.c | $(OBJSF)
 
 $(OBJSF):
 			@mkdir -p $(OBJS_DIR)
-			@mkdir -p $(OBJS_DIR)$(FTCHAR_DIR)
+			@mkdir -p $(OBJS_DIR)$(FTIS_DIR)
 			@mkdir -p $(OBJS_DIR)$(FTMEM_DIR)
 			@mkdir -p $(OBJS_DIR)$(FTPUT_DIR)
-			@mkdir -p $(OBJS_DIR)$(FTINT_DIR)
+			@mkdir -p $(OBJS_DIR)$(FTTO_DIR)
 			@mkdir -p $(OBJS_DIR)$(FTSTR_DIR)
 			@mkdir -p $(OBJS_DIR)$(FTLST_DIR)
 
