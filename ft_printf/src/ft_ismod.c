@@ -16,5 +16,5 @@ int	ft_isspec(int c)
 	return (0);
 }
 
-int	ft_modifier(int c)
+int	ft_ismod(int c)
 	return (ft_isspec(c) || ft_isdigit(c) || ft_isflag(c));
