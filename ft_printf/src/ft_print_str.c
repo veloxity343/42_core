@@ -1,5 +1,21 @@
 #include "ft_printf.h"
 
+int	ft_print_safe_str(const char *str)
+{
+	int	len;
+
+	if (str == NULL)
+	{
+		write(1, "NULL", 4);
+		return (0);
+	}
+	len = 0;
+	while (str[len])
+		len++;
+	write(1, str, len);
+	return (len);
+}
+
 int	ft_print_precision(const char *str, int precision)
 {
 	int	count;
