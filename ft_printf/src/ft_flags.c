@@ -43,21 +43,21 @@ t_flags	ft_flag_width(va_list args, t_flags flags)
 	return (flags);
 }
 
-int	ft_flag_precision(const char *str, int pos, va_list args, t_flags *flags)
+int	ft_flag_precision(const char *str, int i, va_list args, t_flags *flags)
 {
-	int	i;
+	int	j;
 
-	i = pos + 1;
-	if (str[i] == '*')
+	j = i + 1;
+	if (str[j] == '*')
 	{
 		flags->precision = va_arg(args, int);
-		return (i++);
+		return (j++);
 	}
 	flags->precision = 0;
-	while (ft_isdigit(str[i]))
+	while (ft_isdigit(str[j]))
 	{
-		flags->precision = (flags->precision * 10) + (str[i] - '0');
-		i++;
+		flags->precision = (flags->precision * 10) + (str[j] - '0');
+		j++;
 	}
-	return (i);
+	return (j);
 }

@@ -1,4 +1,4 @@
-#Standard
+#Variables
 
 NAME		=	libft.a
 INCLUDES	=	../include
