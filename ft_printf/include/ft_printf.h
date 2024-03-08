@@ -50,7 +50,6 @@ int		ft_print_safe_str(const char *str);
 int		ft_print_ptr(unsigned long int n, t_flags flags);
 int		ft_print_pvalue(unsigned long int n);
 void	ft_print_addr(unsigned long int n);
-int		ft_ptrhex_len(unsigned long int n);
 // d, i
 int		ft_print_int(int n, t_flags flags);
 int		ft_pad_int(char *strint, int n, t_flags flags);
@@ -70,6 +69,7 @@ int		ft_print_x_prefix(int is_upper);
 int		ft_ismod(int c);
 int		ft_isflag(int c);
 int		ft_isspec(int c);
+int		ft_ptrhex_len(unsigned long int n);
 char	*ft_itoa_long(long n);
 char	*ft_printf_xtoa(unsigned long int n, int is_upper);
 
