@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/08 11:31:36 by rcheong           #+#    #+#             */
+/*   Updated: 2024/03/08 14:40:44 by rcheong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_print_safe_str(const char *str)
@@ -16,7 +28,7 @@ int	ft_print_safe_str(const char *str)
 	return (len);
 }
 
-int	ft_print_precision(const char *str, int precision)
+int	ft_str_precision(const char *str, int precision)
 {
 	int	count;
 
@@ -26,7 +38,7 @@ int	ft_print_precision(const char *str, int precision)
 	return (count);
 }
 
-static int	ft_pad_string(const char *str, t_flags flags)
+int	ft_pad_str(const char *str, t_flags flags)
 {
 	int	count;
 
@@ -34,10 +46,10 @@ static int	ft_pad_string(const char *str, t_flags flags)
 	if (flags.precision >= 0)
 	{
 		count += ft_pad_width(flags.precision, ft_strlen(str), 0);
-		count += ft_print_precision(str, flags.precision);
+		count += ft_str_precision(str, flags.precision);
 	}
 	else
-		count += ft_print_precision(str, ft_strlen(str));
+		count += ft_str_precision(str, ft_strlen(str));
 	return (count);
 }
 
@@ -51,12 +63,12 @@ int	ft_print_str(const char *str, t_flags flags)
 	if (flags.precision >= 0 && (size_t)flags.precision > ft_strlen(str))
 		flags.precision = ft_strlen(str);
 	if (flags.left == 1)
-		count += ft_pad_string(str, flags);
+		count += ft_pad_str(str, flags);
 	if (flags.precision >= 0)
 		count += ft_pad_width(flags.width, flags.precision, 0);
 	else
 		count += ft_pad_width(flags.width, ft_strlen(str), 0);
 	if (flags.left == 0)
-		count += ft_pad_string(str, flags);
+		count += ft_pad_str(str, flags);
 	return (count);
 }

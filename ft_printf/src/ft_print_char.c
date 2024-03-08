@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/08 11:31:28 by rcheong           #+#    #+#             */
+/*   Updated: 2024/03/08 12:00:41 by rcheong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_putchar(char c)
@@ -8,7 +20,7 @@ int	ft_putchar(char c)
 
 int	ft_print_char(char c, t_flags flags)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (flags.left == 1)
