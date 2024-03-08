@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:30:05 by rcheong           #+#    #+#             */
-/*   Updated: 2024/03/08 11:36:00 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/03/08 15:48:24 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_format(char spec, va_list args, t_flags flags)
 
 	count = 0;
 	if (spec == 'c')
-		count += ft_print_char(va_arg(args, char), flags);
+		count += ft_print_char(va_arg(args, int), flags);
 	else if (spec == 's')
 		count += ft_print_str(va_arg(args, const char *), flags);
 	else if (spec == 'p')

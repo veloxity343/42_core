@@ -15,7 +15,7 @@ AR			= ar rcs
 SRC_FILES	=	ft_printf ft_parse ft_ismod ft_flags \
 				ft_print_char ft_print_str ft_print_ptr \
 				ft_print_int ft_print_unsigned ft_print_hex \
-				ft_ \
+				ft_print_pad ft_get_len ft_printf_itoa ft_printf_xtoa \
 
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))

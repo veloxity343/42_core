@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:28:28 by rcheong           #+#    #+#             */
-/*   Updated: 2024/03/08 15:26:13 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/03/08 15:52:06 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		ft_print_safe_str(const char *str);
 int		ft_print_ptr(unsigned long int n, t_flags flags);
 int		ft_print_pvalue(unsigned long int n);
 void	ft_print_addr(unsigned long int n);
+int		ft_ptrhex_len(unsigned long int n);
 // d, i
 int		ft_print_int(int n, t_flags flags);
 int		ft_pad_int(char *strint, int n, t_flags flags);
@@ -66,6 +67,9 @@ int		ft_print_x(char *strint, int n, int is_upper, t_flags flags);
 int		ft_print_x_prefix(int is_upper);
 
 /* ---------- HELPERS ---------- */
+int		ft_ismod(int c);
+int		ft_isflag(int c);
+int		ft_isspec(int c);
 char	*ft_itoa_long(long n);
 char	*ft_printf_xtoa(unsigned long int n, int is_upper);
 

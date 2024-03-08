@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:31:33 by rcheong           #+#    #+#             */
-/*   Updated: 2024/03/08 11:31:34 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/03/08 15:47:15 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_print_ptr(unsigned long int n, t_flags flags)
 		flags.width -= 2;
 	if (flags.left == 1)
 		count += ft_print_pvalue(n);
-	count += ft_pad_width(flags.width, ft_ptr_len(n), 0);
+	count += ft_pad_width(flags.width, ft_ptrhex_len(n), 0);
 	if (flags.left == 0)
 		count += ft_print_pvalue(n);
 	return (count);
