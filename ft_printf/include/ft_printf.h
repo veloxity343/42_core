@@ -61,9 +61,9 @@ int		ft_pad_unsigned(char *strint, t_flags flags);
 int		ft_unsigned_str(char *strint, t_flags flags);
 // x, X
 int		ft_print_hex(unsigned int n, int is_upper, t_flags flags);
-int		ft_print_hexadec(char *strint, int n, int is_upper, t_flags flags);
-int		ft_print_x(char *strint, int n, int is_upper, t_flags flags);
-int		ft_print_x_prefix(int is_upper);
+int		ft_print_xformat(char *strint, int n, int is_upper, t_flags flags);
+int		ft_print_xvalue(char *strint, int n, int is_upper, t_flags flags);
+int		ft_print_xprefix(int is_upper);
 
 /* ---------- HELPERS ---------- */
 int		ft_ismod(int c);

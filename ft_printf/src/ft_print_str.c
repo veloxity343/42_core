@@ -19,7 +19,7 @@ int	ft_print_safe_str(const char *str)
 	if (str == NULL)
 	{
 		write(1, "NULL", 4);
-		return (0);
+		return (4);
 	}
 	len = 0;
 	while (str[len])
