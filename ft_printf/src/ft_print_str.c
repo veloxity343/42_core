@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:31:36 by rcheong           #+#    #+#             */
-/*   Updated: 2024/03/08 14:40:44 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/03/11 12:42:02 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	ft_print_safe_str(const char *str)
 
 	if (str == NULL)
 	{
-		write(1, "NULL", 4);
-		return (4);
+		write(1, "(null)", 6);
+		return (6);
 	}
 	len = 0;
 	while (str[len])
@@ -59,7 +59,7 @@ int	ft_print_str(const char *str, t_flags flags)
 
 	count = 0;
 	if (str == NULL)
-		str = "NULL";
+		str = "(null)";
 	if (flags.precision >= 0 && (size_t)flags.precision > ft_strlen(str))
 		flags.precision = ft_strlen(str);
 	if (flags.left == 1)
