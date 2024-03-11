@@ -21,7 +21,7 @@ int	ft_printf(const char *format, ...)
 	if (!format || *format == '\0')
 		return (0);
 	str = ft_strdup(format);
-	if (!str)
+	if (!str || *str == '\0')
 		return (0);
 	count = 0;
 	va_start(args, format);
@@ -30,24 +30,3 @@ int	ft_printf(const char *format, ...)
 	free(str);
 	return (count);
 }
-
-/*#include <stdio.h>
-
-int	main(int argc, char *argv[])
-{
-	int i;
-
-	if (argc > 1)
-	{
-		i = 1;
-		ft_printf("No. args: %d\n", argc);
-		printf("No. args: %d\n", argc);
-		while (argv[i] != NULL)
-		{
-			ft_printf("Arg %d: %s\n", i, argv[i]);
-			printf("Arg %d: %s\n", i, argv[i]);
-			i++;
-		}
-	}
-	return (0);
-}*/
