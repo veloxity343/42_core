@@ -39,8 +39,8 @@ int		ft_pad_width(int width, int size, int zero);
 
 /* ---------- SPECs ---------- */
 // c
-int		ft_print_char(int c, t_flags flags);
-int		ft_putchar(int c);
+int		ft_print_char(char c, t_flags flags);
+int		ft_putchar(char c);
 // s
 int		ft_print_str(const char *str, t_flags flags);
 int		ft_pad_str(const char *str, t_flags flags);

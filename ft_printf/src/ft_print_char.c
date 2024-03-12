@@ -12,13 +12,29 @@
 
 #include "ft_printf.h"
 
-int	ft_putchar(int c)
+int	ft_putchar(char c)
 {
 	write(1, &c, 1);
 	return (1);
 }
 
-int	ft_print_char(int c, t_flags flags)
+int	ft_pad_width(int width, int size, int zero)
+{
+	int	count;
+
+	count = 0;
+	while (width - size > 0)
+	{
+		if (zero)
+			count += ft_putchar('0');
+		else
+			count += ft_putchar(' ');
+		width--;
+	}
+	return (count);
+}
+
+int	ft_print_char(char c, t_flags flags)
 {
 	int	count;
 

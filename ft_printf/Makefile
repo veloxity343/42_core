@@ -17,12 +17,12 @@ AR			= ar rcs
 SRC_FILES	=	ft_printf ft_parse ft_ismod ft_flags \
 				ft_print_char ft_print_str ft_print_ptr \
 				ft_print_int ft_print_unsigned ft_print_hex \
-				ft_print_pad ft_get_len ft_printf_itoa ft_printf_xtoa \
+				ft_printf_itoa ft_printf_xtoa \
 
 SRCB_FILES	=	ft_printf_bonus ft_parse_bonus ft_ismod_bonus ft_flags_bonus \
 				ft_print_char_bonus ft_print_str_bonus ft_print_ptr_bonus \
 				ft_print_int_bonus ft_print_unsigned_bonus ft_print_hex_bonus \
-				ft_print_pad_bonus ft_get_len_bonus ft_printf_itoa_bonus ft_printf_xtoa_bonus \
+				ft_printf_itoa_bonus ft_printf_xtoa_bonus \
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
