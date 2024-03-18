@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:31:28 by rcheong           #+#    #+#             */
-/*   Updated: 2024/03/11 14:11:40 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/03/18 11:00:26 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,23 @@ int	ft_print_char(char c, t_flags flags)
 
 	count = 0;
 	if (flags.left == 1)
-		count += ft_putchar(c);
+	{
+		if (c == '\0')
+			count += ft_putchar('\0');
+		else if (!ft_isprint(c))
+			count += ft_putchar('^');
+		else
+			count += ft_putchar(c);
+	}
 	count += ft_pad_width(flags.width, 1, flags.zero);
-	if (c == '\0')
-		return (ft_putchar('\0'));
 	if (flags.left == 0)
-		count += ft_putchar(c);
+	{
+		if (c == '\0')
+			count += ft_putchar('\0');
+		else if (!ft_isprint(c))
+			count += ft_putchar('^');
+		else
+			count += ft_putchar(c);
+	}
 	return (count);
 }

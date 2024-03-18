@@ -25,8 +25,8 @@ SRCB_FILES	=	ft_printf_bonus ft_parse_bonus ft_ismod_bonus ft_flags_bonus \
 				ft_printf_itoa_bonus ft_printf_xtoa_bonus \
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 SRCB 		= 	$(addprefix $(SRCB_DIR), $(addsuffix .c, $(SRCB_FILES)))
+OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 OBJB		=	$(addprefix $(OBJB_DIR), $(addsuffix .o, $(SRCB_FILES)))
 
 ###
@@ -35,6 +35,7 @@ OBJF		=	.cache_exists
 OBJBF		=	.cache_exists_bonus
 
 all:		$(NAME)
+	$(AR) $(NAME) $(OBJ)
 
 $(NAME):	$(OBJ)
 			@make -C $(LIBFT)
@@ -48,7 +49,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 $(OBJF):
 			@mkdir -p $(OBJ_DIR)
 
-bonus: $(OBJB) 
+bonus: 		$(OBJB) 
 	$(AR) $(NAME) $(OBJB)
 
 $(OBJB_DIR)%.o: $(SRCB_DIR)%.c | $(OBJBF)
