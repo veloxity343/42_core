@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:28:28 by rcheong           #+#    #+#             */
-/*   Updated: 2024/03/11 14:10:00 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/03/25 11:30:36 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int		ft_pad_width(int width, int size, int zero);
 
 /* ---------- SPECs ---------- */
 // c
-int		ft_print_char(char c, t_flags flags);
-int		ft_putchar(char c);
+int		ft_print_char(int c, t_flags flags);
+int		ft_putchar(int c);
 // s
 int		ft_print_str(const char *str, t_flags flags);
 int		ft_pad_str(const char *str, t_flags flags);

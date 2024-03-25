@@ -6,13 +6,13 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 11:31:28 by rcheong           #+#    #+#             */
-/*   Updated: 2024/03/18 11:00:26 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/03/25 11:31:00 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_bonus.h"
 
-int	ft_putchar(char c)
+int	ft_putchar(int c)
 {
 	write(1, &c, 1);
 	return (1);
@@ -34,7 +34,7 @@ int	ft_pad_width(int width, int size, int zero)
 	return (count);
 }
 
-int	ft_print_char(char c, t_flags flags)
+int	ft_print_char(int c, t_flags flags)
 {
 	int	count;
 
@@ -43,8 +43,6 @@ int	ft_print_char(char c, t_flags flags)
 	{
 		if (c == '\0')
 			count += ft_putchar('\0');
-		else if (!ft_isprint(c))
-			count += ft_putchar('^');
 		else
 			count += ft_putchar(c);
 	}
@@ -53,8 +51,6 @@ int	ft_print_char(char c, t_flags flags)
 	{
 		if (c == '\0')
 			count += ft_putchar('\0');
-		else if (!ft_isprint(c))
-			count += ft_putchar('^');
 		else
 			count += ft_putchar(c);
 	}
