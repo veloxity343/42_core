@@ -49,8 +49,11 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 $(OBJF):
 			@mkdir -p $(OBJ_DIR)
 
-bonus: 		$(OBJB) 
-	$(AR) $(NAME) $(OBJB)
+bonus:		$(OBJB)
+			@make -C $(LIBFT)
+			@cp libft/libft.a .
+			@mv libft.a $(NAME)
+			$(AR) $(NAME) $(OBJB)
 
 $(OBJB_DIR)%.o: $(SRCB_DIR)%.c | $(OBJBF)
 			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
