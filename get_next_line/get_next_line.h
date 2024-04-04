@@ -3,6 +3,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 # include <limits.h>
 
 # ifndef BUFFER_SIZE
