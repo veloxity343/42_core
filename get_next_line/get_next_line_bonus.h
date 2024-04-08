@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/05 11:53:36 by rcheong           #+#    #+#             */
+/*   Updated: 2024/04/05 12:27:42 by rcheong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
@@ -12,17 +24,17 @@
 # endif
 
 /* ---------- UTILS ---------- */
-char	*ft_strjoin(char const *s1, char const *s2);
-size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int c);
-void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
+void	*ft_calloc(size_t count, size_t size);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strchr(const char *s, int c);
+size_t	ft_strlen(const char *s);
 
 /* ---------- CENTRAL ---------- */
+char	*trim_buffer(char *buffer);
+char	*extract_line(char *buffer);
 char	*join_free(char *res, char *buffer);
 char	*read_cat(int fd, char *res);
-char	*get_line(char *buffer);
-char	*trim_buffer(char *buffer);
 char	*get_next_line(int fd);
 
 #endif
