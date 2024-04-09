@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 11:53:36 by rcheong           #+#    #+#             */
-/*   Updated: 2024/04/05 12:23:12 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:17:16 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # endif
 
 /* ---------- UTILS ---------- */
-void	*ft_memset(void *b, int c, size_t len);
+void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strchr(const char *s, int c);

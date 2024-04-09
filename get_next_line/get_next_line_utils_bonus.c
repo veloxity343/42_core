@@ -6,78 +6,76 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 11:53:27 by rcheong           #+#    #+#             */
-/*   Updated: 2024/04/05 12:11:02 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:16:54 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	ft_bzero(void *s, size_t n)
 {
-	char	*s;
-	size_t	i;
+	char	*ptr;
 
-	s = b;
-	i = 0;
-	while (i < len)
-		s[i++] = c;
-	return (s);
+	ptr = (char *)s;
+	while (n > 0)
+	{
+		ptr[n - 1] = 0;
+		n--;
+	}
 }
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*dest;
-	size_t	total_size;
+	void	*ptr;
 
 	if ((size != 0 && count > UINT_MAX / size)
 		|| (count != 0 && size > UINT_MAX / count))
-		dest = NULL;
-	else
-	{
-		total_size = count * size;
-		dest = malloc(total_size);
-		if (!dest)
-			return (0);
-		dest = ft_memset(dest, 0, total_size);
-	}
-	return (dest);
+		ptr = NULL;
+	ptr = (void *)malloc(size * count);
+	if (!ptr)
+		return (0);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*dest;
+	char	*str;
 	int		i;
 	int		j;
 
 	if (!s1 || !s2)
 		return (NULL);
-	dest = (char *)malloc((ft_strlen(s1) + ft_strlen(s2)) + 1);
-	if (!dest)
-		return (0);
-	i = -1;
-	while (s1[++i])
-		dest[i] = s1[i];
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (str == NULL)
+		return (NULL);
+	i = 0;
 	j = 0;
-	while (s2[j])
-		dest[i++] = s2[j++];
-	dest[i] = '\0';
-	return (dest);
+	while (s1[i] != '\0')
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	while (s2[j] != '\0')
+	{
+		str[i + j] = s2[j];
+		j++;
+	}
+	str[i + j] = '\0';
+	return (str);
 }
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*res;
+	char	res;
 
-	res = (char *)s;
-	while (*res != '\0')
-	{
-		if (*res == (unsigned char)c)
-			return (res);
-		res++;
-	}
-	if (*res == '\0' && c == '\0')
-		return (res);
-	return (NULL);
+	res = c;
+	while (*s)
+		if (*s++ == res)
+			return ((char *)--s);
+	if (!c)
+		return ((char *)s);
+	return (0);
 }
 
 size_t	ft_strlen(const char *s)
