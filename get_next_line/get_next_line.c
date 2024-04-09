@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 11:53:20 by rcheong           #+#    #+#             */
-/*   Updated: 2024/04/05 12:22:23 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/04/08 13:28:10 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,26 @@ char	*extract_line(char *buffer)
 	i = 0;
 	if (!buffer[i])
 		return (NULL);
-	while (buffer[i] != '\n' && buffer[i])
+	while (buffer[i] && buffer[i] != '\n')
 		i++;
 	res = ft_calloc(i + 2, sizeof(char));
 	i = 0;
-	while (buffer[i] != '\n' && buffer[i])
+	while (buffer[i] && buffer[i] != '\n')
 	{
 		res[i] = buffer[i];
 		i++;
 	}
-	if (buffer[i] == '\n' && buffer[i])
-		res[i] = '\n';
+	if (buffer[i] && buffer[i] == '\n')
+		res[i++] = '\n';
 	return (res);
 }
 
-char	*join_free(char *res, char *buffer)
+char	*join_free(char *buffer, char *buf)
 {
 	char	*temp;
 
-	temp = ft_strjoin(res, buffer);
-	free(res);
+	temp = ft_strjoin(buffer, buf);
+	free(buffer);
 	return (temp);
 }
 
@@ -76,10 +76,10 @@ char	*read_cat(int fd, char *res)
 	char	*buffer;
 	int		size;
 
-	size = 1;
 	if (!res)
-		res = ft_calloc(1, sizeof(char));
+		res = ft_calloc(1, 1);
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	size = 1;
 	while (size > 0)
 	{
 		size = read(fd, buffer, BUFFER_SIZE);
@@ -90,7 +90,7 @@ char	*read_cat(int fd, char *res)
 		}
 		buffer[size] = 0;
 		res = join_free(res, buffer);
-		if (ft_strchr(res, '\n'))
+		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
 	free(buffer);
@@ -102,7 +102,7 @@ char	*get_next_line(int fd)
 	static char	*buffer;
 	char		*res;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, buffer, 0) < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
 		return (NULL);
 	buffer = read_cat(fd, buffer);
 	if (!buffer)
