@@ -49,3 +49,25 @@ SSH or Secure Shell is an authentication mechanism between a client and a host. 
 Cron or cron job is a command line utility to schedule commands or scripts to happen at specific intervals or a specific time each day. Useful if you want to set your server to restart at a specific time each day.
 - <code>cd /usr/local/bin</code> – to show monitoring.sh
 - <code>sudo crontab -u root -e</code> – to edit the cron job
+
+### Commands
+<ul dir="auto">
+<li><code>sudo ufw status</code></li>
+<li><code>sudo systemctl status ssh</code></li>
+<li><code>getent group sudo</code></li>
+<li><code>getent group user42</code></li>
+<li><code>sudo adduser new username</code></li>
+<li><code>sudo groupadd groupname</code></li>
+<li><code>sudo usermod -aG groupname username</code></li>
+<li><code>sudo chage -l username</code> - check password expire rules</li>
+<li><code>hostnamectl</code></li>
+<li><code>hostnamectl set-hostname new_hostname</code> - to change the current hostname</li>
+<li>Restart your Virtual Machine.</li>
+<li><code>sudo nano /etc/hosts</code> - change current hostname to new hostname</li>
+<li><code>lsblk</code> to display the partitions</li>
+<li><code>dpkg -l | grep sudo –</code> to show that sudo is installed</li>
+<li><code>sudo ufw status numbered</code></li>
+<li><code>sudo ufw allow port-id</code></li>
+<li><code>sudo ufw delete rule number</code></li>
+<li><code>ssh your_user_id@127.0.0.1 -p 4242</code> -  do this in terminal to show that SSH to port 4242 is working</li>
+</ul>
