@@ -20,7 +20,7 @@ First and foremost, it is easy to use and stable. That it is free is also a larg
 - Typically used for enterprise.
 
 ### What is a VM?
-A software emulation of a physical computer that operates and behaves like a separate computer system within another physical machine. Essentially, it's a self-contained operating environment that behaves as if it's a separate computer, but it's actually running on a host computer. So you may ask the time-honoured Matrix question, is the VM blue-pilled, or red-pilled? Well, short and simple answer is that it is blue-pilled, remaining in the Matrix and unaware of the real world (the host computer). But since some VMs have exposure to the hypervisor and is thus able to retrieve information about its environment.
+A software emulation of a physical computer that operates and behaves like a separate computer system within another physical machine. Essentially, it's a self-contained operating environment that behaves as if it's a separate computer, but it's actually running on a host computer. So you may ask the time-honoured Matrix question, is the VM blue-pilled, or red-pilled? Well, short and simple answer is that it is blue-pilled, remaining in the Matrix and unaware of the real world (the host computer). But since some VMs have exposure to the hypervisor and is thus able to retrieve information about its environment, the VM could, in essence, dodge bullets.
 
 ### Aptitude vs APT
 #### Aptitude
@@ -30,4 +30,22 @@ A software emulation of a physical computer that operates and behaves like a sep
 - A lower level which can be used by other higher level package managers
 - Will only do explicitly what it is told to do in the command line
 
+### What is AppArmor?
+A Linux security system that provides Mandatory Access Control (MAC) security. Allows the system admin to restrict the actions that processes can perform. It is included by default with Debian. Run aa-status to check if it is running.
 
+### Password policy
+For the password rules, we use the password quality checking library and there are two files the common-password file which sets the rules like upper and lower case characters, duplicate characters etc and the login.defs file which stores the password expiration rules (30 days etc). Sudo nano /etc/login.defs Sudo nano /etc/pam.d/common-password
+
+### What is LVM?
+Logical Volume Manager – allows us to easily manipulate the partitions or logical volume on a storage device. It is a method of managing disk drives on Unix-like operating systems. It allows for more flexible disk management by abstracting the physical storage devices into logical volumes, which can then be resized and moved around without disrupting the data stored on them.
+
+### UFW (Uncomplicated Firewall)
+A user-friendly command-line utility for managing iptables, the default firewall management tool in Linux. UFW provides a simplified interface for configuring firewall rules and managing network traffic on a Linux system. You use it to configure which ports to allow connections to and which ports to close. This is useful in conjunction with SSH, can set a specific port for it to work with.
+
+### SSH
+SSH or Secure Shell is an authentication mechanism between a client and a host. It uses encryption techniques so that all communication between clients and hosts is done in encrypted form. User on Mac or Linux can use SSH the terminal to work on their server via SSH.
+
+### Cron
+Cron or cron job is a command line utility to schedule commands or scripts to happen at specific intervals or a specific time each day. Useful if you want to set your server to restart at a specific time each day.
+- <code>cd /usr/local/bin</code> – to show monitoring.sh
+- <code>sudo crontab -u root -e</code> – to edit the cron job
