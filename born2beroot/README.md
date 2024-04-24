@@ -34,7 +34,7 @@ A software emulation of a physical computer that operates and behaves like a sep
 A Linux security system that provides Mandatory Access Control (MAC) security. Allows the system admin to restrict the actions that processes can perform. It is included by default with Debian. Run aa-status to check if it is running.
 
 ### Password policy
-For the password rules, we use the password quality checking library and there are two files the common-password file which sets the rules like upper and lower case characters, duplicate characters etc and the login.defs file which stores the password expiration rules (30 days etc). Sudo nano /etc/login.defs Sudo nano /etc/pam.d/common-password
+For the password rules, we use the password quality checking library and there are two files the common-password file which sets the rules like upper and lower case characters, duplicate characters etc and the login.defs file which stores the password expiration rules (30 days etc). <code>sudo vi /etc/login.defs</code> <code>sudo vi /etc/pam.d/common-password</code>
 
 ### What is LVM?
 Logical Volume Manager – allows us to easily manipulate the partitions or logical volume on a storage device. It is a method of managing disk drives on Unix-like operating systems. It allows for more flexible disk management by abstracting the physical storage devices into logical volumes, which can then be resized and moved around without disrupting the data stored on them.
@@ -63,11 +63,11 @@ Cron or cron job is a command line utility to schedule commands or scripts to ha
 <li><code>hostnamectl</code></li>
 <li><code>hostnamectl set-hostname new_hostname</code> - to change the current hostname</li>
 <li>Restart your Virtual Machine.</li>
-<li><code>sudo nano /etc/hosts</code> - change current hostname to new hostname</li>
+<li><code>sudo vi /etc/hosts</code> - change current hostname to new hostname</li>
 <li><code>lsblk</code> to display the partitions</li>
 <li><code>dpkg -l | grep sudo –</code> to show that sudo is installed</li>
 <li><code>sudo ufw status numbered</code></li>
 <li><code>sudo ufw allow port-id</code></li>
 <li><code>sudo ufw delete rule number</code></li>
-<li><code>ssh your_user_id@127.0.0.1 -p 4242</code> -  do this in terminal to show that SSH to port 4242 is working</li>
+<li><code>ssh user_id@localhost -p 4242</code> -  do this in terminal to show that SSH to port 4242 is working</li>
 </ul>
