@@ -71,3 +71,15 @@ Cron or cron job is a command line utility to schedule commands or scripts to ha
 <li><code>sudo ufw delete rule number</code></li>
 <li><code>ssh user_id@localhost -p 4242</code> -  do this in terminal to show that SSH to port 4242 is working</li>
 </ul>
+
+| 1) lsblk                              1 <- Check partitions
+| 2) sudo aa-status                     2 <- AppArmor status
+| 3) getent group sudo                  3 <- sudo group users
+| 4) getent group user42                4 <- user42 group users
+| 5) sudo service ssh status            5 <- ssh status, yep
+| 6) sudo ufw status                    6 <- ufw status
+| 7) ssh username@ipadress -p 4242      7 <- connect to VM from your host (physical) machine via SSH
+| 8) nano /etc/sudoers.d/<filename>     8 <- yes, sudo config file. You can $ ls /etc/sudoers.d first
+| 9) nano /etc/login.defs               9 <- password expire policy
+| 10) nano /etc/pam.d/common-password  10 <- password policy
+| 11) sudo crontab -l                  11 <- cron schedule
