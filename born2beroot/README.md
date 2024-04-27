@@ -75,6 +75,6 @@ Cron or cron job is a command line utility to schedule commands or scripts to ha
 ### Bonus
 I chose to install File Transfer Protocol (FTP) as it enables the transfer of files back and forth between computers or through the cloud, essentially functioning as a backup system. 
 
-I installed lighttpp, a server which allows the delivery of web content to sites. Configuration was as simple as allowing port 80 in UFW. Next, MariaDB, which is a MySQL relational database management system. <code>mariadb -u <username-2> -p</code> Finally, PHP and Wordpress for web development to reference my database. 
+I installed lighttpp, a server which allows the delivery of web content to sites. Configuration was as simple as allowing port 80 in UFW. Next, MariaDB, which is a MySQL relational database management system. <code>mariadb -u username -p</code> Finally, PHP and Wordpress for web development to reference my database. 
 
 Last but not least, I installed and configured FTP to connect into a root folder in my VM from a terminal, which allows restricted external manipulation without having to run the VM. 
