@@ -3,13 +3,15 @@
 ### How VMs work
 A virtual machine (VM) is essentially a software-based emulation of a physical computer. It operates within the confines of a physical machine, but it behaves as if it were a separate, independent system.
 
-Hypervisor: At the core of virtualization is a software called a hypervisor. It's responsible for creating and managing the virtual machines. There are two types of hypervisors: Type 1, which runs directly on the physical hardware (bare-metal), and Type 2, which runs on top of an operating system.
-Virtualization Layer: The hypervisor creates a virtualization layer on top of the physical hardware. This layer abstracts the hardware resources (like CPU, memory, storage, and networking) and presents them to the virtual machines as if they were physical resources.
-Guest Operating System: Each virtual machine runs its own guest operating system. This OS can be any operating system that the hypervisor supports, such as Windows, Linux, or others.
-Virtual Hardware: Within each VM, there is virtual hardware emulated by the hypervisor. This virtual hardware includes components like virtual CPU, virtual RAM, virtual hard disk, virtual network interfaces, etc. The guest operating system interacts with this virtual hardware as if it were physical hardware.
-Resource Allocation: The hypervisor manages the allocation of physical resources among the virtual machines. It ensures that each VM gets its fair share of CPU, memory, disk I/O, and network bandwidth.
-Isolation: VMs are isolated from each other. This means that activities in one VM do not affect the others. If one VM crashes or experiences issues, it does not impact the other VMs running on the same physical hardware.
-Portability: VMs are portable, meaning you can move them from one physical machine to another without much hassle. This portability makes it easy to deploy, manage, and scale applications in virtualized environments.
+<b><i>Hypervisor:</i></b> At the core of virtualization is a software called a hypervisor. It's responsible for creating and managing the virtual machines.<br>
+
+<b><i>Virtualization Layer:</i></b> The hypervisor creates a virtualization layer on top of the physical hardware. This layer abstracts the hardware resources (like CPU, memory, storage, and networking) and presents them to the virtual machines as if they were physical resources.<br>
+
+<b><i>Guest Operating System:</i></b> Each virtual machine runs its own guest operating system. This OS can be any operating system that the hypervisor supports, such as Windows, Linux, or others.<br>
+
+<b><i>Virtual Hardware:</i></b> Within each VM, there is virtual hardware emulated by the hypervisor. This virtual hardware includes components like virtual CPU, virtual RAM, virtual hard disk, virtual network interfaces, etc. The guest operating system interacts with this virtual hardware as if it were physical hardware.<br>
+
+<b><i>Isolation:</i></b> VMs are isolated from each other. This means that activities in one VM do not affect the others. If one VM crashes or experiences issues, it does not impact the other VMs running on the same physical hardware.<br>
 
 ### Why Debian?
 First and foremost, it is easy to use and stable. That it is free is also a large point in its favour. Additionally, it runs on numerous architectures and devices, as evidenced by my implementation of B2BR on Arm architecture. 
