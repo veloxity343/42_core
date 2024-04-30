@@ -1,7 +1,7 @@
 ## Born2BeRoot Evaluation
 
 ### How VMs work
-A virtual machine (VM) is essentially a software-based emulation of a physical computer. It operates within the confines of a physical machine, but it behaves as if it were a separate, independent system. Here's a simplified explanation of how VMs work:
+A virtual machine (VM) is essentially a software-based emulation of a physical computer. It operates within the confines of a physical machine, but it behaves as if it were a separate, independent system.
 
 Hypervisor: At the core of virtualization is a software called a hypervisor. It's responsible for creating and managing the virtual machines. There are two types of hypervisors: Type 1, which runs directly on the physical hardware (bare-metal), and Type 2, which runs on top of an operating system.
 Virtualization Layer: The hypervisor creates a virtualization layer on top of the physical hardware. This layer abstracts the hardware resources (like CPU, memory, storage, and networking) and presents them to the virtual machines as if they were physical resources.
