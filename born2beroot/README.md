@@ -69,19 +69,21 @@ Cron or cron job is a command line utility to schedule commands or scripts to ha
 <li><code>sudo systemctl status ssh</code></li>
 <li><code>getent group sudo</code></li>
 <li><code>getent group user42</code></li>
-<li><code>sudo adduser new username</code></li>
+<li><code>sudo adduser new_username</code></li>
 <li><code>sudo groupadd groupname</code></li>
 <li><code>sudo usermod -aG groupname username</code></li>
 <li><code>sudo chage -l username</code> - check password expire rules</li>
 <li><code>hostnamectl</code></li>
 <li><code>hostnamectl set-hostname new_hostname</code> - to change the current hostname</li>
-<li>Restart your Virtual Machine.</li>
+<li>Restart your Virtual Machine. <code>sudo reboot</code></li>
 <li><code>sudo vi /etc/hosts</code> - change current hostname to new hostname</li>
 <li><code>lsblk</code> to display the partitions</li>
 <li><code>dpkg -l | grep sudo –</code> to show that sudo is installed</li>
 <li><code>sudo ufw status numbered</code></li>
 <li><code>sudo ufw allow port-id</code></li>
 <li><code>sudo ufw delete rule number</code></li>
+<li><code>sudo vi /etc/ssh/sshd_config</code> -  check ssh allows</li>
+<li><code>sudo grep port /etc/ssh/sshd_config</code> - check port </li>
 <li><code>ssh user_id@ip_address -p 4242</code> -  do this in terminal to show that SSH to port 4242 is working</li>
 </ul>
 
@@ -89,5 +91,8 @@ Cron or cron job is a command line utility to schedule commands or scripts to ha
 I chose to install File Transfer Protocol (FTP) as it enables the transfer of files back and forth between computers or through the cloud, essentially functioning as a backup system. 
 
 I installed lighttpp, a server which allows the delivery of web content to sites. Configuration was as simple as allowing port 80 in UFW. Next, MariaDB, which is a MySQL relational database management system. <code>mariadb -u username -p</code> Finally, PHP (language) and Wordpress for web development to reference my database; WordPress relies on a database to store posts, pages, user information, settings, and more. When you install WordPress, it requires a database to function, and MariaDB is a common choice for this purpose due to its compatibility with MySQL.
+<code>dpkg -l | grep lighttpd, mariadb-server, php, wget</code> - check install
 
-Last but not least, I installed and configured FTP to connect into a root folder in my VM from a terminal, which allows restricted external manipulation without having to run the VM. 
+Last but not least, I installed and configured FTP to connect into a root directory in my VM from a terminal, which allows restricted external manipulation without having to run the VM. 
+<code>dpkg -l | grep vsftpd</code> - check install
+<code>ftp ip_address</code> - ftp into directory in VM
