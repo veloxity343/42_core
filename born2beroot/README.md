@@ -1,5 +1,8 @@
 ## Born2BeRoot Evaluation
 
+### What is a VM?
+A software emulation of a physical computer that operates and behaves like a separate computer system within another physical machine. Essentially, it's a self-contained operating environment that behaves as if it's a separate computer, but it's actually running on a host computer. So you may ask the time-honoured Matrix question, is the VM blue-pilled, or red-pilled? Well, short and simple answer is that it is blue-pilled, remaining in the Matrix and unaware of the real world (the host computer). But since some VMs have exposure to the hypervisor and is thus able to retrieve information about its environment, the VM could, in essence, dodge bullets.
+
 ### How VMs work
 A virtual machine (VM) is essentially a software-based emulation of a physical computer. It operates within the confines of a physical machine, but it behaves as if it were a separate, independent system.
 
@@ -31,9 +34,6 @@ First and foremost, it is easy to use and stable. That it is free is also a larg
 - It uses YUM as its package manager.
 - Limited packages
 - Typically used for enterprise.
-
-### What is a VM?
-A software emulation of a physical computer that operates and behaves like a separate computer system within another physical machine. Essentially, it's a self-contained operating environment that behaves as if it's a separate computer, but it's actually running on a host computer. So you may ask the time-honoured Matrix question, is the VM blue-pilled, or red-pilled? Well, short and simple answer is that it is blue-pilled, remaining in the Matrix and unaware of the real world (the host computer). But since some VMs have exposure to the hypervisor and is thus able to retrieve information about its environment, the VM could, in essence, dodge bullets.
 
 ### Aptitude vs APT
 #### Aptitude
