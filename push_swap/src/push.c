@@ -6,10 +6,9 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 12:51:18 by rcheong           #+#    #+#             */
-/*   Updated: 2024/04/29 13:10:29 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/04/30 14:21:21 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-array vs linked list
