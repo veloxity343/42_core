@@ -1,5 +1,21 @@
 ## Born2BeRoot Evaluation
 
+### What is a VM?
+A software emulation of a physical computer that operates and behaves like a separate computer system within another physical machine. Essentially, it's a self-contained operating environment that behaves as if it's a separate computer, but it's actually running on a host computer. So you may ask the time-honoured Matrix question, is the VM blue-pilled, or red-pilled? Well, short and simple answer is that it is blue-pilled, remaining in the Matrix and unaware of the real world (the host computer). But since some VMs have exposure to the hypervisor and is thus able to retrieve information about its environment, the VM could, in essence, dodge bullets.
+
+### How VMs work
+A virtual machine (VM) is essentially a software-based emulation of a physical computer. It operates within the confines of a physical machine, but it behaves as if it were a separate, independent system.
+
+<b><i>Hypervisor:</i></b> At the core of virtualization is a software called a hypervisor. It's responsible for creating and managing the virtual machines.<br>
+
+<b><i>Virtualization Layer:</i></b> The hypervisor creates a virtualization layer on top of the physical hardware. This layer abstracts the hardware resources (like CPU, memory, storage, and networking) and presents them to the virtual machines as if they were physical resources.<br>
+
+<b><i>Guest Operating System:</i></b> Each virtual machine runs its own guest operating system. This OS can be any operating system that the hypervisor supports, such as Windows, Linux, or others.<br>
+
+<b><i>Virtual Hardware:</i></b> Within each VM, there is virtual hardware emulated by the hypervisor. This virtual hardware includes components like virtual CPU, virtual RAM, virtual hard disk, virtual network interfaces, etc. The guest operating system interacts with this virtual hardware as if it were physical hardware.<br>
+
+<b><i>Isolation:</i></b> VMs are isolated from each other. This means that activities in one VM do not affect the others. If one VM crashes or experiences issues, it does not impact the other VMs running on the same physical hardware.<br>
+
 ### Why Debian?
 First and foremost, it is easy to use and stable. That it is free is also a large point in its favour. Additionally, it runs on numerous architectures and devices, as evidenced by my implementation of B2BR on Arm architecture. 
 
@@ -18,9 +34,6 @@ First and foremost, it is easy to use and stable. That it is free is also a larg
 - It uses YUM as its package manager.
 - Limited packages
 - Typically used for enterprise.
-
-### What is a VM?
-A software emulation of a physical computer that operates and behaves like a separate computer system within another physical machine. Essentially, it's a self-contained operating environment that behaves as if it's a separate computer, but it's actually running on a host computer. So you may ask the time-honoured Matrix question, is the VM blue-pilled, or red-pilled? Well, short and simple answer is that it is blue-pilled, remaining in the Matrix and unaware of the real world (the host computer). But since some VMs have exposure to the hypervisor and is thus able to retrieve information about its environment, the VM could, in essence, dodge bullets.
 
 ### Aptitude vs APT
 #### Aptitude
