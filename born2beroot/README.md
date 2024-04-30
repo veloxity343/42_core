@@ -17,7 +17,7 @@ A virtual machine (VM) is essentially a software-based emulation of a physical c
 <b><i>Isolation:</i></b> VMs are isolated from each other. This means that activities in one VM do not affect the others. If one VM crashes or experiences issues, it does not impact the other VMs running on the same physical hardware.<br>
 
 ### Why Debian?
-First and foremost, it is easy to use and stable. That it is free is also a large point in its favour. Additionally, it runs on numerous architectures and devices, as evidenced by my implementation of B2BR on Arm architecture. 
+First and foremost, it is easy to use and stable. That it is free is also a large point in its favour. Additionally, it runs on numerous architectures and devices, as evidenced by my implementation of B2BR on Arm architecture. Check OS: <code>cat /etc/os-release</code>
 
 ### Difference between Debian and Rocky
 #### Debian
