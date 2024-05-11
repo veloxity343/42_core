@@ -28,13 +28,10 @@ PUSH_SWAP_DIR		=	$(SRC_DIR)push_swap/handle_errors.c \
 						$(SRC_DIR)push_swap/stack_init.c \
 						$(SRC_DIR)push_swap/stack_utils.c
 
-# Concatenate all source files
 SRCS 				= $(COMMANDS_DIR) $(PUSH_SWAP_DIR)
-
-# Apply the pattern substitution to each source file in SRC and produce a corresponding list of object files in the OBJ_DIR
 OBJ 				= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 
-# Build rules
+# Build Rules
 start:				
 					@make all
 
@@ -46,7 +43,6 @@ all: 				$(NAME)
 $(NAME): 			$(OBJ) $(LIBFT)
 					@$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) -o $(NAME)
 
-# Compile object files from source files
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c 
 					@mkdir -p $(@D)
 					@$(CC) $(CFLAGS) $(INC) -c $< -o $@

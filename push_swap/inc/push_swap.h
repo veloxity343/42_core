@@ -13,9 +13,19 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <unistd.h>
+# include "../libft/inc/libft.h"
+# include "../libft/inc/ft_printf.h"
+
+# ifndef INT_MAX
+#  define INT_MAX 2147483647
+# endif
+
+# ifndef INT_MIN
+#  define INT_MIN -2147483648
+# endif
+
+typedef struct t_list
+{
+}
 
 #endif
