@@ -1,4 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   valid.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/11 09:57:01 by rcheong           #+#    #+#             */
+/*   Updated: 2024/05/11 11:37:39 by rcheong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/push_swap.h"
+
+static void	free_buffer(char ***buffer, char **str)
+{
+	free_array(buffer);
+	free(*str);
+	error_exit(0);
+}
 
 int	check_duplicate(char **str)
 {
@@ -15,10 +34,7 @@ int	check_duplicate(char **str)
 		while (buffer[j])
 		{
 			if (strcmp(buffer[i], buffer[j]) == 0)
-			{
-				free_array(&buffer);
-				error_exit(0);
-			}
+				free_buffer(&buffer, str);
 			j++;
 		}
 		i++;
@@ -72,10 +88,7 @@ int	is_valid(char **str)
 	while (buffer[i])
 	{
 		if (check_numeric(buffer[i]))
-		{
-			free_array(&buffer);
-			error_exit(0);
-		}
+			free_buffer(&buffer, str);
 		i++;
 	}
 	free_array(&buffer);
