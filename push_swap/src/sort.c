@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/23 11:23:15 by rcheong           #+#    #+#             */
+/*   Updated: 2024/06/23 11:32:30 by rcheong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
 int	find_len(t_node *stack)
@@ -35,9 +47,9 @@ void	assign_index(int len, t_node **stack, int *sorted_list)
 	}
 }
 
-void    sort_array(int **tab, int size)
+void	sort_array(int **tab, int size)
 {
-    int	i;
+	int	i;
 	int	temp;
 	int	*new;
 
@@ -58,25 +70,25 @@ void    sort_array(int **tab, int size)
 	*tab = new;
 }
 
-void    sorting_index(t_node **stack)
+void	sorting_index(t_node **stack)
 {
-    int     len;
-    t_node  *temp;
-    int     i;
-    int     *sorted_lst;
+	int		len;
+	t_node	*temp;
+	int		i;
+	int		*sorted_lst;
 
-    temp = *stack;
-    len = find_len(*stack);
-    sorted_lst = malloc(sizeof(int) * len);
-    if (!sorted_lst)
-        return ;
-    i = 0;
-    while (temp)
-    {
-        sorted_lst[i++] = temp->data;
-        temp = temp->next;
-    }
-    sort_array(&sorted_lst, len);
+	temp = *stack;
+	len = find_len(*stack);
+	sorted_lst = malloc(sizeof(int) * len);
+	if (!sorted_lst)
+		return ;
+	i = 0;
+	while (temp)
+	{
+		sorted_lst[i++] = temp->data;
+		temp = temp->next;
+	}
+	sort_array(&sorted_lst, len);
 	temp = *stack;
 	assign_index(len, &temp, sorted_lst);
 	*stack = temp;
