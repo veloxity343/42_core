@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   valid.c                                            :+:      :+:    :+:   */
+/*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 09:57:01 by rcheong           #+#    #+#             */
-/*   Updated: 2024/05/11 11:37:39 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/06/23 16:01:06 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	free_buffer(char ***buffer, char **str)
 	error_exit(0);
 }
 
-int	check_duplicate(char **str)
+int	check_dup(char **str)
 {
 	char	**buffer;
 	int		i;

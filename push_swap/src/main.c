@@ -6,11 +6,40 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 09:56:43 by rcheong           #+#    #+#             */
-/*   Updated: 2024/05/11 09:56:46 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/06/23 16:02:10 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
+
+void	sort_three(t_node **stack)
+{
+	int	first;
+	int	second;
+	int	third;
+
+	first = (*stack)->s_index;
+	second = (*stack)->next->s_index;
+	third = (*stack)->next->next->s_index;
+	if ((first < second) && (second < third))
+		return ;
+	else if ((first < second) && (first < third))
+	{
+		swap(*stack, "sa");
+		rotate(stack, "ra", 1);
+	}
+	else if ((first > second) && (first < third) && (second < third))
+		swap(*stack, "sa");
+	else if ((first < second) && (first > third))
+		rev_rotate(stack, "rra", -1);
+	else if ((first > second) && (first > third) && (second < third))
+		rotate(stack, "ra", 1);
+	else if ((first > second) && (first > third) && (second > third))
+	{
+		swap(*stack, "sa");
+		rev_rotate(stack, "rra", -1);
+	}
+}
 
 void	push_to_a(t_node **a, t_node **b)
 {
@@ -18,10 +47,10 @@ void	push_to_a(t_node **a, t_node **b)
 
 	while (*b)
 	{
-		assign_position(a, b);
-		find_cost(a, b);
-		cheapest_pos = find_cheapest(b);
-		reorder_a_and_b(cheapest_pos, a, b);
+		assign_pos(a, b);
+		get_cost(a, b);
+		cheapest_pos = get_cheapest(b);
+		reorder_a_b(cheapest_pos, a, b);
 		push(a, b, "pa");
 	}
 }
@@ -42,7 +71,7 @@ void	push_swap(t_node **a)
 		sort_three(a);
 	else if (find_len(*a) > 3)
 	{
-		midpoint_sorting(a, &b);
+		midpt_sort(a, &b);
 		sort_three(a);
 	}
 	push_to_a(a, &b);
@@ -82,7 +111,7 @@ int	main(int argc, char *argv[])
 	{
 		stack = NULL;
 		stack = build_string(argv, &stack);
-		if (!is_valid(&stack) || !check_duplicate(&stack))
+		if (!is_valid(&stack) || !check_dup(&stack))
 		{
 			error_exit(0);
 			ft_printf("Arguments must be unique numbers.\n");

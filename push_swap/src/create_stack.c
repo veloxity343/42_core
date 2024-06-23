@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack.c                                            :+:      :+:    :+:   */
+/*   create_stack.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 09:56:52 by rcheong           #+#    #+#             */
-/*   Updated: 2024/05/11 11:41:06 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/06/23 16:02:46 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-static int	have_duplicates(t_node **a, long num)
+static int	have_dup(t_node **a, long num)
 {
 	t_node	*temp;
 
@@ -28,7 +28,7 @@ static int	have_duplicates(t_node **a, long num)
 
 static void	free_stuff(long num, t_node **a, char ***str)
 {
-	if (num > INT_MAX || num < INT_MIN || have_duplicates(a, num))
+	if (num > INT_MAX || num < INT_MIN || have_dup(a, num))
 	{
 		free_lst(a);
 		free_array(str);
