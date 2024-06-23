@@ -12,6 +12,17 @@
 
 #include "../inc/push_swap.h"
 
+int	is_sorted(t_node *stack)
+{
+	while (stack->next)
+	{
+		if (stack->data > stack->next->data)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
 void	free_lst(t_node **stack)
 {
 	t_node	*temp;
