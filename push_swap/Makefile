@@ -24,7 +24,7 @@ SRCS 				= 	$(SRC_DIR)main.c \
 						$(SRC_DIR)target.c \
 						$(SRC_DIR)op_double.c \
 						$(SRC_DIR)alloc_to_a.c \
-OBJ 				= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
+OBJ 				=	$(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS)
 
 # Build Rules
 start:				

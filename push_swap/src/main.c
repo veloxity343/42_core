@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 09:56:43 by rcheong           #+#    #+#             */
-/*   Updated: 2024/06/23 16:02:10 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/06/29 16:38:00 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,10 @@ int	main(int argc, char *argv[])
 	char	*stack;
 
 	if (argc < 2)
-		ft_printf("Error: Insufficient arguments. Usage: %s <numbers>\n",
-			argv[0]);
+	{
+		ft_printf("Usage: %s <numbers>\n", argv[0]);
+		return (1);
+	}
 	else
 	{
 		stack = NULL;
@@ -115,6 +117,7 @@ int	main(int argc, char *argv[])
 		{
 			error_exit(0);
 			ft_printf("Arguments must be unique numbers.\n");
+			return (1);
 		}
 		a = NULL;
 		build_stack(&buffer, &a);

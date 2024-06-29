@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 12:44:29 by rcheong           #+#    #+#             */
-/*   Updated: 2024/06/29 16:09:34 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/06/29 16:40:07 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ typedef struct t_list
 }					t_node;
 
 // main
+int					main(int argc, char *argv[]);
 void				push_swap(t_node **a);
+void				push_to_a(t_node **a, t_node **b);
 
 // validate
 int					check_dup(char **str);
@@ -94,7 +96,7 @@ void				sort_stack_a(t_node **stack, int point);
 // allocate position
 void				assign_pos(t_node **a, t_node **b);
 
-// reorder 
+// reorder
 void				reorder_a_b(int cheapest_pos, t_node **a, t_node **b);
 
 // checker
