@@ -13,22 +13,17 @@ CFLAGS				= -Wall -Werror -Wextra -I
 RM					= rm -f
 
 # Source Files
-COMMANDS_DIR		=	$(SRC_DIR)commands/push.c \
-						$(SRC_DIR)commands/rev_rotate.c \
-						$(SRC_DIR)commands/rotate.c \
-						$(SRC_DIR)commands/sort_stacks.c \
-						$(SRC_DIR)commands/sort_three.c \
-						$(SRC_DIR)commands/swap.c
-
-PUSH_SWAP_DIR		=	$(SRC_DIR)push_swap/handle_errors.c \
-						$(SRC_DIR)push_swap/init_a_to_b.c \
-						$(SRC_DIR)push_swap/init_b_to_a.c \
-						$(SRC_DIR)push_swap/push_swap.c \
-						$(SRC_DIR)push_swap/split.c \
-						$(SRC_DIR)push_swap/stack_init.c \
-						$(SRC_DIR)push_swap/stack_utils.c
-
-SRCS 				= $(COMMANDS_DIR) $(PUSH_SWAP_DIR)
+SRCS 				= 	$(SRC_DIR)main.c \
+						$(SRC_DIR)validate.c \
+						$(SRC_DIR)utils.c \
+						$(SRC_DIR)create_stack.c \
+						$(SRC_DIR)sort.c \
+						$(SRC_DIR)operations.c \
+						$(SRC_DIR)midpt_to_b.c \
+						$(SRC_DIR)calculate_cost.c \
+						$(SRC_DIR)target.c \
+						$(SRC_DIR)op_double.c \
+						$(SRC_DIR)alloc_to_a.c \
 OBJ 				= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 
 # Build Rules
