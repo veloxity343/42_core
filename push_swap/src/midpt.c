@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:04:10 by rcheong           #+#    #+#             */
-/*   Updated: 2024/06/23 16:05:19 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/06/29 15:33:53 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	midpt_sort(t_node **a, t_node **b)
 {
 	int	total_nodes_to_go;
 
-	total_nodes_to_go = find_len(*a) - 3;
+	total_nodes_to_go = get_len(*a) - 3;
 	while (total_nodes_to_go > 0)
 		send_to_b(a, b, &total_nodes_to_go);
 }

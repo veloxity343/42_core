@@ -6,13 +6,13 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 11:23:15 by rcheong           #+#    #+#             */
-/*   Updated: 2024/06/23 11:32:30 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/06/29 15:34:08 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	find_len(t_node *stack)
+int	get_len(t_node *stack)
 {
 	int	len;
 
@@ -78,7 +78,7 @@ void	sorting_index(t_node **stack)
 	int		*sorted_lst;
 
 	temp = *stack;
-	len = find_len(*stack);
+	len = get_len(*stack);
 	sorted_lst = malloc(sizeof(int) * len);
 	if (!sorted_lst)
 		return ;

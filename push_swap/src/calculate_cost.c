@@ -6,11 +6,40 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:10:04 by rcheong           #+#    #+#             */
-/*   Updated: 2024/06/23 16:11:08 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/06/29 15:57:59 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+int	count_forward(t_node *stack, int point)
+{
+	int	i;
+
+	i = 0;
+	while (stack->s_index != point)
+	{
+		i++;
+		stack = stack->next;
+	}
+	return (i);
+}
+
+int	count_backward(t_node *stack, int point)
+{
+	int	i;
+
+	i = 0;
+	while (stack->s_index != point)
+		stack = stack->next;
+	stack = stack->next;
+	while (stack)
+	{
+		i++;
+		stack = stack->next;
+	}
+	return (i + 1);
+}
 
 int	get_cheapest(t_node **b)
 {
@@ -48,7 +77,7 @@ void	get_cost(t_node **a, t_node **b)
 	int		target_index;
 
 	temp_b = *b;
-	size_b = find_len(*b);
+	size_b = get_len(*b);
 	while (temp_b)
 	{
 		temp_b->cost_b = temp_b->pos;
