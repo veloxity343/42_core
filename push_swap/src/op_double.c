@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../inc/push_swap.h"
 
 void	rev_rotate_both(t_node **a, t_node **b, int cost_a, int cost_b)
 {

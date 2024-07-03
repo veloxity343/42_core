@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../inc/push_swap.h"
 
 void	push_to_b(t_node **a, t_node **b, int *i, int *total_nodes_to_go)
 {
@@ -54,7 +54,7 @@ void	send_to_b(t_node **a, t_node **b, int *total_nodes_to_go)
 			rotate(a, "ra", 1);
 			push_to_b(a, b, &i, total_nodes_to_go);
 		}
-		else if ((lstlast(*a)->s_index < mid_pt))
+		else if ((lst_last(*a)->s_index < mid_pt))
 		{
 			rev_rotate(a, "rra", -1);
 			push_to_b(a, b, &i, total_nodes_to_go);

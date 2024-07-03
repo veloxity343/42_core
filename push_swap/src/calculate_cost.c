@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../inc/push_swap.h"
 
 int	count_forward(t_node *stack, int point)
 {
@@ -84,8 +84,8 @@ void	get_cost(t_node **a, t_node **b)
 		if (temp_b->cost_b > size_b / 2)
 			temp_b->cost_b = (temp_b->pos - size_b);
 		target_index = get_target_index(a, &temp_b);
-		back_moves = count_backward_moves(*a, target_index);
-		temp_b->cost_a = count_forward_moves(*a, target_index);
+		back_moves = count_backward(*a, target_index);
+		temp_b->cost_a = count_forward(*a, target_index);
 		if (back_moves < temp_b->cost_a)
 			temp_b->cost_a = back_moves * -1;
 		temp_b = temp_b->next;

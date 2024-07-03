@@ -65,11 +65,11 @@ void	push_swap(t_node **a)
 		free_lst(a);
 		exit(0);
 	}
-	else if (find_len(*a) == 2)
+	else if (get_len(*a) == 2)
 		swap(*a, "sa");
-	else if (find_len(*a) == 3)
+	else if (get_len(*a) == 3)
 		sort_three(a);
-	else if (find_len(*a) > 3)
+	else if (get_len(*a) > 3)
 	{
 		midpt_sort(a, &b);
 		sort_three(a);
@@ -94,7 +94,7 @@ static char	*build_string(char *argv[], char **stack)
 			ft_printf("Empty string for argument %d.", argv[i]);
 		}
 		*stack = ft_strjoin(*stack, argv[i++]);
-		*stack = ft_strjoin(*stack, ' ');
+		*stack = ft_strjoin(*stack, " ");
 	}
 	return (*stack);
 }
@@ -120,7 +120,7 @@ int	main(int argc, char *argv[])
 			return (1);
 		}
 		a = NULL;
-		build_stack(&buffer, &a);
+		build_stack(&stack, &a);
 		sorting_index(&a);
 		push_swap(&a);
 		free_lst(&a);

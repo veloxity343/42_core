@@ -74,7 +74,7 @@ void	rev_rotate(t_node **stack, char *str, int cost)
 		return ;
 	while (cost < 0)
 	{
-		temp = lstlast(*stack);
+		temp = lst_last(*stack);
 		looping = *stack;
 		while (looping->next != NULL && looping->next->data != temp->data)
 			looping = looping->next;
