@@ -12,7 +12,7 @@
 
 #include "../inc/push_swap.h"
 
-static int	have_dup(t_node **a, long num)
+static int	check_dup(t_node **a, long num)
 {
 	t_node	*temp;
 
@@ -28,7 +28,7 @@ static int	have_dup(t_node **a, long num)
 
 static void	free_stuff(long num, t_node **a, char ***str)
 {
-	if (num > INT_MAX || num < INT_MIN || have_dup(a, num))
+	if (num > INT_MAX || num < INT_MIN || check_dup(a, num))
 	{
 		free_lst(a);
 		free_array(str);
@@ -36,30 +36,30 @@ static void	free_stuff(long num, t_node **a, char ***str)
 	}
 }
 
-void	build_stack(char **buffer, t_node **a)
+void	build_stack(char **storage, t_node **a)
 {
-	t_node	*node;
+	t_node	*nod;
 	long	num;
 	char	**str;
 	int		i;
 
 	i = 0;
-	str = ft_split(*buffer, ' ');
-	free(*buffer);
+	str = ft_split(*storage, ' ');
+	free(*storage);
 	while (str[i])
 	{
 		if (ft_strlen(str[i]) > 11 && (str[i][0] != '-'))
 			free_stuff(num, a, &str);
 		num = ft_atoi(str[i]);
 		free_stuff(num, a, &str);
-		node = malloc(sizeof(t_node));
-		node->data = num;
-		node->next = NULL;
-		node->s_index = 0;
+		nod = malloc(sizeof(t_node));
+		nod->data = num;
+		nod->next = NULL;
+		nod->s_index = 0;
 		if (!*a)
-			(*a) = node;
+			(*a) = nod;
 		else
-			lst_last(*a)->next = node;
+			lst_last(*a)->next = nod;
 		i++;
 	}
 	free_array(&str);

@@ -19,11 +19,10 @@ SRCS				=	$(SRC_DIR)main.c \
 						$(SRC_DIR)create_stack.c \
 						$(SRC_DIR)sort.c \
 						$(SRC_DIR)operations.c \
-						$(SRC_DIR)midpt_to_b.c \
+						$(SRC_DIR)midpt.c \
 						$(SRC_DIR)calculate_cost.c \
 						$(SRC_DIR)target.c \
-						$(SRC_DIR)op_double.c \
-						$(SRC_DIR)alloc_to_a.c
+						$(SRC_DIR)op_double.c
 OBJ					=	$(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
 # Build Rules

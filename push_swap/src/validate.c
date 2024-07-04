@@ -12,38 +12,42 @@
 
 #include "../inc/push_swap.h"
 
-static void	free_buffer(char ***buffer, char **str)
+static void	free_storage(char ***storage, char **str)
 {
-	free_array(buffer);
+	free_array(storage);
 	free(*str);
 	error_exit(0);
 }
 
-int	check_dup(char **str)
+int	have_dup(char **str)
 {
-	char	**buffer;
+	char	**storage;
 	int		i;
 	int		j;
+	int		len;
 
 	i = 0;
 	j = 0;
-	buffer = ft_split(*str, ' ');
-	while (buffer[i])
+	storage = ft_split(*str, ' ');
+	while (storage[i])
 	{
 		j = i + 1;
-		while (buffer[j])
+		while (storage[j])
 		{
-			if (strcmp(buffer[i], buffer[j]) == 0)
-				free_buffer(&buffer, str);
+			len = ft_strlen(storage[i]);
+			if (ft_strlen(storage[j]) > ft_strlen(storage[i]))
+				len = ft_strlen(storage[j]);
+			if (ft_strncmp(storage[i], storage[j], len) == 0)
+				free_storage(&storage, str);
 			j++;
 		}
 		i++;
 	}
-	free_array(&buffer);
+	free_array(&storage);
 	return (1);
 }
 
-static int	check_numeric(char *str)
+static int	is_num(char *str)
 {
 	int	i;
 
@@ -58,24 +62,24 @@ static int	check_numeric(char *str)
 	}
 }
 
-static int	check_valid(char c)
+static int	is_valid(char c)
 {
-	if ((c >= 9 && c <= 13) || c == ' ' || (c >= '0' && c <= '9') || c == '-'
-		|| c == '+')
+	if ((c >= 9 && c <= 13) || c == ' ' || (c >= '0' && c <= '9')
+		|| c == '-' || c == '+')
 		return (1);
 	else
 		return (0);
 }
 
-int	is_valid(char **str)
+int	check_valid(char **str)
 {
 	int		i;
-	char	**buffer;
+	char	**storage;
 
 	i = 0;
-	while (*str[i])
+	while ((*str)[i])
 	{
-		if (check_valid(*str[i]))
+		if (is_valid((*str)[i]))
 			i++;
 		else
 		{
@@ -84,13 +88,13 @@ int	is_valid(char **str)
 		}
 	}
 	i = 0;
-	buffer = ft_split(*str, ' ');
-	while (buffer[i])
+	storage = ft_split(*str, ' ');
+	while (storage[i])
 	{
-		if (check_numeric(buffer[i]))
-			free_buffer(&buffer, str);
+		if (is_num(storage[i]))
+			free_storage(&storage, str);
 		i++;
 	}
-	free_array(&buffer);
+	free_array(&storage);
 	return (1);
 }

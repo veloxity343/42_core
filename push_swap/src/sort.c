@@ -12,20 +12,24 @@
 
 #include "../inc/push_swap.h"
 
-int	get_len(t_node *stack)
+void	sort_stack_a(t_node **stack, int point)
 {
-	int	len;
+	int	ra_size;
+	int	rra_size;
 
-	len = 0;
-	while (stack)
-	{
-		len++;
-		stack = stack->next;
-	}
-	return (len);
+	ra_size = count_forward(*stack, point);
+	rra_size = count_backward(*stack, point);
+	if (ra_size == 0)
+		return ;
+	else if (ra_size > rra_size)
+		while (rra_size--)
+			rev_rotate(stack, "rra", -1);
+	else
+		while (ra_size--)
+			rotate(stack, "ra", 1);
 }
 
-void	assign_index(int len, t_node **stack, int *sorted_list)
+void	assign_index(int len, t_node **stack, int *sorted_lst)
 {
 	int		i;
 	t_node	*temp;
@@ -36,7 +40,7 @@ void	assign_index(int len, t_node **stack, int *sorted_list)
 		i = 0;
 		while (i < len)
 		{
-			if (temp->data == sorted_list[i])
+			if (temp->data == sorted_lst[i])
 			{
 				temp->s_index = i;
 				break ;
@@ -47,7 +51,7 @@ void	assign_index(int len, t_node **stack, int *sorted_list)
 	}
 }
 
-void	sort_array(int **tab, int size)
+void	sort_int_array(int **tab, int size)
 {
 	int	i;
 	int	temp;
@@ -70,7 +74,20 @@ void	sort_array(int **tab, int size)
 	*tab = new;
 }
 
-void	sorting_index(t_node **stack)
+int	get_len(t_node *stack)
+{
+	int	len;
+
+	len = 0;
+	while (stack)
+	{
+		len++;
+		stack = stack->next;
+	}
+	return (len);
+}
+
+void	sort_index(t_node **stack)
 {
 	int		len;
 	t_node	*temp;
@@ -88,7 +105,7 @@ void	sorting_index(t_node **stack)
 		sorted_lst[i++] = temp->data;
 		temp = temp->next;
 	}
-	sort_array(&sorted_lst, len);
+	sort_int_array(&sorted_lst, len);
 	temp = *stack;
 	assign_index(len, &temp, sorted_lst);
 	*stack = temp;

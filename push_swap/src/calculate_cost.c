@@ -12,6 +12,28 @@
 
 #include "../inc/push_swap.h"
 
+void	assign_pos(t_node **a, t_node **b)
+{
+	int		i;
+	t_node	*temp1;
+	t_node	*temp2;
+
+	i = 0;
+	temp1 = *a;
+	temp2 = *b;
+	while (temp1)
+	{
+		temp1->pos = i++;
+		temp1 = temp1->next;
+	}
+	i = 0;
+	while (temp2)
+	{
+		temp2->pos = i++;
+		temp2 = temp2->next;
+	}
+}
+
 int	count_forward(t_node *stack, int point)
 {
 	int	i;
@@ -41,6 +63,29 @@ int	count_backward(t_node *stack, int point)
 	return (i + 1);
 }
 
+void	get_cost(t_node **a, t_node **b)
+{
+	int		size_b;
+	t_node	*temp_b;
+	int		back_moves;
+	int		target_index;
+
+	temp_b = *b;
+	size_b = get_len(*b);
+	while (temp_b)
+	{
+		temp_b->cost_b = temp_b->pos;
+		if (temp_b->cost_b > size_b / 2)
+			temp_b->cost_b = (temp_b->pos - size_b);
+		target_index = get_target_index(a, &temp_b);
+		back_moves = count_backward(*a, target_index);
+		temp_b->cost_a = count_forward(*a, target_index);
+		if (back_moves < temp_b->cost_a)
+			temp_b->cost_a = back_moves * -1;
+		temp_b = temp_b->next;
+	}
+}
+
 int	get_cheapest(t_node **b)
 {
 	int		cheapest;
@@ -67,27 +112,4 @@ int	get_cheapest(t_node **b)
 		temp = temp->next;
 	}
 	return (cheapest_pos);
-}
-
-void	get_cost(t_node **a, t_node **b)
-{
-	int		size_b;
-	t_node	*temp_b;
-	int		back_moves;
-	int		target_index;
-
-	temp_b = *b;
-	size_b = get_len(*b);
-	while (temp_b)
-	{
-		temp_b->cost_b = temp_b->pos;
-		if (temp_b->cost_b > size_b / 2)
-			temp_b->cost_b = (temp_b->pos - size_b);
-		target_index = get_target_index(a, &temp_b);
-		back_moves = count_backward(*a, target_index);
-		temp_b->cost_a = count_forward(*a, target_index);
-		if (back_moves < temp_b->cost_a)
-			temp_b->cost_a = back_moves * -1;
-		temp_b = temp_b->next;
-	}
 }

@@ -12,22 +12,6 @@
 
 #include "../inc/push_swap.h"
 
-void	push(t_node **stack_1, t_node **stack_2, char *str)
-{
-	t_node	*temp;
-
-	if (!stack_1 || !stack_2 || !(*stack_2))
-		return ;
-	temp = *stack_2;
-	*stack_2 = (*stack_2)->next;
-	temp->next = *stack_1;
-	*stack_1 = temp;
-	if (ft_strncmp(str, "pa", 2) == 0)
-		write(1, "pa\n", 3);
-	else if (ft_strncmp(str, "pb", 2) == 0)
-		write(1, "pb\n", 3);
-}
-
 void	swap(t_node *stack, char *str)
 {
 	int	temp;
@@ -43,6 +27,22 @@ void	swap(t_node *stack, char *str)
 		write(1, "sa\n", 3);
 	else if (ft_strncmp(str, "sb", 2) == 0)
 		write(1, "sb\n", 3);
+}
+
+void	push(t_node **stack_1, t_node **stack_2, char *str)
+{
+	t_node	*temp;
+
+	if (!stack_1 || !stack_2 || !(*stack_2))
+		return ;
+	temp = *stack_2;
+	*stack_2 = (*stack_2)->next;
+	temp->next = *stack_1;
+	*stack_1 = temp;
+	if (ft_strncmp(str, "pa", 2) == 0)
+		write(1, "pa\n", 3);
+	else if (ft_strncmp(str, "pb", 2) == 0)
+		write(1, "pb\n", 3);
 }
 
 void	rotate(t_node **stack, char *str, int cost)

@@ -26,7 +26,8 @@ void	get_min_max(int *a_min, int *a_max, t_node *temp)
 	}
 }
 
-void	check_diff(int *min_pos_diff, int *max_diff, t_node **a, t_node **b)
+void	check_diff(int *min_pos_diff, int *max_diff,
+									t_node **a, t_node **b)
 {
 	t_node	*temp_a;
 	int		next_diff;
@@ -49,11 +50,11 @@ void	check_diff(int *min_pos_diff, int *max_diff, t_node **a, t_node **b)
 
 int	get_target_index(t_node **a, t_node **b)
 {
-	int	min_pos_diff;
-	int	max_diff;
-	int	target;
-	int	a_min;
-	int	a_max;
+	int		min_pos_diff;
+	int		max_diff;
+	int		target;
+	int		a_min;
+	int		a_max;
 
 	target = 0;
 	check_diff(&min_pos_diff, &max_diff, a, b);

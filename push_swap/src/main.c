@@ -12,6 +12,20 @@
 
 #include "../inc/push_swap.h"
 
+void	push_to_a(t_node **a, t_node **b)
+{
+	int	cheapest_pos;
+
+	while (*b)
+	{
+		assign_pos(a, b);
+		get_cost(a, b);
+		cheapest_pos = get_cheapest(b);
+		reorder_both(cheapest_pos, a, b);
+		push(a, b, "pa");
+	}
+}
+
 void	sort_three(t_node **stack)
 {
 	int	first;
@@ -41,20 +55,6 @@ void	sort_three(t_node **stack)
 	}
 }
 
-void	push_to_a(t_node **a, t_node **b)
-{
-	int	cheapest_pos;
-
-	while (*b)
-	{
-		assign_pos(a, b);
-		get_cost(a, b);
-		cheapest_pos = get_cheapest(b);
-		reorder_a_b(cheapest_pos, a, b);
-		push(a, b, "pa");
-	}
-}
-
 void	push_swap(t_node **a)
 {
 	t_node	*b;
@@ -71,7 +71,7 @@ void	push_swap(t_node **a)
 		sort_three(a);
 	else if (get_len(*a) > 3)
 	{
-		midpt_sort(a, &b);
+		midpt_sorting(a, &b);
 		sort_three(a);
 	}
 	push_to_a(a, &b);
@@ -80,18 +80,17 @@ void	push_swap(t_node **a)
 	return ;
 }
 
-static char	*build_string(char *argv[], char **stack)
+static char	*build_string(char **argv, char **stack)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (argv[i])
 	{
 		if (!argv[i][0])
-		{
+		{	
 			free(*stack);
 			error_exit(0);
-			ft_printf("Empty string for argument %d.", argv[i]);
 		}
 		*stack = ft_strjoin(*stack, argv[i++]);
 		*stack = ft_strjoin(*stack, " ");
@@ -104,26 +103,17 @@ int	main(int argc, char *argv[])
 	t_node	*a;
 	char	*stack;
 
-	if (argc < 2)
-	{
-		ft_printf("Usage: %s <numbers>\n", argv[0]);
-		return (1);
-	}
-	else
+	if (argc >= 2)
 	{
 		stack = NULL;
 		stack = build_string(argv, &stack);
-		if (!is_valid(&stack) || !check_dup(&stack))
-		{
+		if (!check_valid(&stack) || !have_dup(&stack))
 			error_exit(0);
-			ft_printf("Arguments must be unique numbers.\n");
-			return (1);
-		}
 		a = NULL;
 		build_stack(&stack, &a);
-		sorting_index(&a);
+		sort_index(&a);
 		push_swap(&a);
 		free_lst(&a);
-	}
+	}	
 	return (0);
 }
