@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	}
 	else
 	{
-		ft_printf("Usage: %s <PID> <MESSAGE>\n", argv[0]);
+		ft_printf("Usage: %s <PID> <STRING>\n", argv[0]);
 		return (1);
 	}
 	return (0);
