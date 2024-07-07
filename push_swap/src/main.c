@@ -105,7 +105,7 @@ int	main(int argc, char *argv[])
 
 	if (argc < 2)
 	{
-		ft_printf("Usage: %s <numbers>", argv[0]);
+		ft_printf("Usage: %s <numbers>\n", argv[0]);
 		return (1);
 	}
 	else
