@@ -103,7 +103,12 @@ int	main(int argc, char *argv[])
 	t_node	*a;
 	char	*stack;
 
-	if (argc >= 2)
+	if (argc < 2)
+	{
+		ft_printf("Usage: %s <numbers>", argv[0]);
+		return (1);
+	}
+	else
 	{
 		stack = NULL;
 		stack = build_string(argv, &stack);

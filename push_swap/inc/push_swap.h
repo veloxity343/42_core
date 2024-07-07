@@ -16,8 +16,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
-# include "../libft/inc/ft_printf.h"
 # include "../libft/inc/libft.h"
+# include "../libft/inc/ft_printf.h"
 
 # ifndef INT_MAX
 #  define INT_MAX 2147483647
@@ -92,8 +92,5 @@ int					get_target_index(t_node **a, t_node **b);
 void				get_min_max(int *a_min, int *a_max, t_node *temp);
 void				check_diff(int *min_pos_diff, int *max_diff, t_node **a,
 						t_node **b);
-
-// checker
-void				checker(t_node **a, t_node **b);
 
 #endif
