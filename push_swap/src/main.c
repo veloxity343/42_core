@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 09:56:43 by rcheong           #+#    #+#             */
-/*   Updated: 2024/06/29 16:38:00 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/13 17:14:12 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ static char	*build_string(char **argv, char **stack)
 	while (argv[i])
 	{
 		if (!argv[i][0])
-		{	
+		{
 			free(*stack);
 			error_exit(0);
 		}
@@ -119,6 +119,6 @@ int	main(int argc, char *argv[])
 		sort_index(&a);
 		push_swap(&a);
 		free_lst(&a);
-	}	
+	}
 	return (0);
 }
