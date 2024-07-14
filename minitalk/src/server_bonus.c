@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 10:51:31 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/14 13:23:23 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/14 14:40:35 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,3 +64,18 @@ int	main(int argc, char **argv)
 	}
 	return (0);
 }
+
+/* configure using sa.sa_sigaction because if SA_SIGINFO flag is 
+specified, the signal handler address is passed via the sa_sigaction 
+field instead of sa_handler field
+
+sa_mask: signals to be blocked set to 0 - no blockage
+
+sigaction takes these args: signum, act, old_act;
+
+sig_handler: the "info" argument is a pointer to siginfo_t, a 
+structure containing further information about the signal:
+sends process ID of client to server
+
+context is a pointer to a struct that contains signal context 
+information that was saved on the user-space stack by the kernel */
