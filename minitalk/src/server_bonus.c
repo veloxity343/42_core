@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 10:51:31 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/14 11:34:46 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/14 13:23:23 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	sig_handler(int sig, siginfo_t *info, void *context)
 		ft_printf("%c", i);
 		if (i == '\n')
 		{
-			ft_printf("\nMessage received. Awaiting new message...\n");
 			kill(g_client_pid, SIGUSR1);
 			g_client_pid = 0;
 		}
