@@ -1,6 +1,8 @@
 # Standard
 NAME				= client
 SVR					= server
+CLNBN				= client_bonus
+SVRBN				= server_bonus
 
 # Directories
 LIBFT				= ./libft/libft.a
@@ -16,9 +18,13 @@ RM					= rm -f
 # Source files
 SRCCL 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(NAME)))
 SRCSV 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SVR)))
+SRCCLB 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(CLNBN)))
+SRCSVB 				= $(addprefix $(SRC_DIR), $(addsuffix .c, $(SVRBN)))
 
 OBJCL 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(NAME)))
 OBJSV 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SVR)))
+OBJCLB				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(CLNBN)))
+OBJSVB 				= $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SVRBN)))
 
 # Targets
 start:				
@@ -35,6 +41,14 @@ $(NAME):			$(OBJCL) $(LIBFT)
 $(SVR):				$(OBJSV) $(LIBFT)
 					@$(CC) $(CFLAGS) $(INC) $(OBJSV) $(LIBFT) -o $(SVR)
 
+bonus:				$(CLNBN) $(SVRBN)
+
+$(CLNBN):			$(OBJCLB) $(LIBFT)
+					@$(CC) $(CFLAGS) $(INC) $(OBJCLB) $(LIBFT) -o $(CLNBN)
+
+$(SVRBN):			$(OBJSVB) $(LIBFT)
+					@$(CC) $(CFLAGS) $(INC) $(OBJSVB) $(LIBFT) -o $(SVRBN)
+
 # Compile
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c 
 					@mkdir -p $(@D)
@@ -45,9 +59,9 @@ clean:
 					@make clean -C ./libft
 			
 fclean:				clean
-					@$(RM) $(NAME) $(SVR)
+					@$(RM) $(NAME) $(SVR) $(CLNBN) $(SVRBN)
 					@$(RM) $(LIBFT)
 
 re:					fclean all
 
-.PHONY:				start all clean fclean re
+.PHONY:				start all clean fclean re bonus

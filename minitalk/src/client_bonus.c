@@ -1,16 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/14 10:50:21 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/14 10:51:50 by rcheong          ###   ########.fr       */
+/*   Created: 2024/07/14 10:50:59 by rcheong           #+#    #+#             */
+/*   Updated: 2024/07/14 11:33:29 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/minitalk.h"
+#include "../inc/minitalk_bonus.h"
+
+volatile sig_atomic_t	g_ack_received = 0;
+
+void	ack_handler(int sig)
+{
+	(void)sig;
+	g_ack_received = 1;
+}
 
 void	send_bits(pid_t pid, char c)
 {
@@ -28,6 +36,16 @@ void	send_bits(pid_t pid, char c)
 	}
 }
 
+void	send_message(pid_t pid, const char *msg)
+{
+	while (*msg != '\0')
+	{
+		send_bits(pid, *msg);
+		msg++;
+	}
+	send_bits(pid, '\n');
+}
+
 int	main(int argc, char **argv)
 {
 	pid_t	pid;
@@ -37,12 +55,13 @@ int	main(int argc, char **argv)
 	{
 		pid = ft_atoi(argv[1]);
 		msg = argv[2];
-		while (*msg != '\0')
+		signal(SIGUSR1, ack_handler);
+		send_message(pid, msg);
+		while (!g_ack_received)
 		{
-			send_bits(pid, *msg);
-			msg++;
+			pause();
 		}
-		send_bits(pid, '\n');
+		ft_printf("Message received.\n");
 	}
 	else
 	{
