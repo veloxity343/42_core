@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:02:24 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/14 11:02:25 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/19 11:03:48 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,18 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+
+# ifndef INT_MAX
+#  define INT_MAX 2147483647
+# endif
+
+# ifndef INT_MIN
+#  define INT_MIN -2147483648
+# endif
+
+# ifndef UINT_MAX
+#  define UINT_MAX 4294967295U
+# endif
 
 /* ---------- IS ---------- */
 

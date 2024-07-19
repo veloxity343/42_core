@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:02:22 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/14 11:02:23 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/19 11:02:22 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
+# endif
 
+# ifndef OPEN_MAX
+#  define OPEN_MAX 1024
 # endif
 
 /* ---------- GNL ---------- */

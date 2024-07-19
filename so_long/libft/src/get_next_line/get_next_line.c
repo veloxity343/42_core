@@ -6,15 +6,11 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/14 11:37:45 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/14 11:37:46 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/19 11:02:09 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-#ifndef OPEN_MAX
-# define OPEN_MAX 1024
-#endif
 
 char	*trim_buffer(char *buffer)
 {
