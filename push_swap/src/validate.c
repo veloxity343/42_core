@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 09:57:01 by rcheong           #+#    #+#             */
-/*   Updated: 2024/06/29 15:35:08 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/21 12:52:27 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	is_num(char *str)
 		return (0);
 	else
 	{
-		if (!ft_atoi(str))
+		if (!ft_atol(str))
 			return (1);
 		return (0);
 	}

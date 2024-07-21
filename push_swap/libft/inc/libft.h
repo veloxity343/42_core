@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 11:53:48 by ryan99            #+#    #+#             */
-/*   Updated: 2024/07/21 12:49:27 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/21 12:56:52 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int					ft_isprint(int c);
 
 /* ---------- TO ---------- */
 
-long				ft_atoi(const char *nptr);
+int					ft_atoi(const char *str);
+long				ft_atol(const char *nptr);
 char				*ft_itoa(int n);
 int					ft_tolower(int c);
 int					ft_toupper(int c);

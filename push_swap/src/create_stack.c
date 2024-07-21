@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 09:56:52 by rcheong           #+#    #+#             */
-/*   Updated: 2024/06/23 16:02:46 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/21 12:52:13 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	build_stack(char **storage, t_node **a)
 	{
 		if (ft_strlen(str[i]) > 11 && (str[i][0] != '-'))
 			free_stuff(num, a, &str);
-		num = ft_atoi(str[i]);
+		num = ft_atol(str[i]);
 		free_stuff(num, a, &str);
 		nod = malloc(sizeof(t_node));
 		nod->data = num;
