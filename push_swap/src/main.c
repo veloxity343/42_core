@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 09:56:43 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/21 15:48:52 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/21 16:43:49 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	push_swap(t_node **a)
 @param stack: Pointer to string - concatenated result
 @details Cat args into a string with spaces.
 Checks for empty args, exits with an error if found.
-@return concatenated string.
+@return Concatenated string.
 */
 static char	*build_string(char **argv, char **stack)
 {
