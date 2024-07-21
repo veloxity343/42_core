@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 09:57:01 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/21 14:32:32 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/21 16:48:41 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 @brief Free array and string
-@return exit and produce error message
+@return Exit and produce error message
 */
 static void	free_storage(char ***storage, char **str)
 {
