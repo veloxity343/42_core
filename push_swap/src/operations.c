@@ -6,12 +6,20 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 15:45:10 by rcheong           #+#    #+#             */
-/*   Updated: 2024/06/23 16:06:09 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/21 15:21:36 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
+/*
+@brief Swaps top two elements of stack
+@param stack: Pointer to top of stack.
+@param str: String indicating which stack
+@details 
+1. Swaps top two elements of stack and respective indices
+2. Writes to standard output
+*/
 void	swap(t_node *stack, char *str)
 {
 	int	temp;
@@ -29,6 +37,11 @@ void	swap(t_node *stack, char *str)
 		write(1, "sb\n", 3);
 }
 
+/*
+@brief Pushes top element from one stack to another
+@param stack_1: Pointers to dest stack
+@param stack_2: Pointers to src stack
+*/
 void	push(t_node **stack_1, t_node **stack_2, char *str)
 {
 	t_node	*temp;
@@ -45,6 +58,10 @@ void	push(t_node **stack_1, t_node **stack_2, char *str)
 		write(1, "pb\n", 3);
 }
 
+/*
+@brief Rotates top element to bottom
+@details Assigns next element to top, old top 'next' to NULL, old top to last
+*/
 void	rotate(t_node **stack, char *str, int cost)
 {
 	t_node	*temp;
@@ -65,6 +82,11 @@ void	rotate(t_node **stack, char *str, int cost)
 	}
 }
 
+/*
+@brief Rotates bottom element to top
+@details Find bottom, find second-last and assign 'next' to NULL,
+assign last to top
+*/
 void	rev_rotate(t_node **stack, char *str, int cost)
 {
 	t_node	*temp;

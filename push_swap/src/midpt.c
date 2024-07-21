@@ -6,12 +6,15 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:04:10 by rcheong           #+#    #+#             */
-/*   Updated: 2024/06/29 15:33:53 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/21 16:32:10 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
+/*
+@brief Pushes top element from A to B, update counter
+*/
 void	push_to_b(t_node **a, t_node **b, int *i, int *nett_nodes)
 {
 	push(b, a, "pb");
@@ -19,6 +22,10 @@ void	push_to_b(t_node **a, t_node **b, int *i, int *nett_nodes)
 	(*nett_nodes)--;
 }
 
+/*
+@brief Calculates median value of stack based on indices
+@return Rounded median value of stack
+*/
 int	get_midpt(t_node *stack)
 {
 	int	i;
@@ -38,6 +45,14 @@ int	get_midpt(t_node *stack)
 		return ((sum / i) + 1);
 }
 
+/*
+@brief Send from A to B based on median
+@details 
+1. If index of top element in A < median value, push to B
+2. Otherwise if next element < median, rotate and push
+3. Otherwise if bottom element < median, rev-rotate and push
+4. Else just rotate till condition met
+*/
 void	send_to_b(t_node **a, t_node **b, int *nett_nodes)
 {
 	int	mid_pt;
@@ -64,6 +79,10 @@ void	send_to_b(t_node **a, t_node **b, int *nett_nodes)
 	}
 }
 
+/*
+@brief Send all but last 3 elements in A to B
+
+*/
 void	midpt_sorting(t_node **a, t_node **b)
 {
 	int	nett_nodes;

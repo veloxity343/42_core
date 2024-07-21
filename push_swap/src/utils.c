@@ -6,12 +6,17 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 09:56:58 by rcheong           #+#    #+#             */
-/*   Updated: 2024/05/11 10:17:27 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/21 14:57:40 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
+/*
+@brief Frees list and nodes in list individually
+@param temp: Traverse list
+@param temp2: Current node
+*/
 void	free_lst(t_node **stack)
 {
 	t_node	*temp;
@@ -27,6 +32,9 @@ void	free_lst(t_node **stack)
 	}
 }
 
+/*
+@brief Frees array of string and array itself
+*/
 void	free_array(char ***str)
 {
 	int	i;
@@ -39,6 +47,11 @@ void	free_array(char ***str)
 	free(*str);
 }
 
+/*
+@brief Finds last node in list
+@param lst: Pointer to top of list.
+@return pointer to the last node, NULL if empty
+*/
 t_node	*lst_last(t_node *lst)
 {
 	if (!lst)
@@ -50,6 +63,13 @@ t_node	*lst_last(t_node *lst)
 	return (lst);
 }
 
+/*
+@brief Check list sorted ascending
+@param stack: Pointer to top of list
+@details Iterates through list,
+compare each node data with next node.
+@return 1 if sorted, 0 otherwise
+*/
 int	is_sorted(t_node *stack)
 {
 	while (stack->next)
@@ -61,6 +81,9 @@ int	is_sorted(t_node *stack)
 	return (1);
 }
 
+/*
+@brief Produce error message and exit
+*/
 void	error_exit(int nb)
 {
 	(void)nb;

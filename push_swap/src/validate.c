@@ -6,12 +6,16 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 09:57:01 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/21 12:52:27 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/21 14:32:32 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
+/*
+@brief Free array and string
+@return exit and produce error message
+*/
 static void	free_storage(char ***storage, char **str)
 {
 	free_array(storage);
@@ -19,6 +23,11 @@ static void	free_storage(char ***storage, char **str)
 	error_exit(0);
 }
 
+/*
+@brief Checks if the string has duplicates
+@details Split and compare substrings delimited by space
+@return 1 if no dup, 0 otherwise
+*/
 int	have_dup(char **str)
 {
 	char	**storage;
@@ -47,6 +56,11 @@ int	have_dup(char **str)
 	return (1);
 }
 
+/*
+@brief Checks if a string represents a valid number
+@details "0", check long `ft_atol`
+@return 1 if the string represents a valid number, 0 otherwise
+*/
 static int	is_num(char *str)
 {
 	int	i;
@@ -62,6 +76,11 @@ static int	is_num(char *str)
 	}
 }
 
+/*
+@brief Checks if a character is valid
+= whitespace, digits, signum
+@return 1 if the character is valid, 0 otherwise
+*/
 static int	is_valid(char c)
 {
 	if ((c >= 9 && c <= 13) || c == ' ' || (c >= '0' && c <= '9')
@@ -71,6 +90,10 @@ static int	is_valid(char c)
 		return (0);
 }
 
+/*
+@brief Validates a string and its components
+@return 1 if the string and its components are valid, 0 otherwise
+*/
 int	check_valid(char **str)
 {
 	int		i;

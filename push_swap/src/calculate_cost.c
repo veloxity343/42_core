@@ -6,12 +6,17 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 16:10:04 by rcheong           #+#    #+#             */
-/*   Updated: 2024/06/29 15:57:59 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/21 15:58:32 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
+/*
+@brief Assigns positional indices to nodes in A and B
+@param a, b: Pointers to a and b
+@details Cost calculation purposes
+*/
 void	assign_pos(t_node **a, t_node **b)
 {
 	int		i;
@@ -34,6 +39,13 @@ void	assign_pos(t_node **a, t_node **b)
 	}
 }
 
+/*
+@brief Counts no. of nodes from start of stack to specified point value
+@param stack: Pointer to stack
+@param point: Value to search for in stack
+@details Counts nodes traversed until specified point value
+@return int: Number of nodes traversed
+*/
 int	count_forward(t_node *stack, int point)
 {
 	int	i;
@@ -47,6 +59,12 @@ int	count_forward(t_node *stack, int point)
 	return (i);
 }
 
+/*
+@brief Counts no. of nodes from end of stack to specified point value
+@param stack: Pointer to stack
+@param point: Value to search for in stack
+@return int: Number of nodes traversed
+*/
 int	count_backward(t_node *stack, int point)
 {
 	int	i;
@@ -63,6 +81,10 @@ int	count_backward(t_node *stack, int point)
 	return (i + 1);
 }
 
+/*
+@brief Calculate cost of moving node b -> a target pos
+@details Computes forward and backward movement costs
+*/
 void	get_cost(t_node **a, t_node **b)
 {
 	int		size_b;
@@ -86,6 +108,11 @@ void	get_cost(t_node **a, t_node **b)
 	}
 }
 
+/*
+@brief Find pos of node with minimum combined cost moving to a and b
+@details find pos of node in b - sum of the cost moving to a and b
+@return int: Pos of node with cheapest cost
+*/
 int	get_cheapest(t_node **b)
 {
 	int		cheapest;

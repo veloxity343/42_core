@@ -6,29 +6,18 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 11:23:15 by rcheong           #+#    #+#             */
-/*   Updated: 2024/06/29 15:34:08 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/21 14:57:09 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
-void	sort_stack_a(t_node **stack, int point)
-{
-	int	ra_size;
-	int	rra_size;
-
-	ra_size = count_forward(*stack, point);
-	rra_size = count_backward(*stack, point);
-	if (ra_size == 0)
-		return ;
-	else if (ra_size > rra_size)
-		while (rra_size--)
-			rev_rotate(stack, "rra", -1);
-	else
-		while (ra_size--)
-			rotate(stack, "ra", 1);
-}
-
+/*
+@brief Assigns indices to nodes by sorted pos
+@param len: Number of elements in sorted list
+@param sorted_lst: Array of sorted values
+@details Index stored in `s_index` field of each node.
+*/
 void	assign_index(int len, t_node **stack, int *sorted_lst)
 {
 	int		i;
@@ -51,6 +40,13 @@ void	assign_index(int len, t_node **stack, int *sorted_lst)
 	}
 }
 
+/*
+@brief Bubble sort int array
+@param tab: Pointers to array of ints
+@param size: Number of elements in array
+@details Performs in-place bubble sort int array
+Iterates through array, swap adjacent elements if unsorted
+*/
 void	sort_int_array(int **tab, int size)
 {
 	int	i;
@@ -74,6 +70,10 @@ void	sort_int_array(int **tab, int size)
 	*tab = new;
 }
 
+/*
+@brief Computes length of list
+@return Number of nodes
+*/
 int	get_len(t_node *stack)
 {
 	int	len;
@@ -87,6 +87,16 @@ int	get_len(t_node *stack)
 	return (len);
 }
 
+/*
+@brief Sorts nodes by data, assigns sorted indices
+@details
+1. Computes length of list
+2. Malloc for storing node data
+3. Sorts array of node data `sort_int_array`
+4. Assigns indices to nodes by position 
+in sorted array `assign_index`
+5. Frees sorted data array
+*/
 void	sort_index(t_node **stack)
 {
 	int		len;

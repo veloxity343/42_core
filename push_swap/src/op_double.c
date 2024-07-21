@@ -6,12 +6,18 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/29 15:52:40 by rcheong           #+#    #+#             */
-/*   Updated: 2024/06/29 16:36:43 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/21 16:28:00 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
+/*
+@brief Reorders a and b to move node with cheapest cost to target pos
+@param cheapest_pos: Pos of node with cheapest cost
+@details reorders both stacks to move node with cheapest cost to target pos
+Performs simultaneous rotations or rev-rotations
+*/
 void	reorder_both(int cheapest_pos, t_node **a, t_node **b)
 {
 	t_node	*temp;
@@ -35,6 +41,11 @@ void	reorder_both(int cheapest_pos, t_node **a, t_node **b)
 	}
 }
 
+/*
+@brief Simultaneously rev-rotate both stacks until specified moves reached
+@param cost_a: Number needed for A
+@param cost_b: Number needed for B
+*/
 void	rev_rotate_both(t_node **a, t_node **b, int cost_a, int cost_b)
 {
 	while (cost_b < 0 && cost_a < 0)
@@ -49,6 +60,11 @@ void	rev_rotate_both(t_node **a, t_node **b, int cost_a, int cost_b)
 	rev_rotate(b, "rrb", cost_b);
 }
 
+/*
+@brief Simultaneously rotate both stacks until specified moves reached
+@param cost_a: Number needed for A
+@param cost_b: Number needed for B
+*/
 void	rotate_both(t_node **a, t_node **b, int cost_a, int cost_b)
 {
 	while (cost_b > 0 && cost_a > 0)

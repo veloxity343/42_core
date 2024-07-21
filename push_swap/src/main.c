@@ -6,12 +6,17 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 09:56:43 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/21 12:45:30 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/21 15:48:52 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/push_swap.h"
 
+/*
+@brief Push all elements b -> a efficiently
+@param a, b: Pointers to the stacks a and b.
+@details Optimal move - pos and cost -> push
+*/
 void	push_to_a(t_node **a, t_node **b)
 {
 	int	cheapest_pos;
@@ -26,6 +31,11 @@ void	push_to_a(t_node **a, t_node **b)
 	}
 }
 
+/*
+@brief Sorts 3 elements
+@details Chosen because 3! << 4!, 5!...
+compares stack element indices and performs necessary operations
+*/
 void	sort_three(t_node **stack)
 {
 	int	first;
@@ -55,6 +65,16 @@ void	sort_three(t_node **stack)
 	}
 }
 
+/*
+@brief Starts performing algo to sort
+@details
+1. Checks if stack `is_sorted`. If it is, frees the stack and exits
+2. If stack has two elements, swap operation
+3. If stack has three elements, calls `sort_three`
+4. If stack has more than three elements, calls `midpt_sorting` then `sort_three`
+5. Pushes all elements B -> A then `sort_stack_a`
+6. Frees B
+*/
 void	push_swap(t_node **a)
 {
 	t_node	*b;
@@ -80,6 +100,13 @@ void	push_swap(t_node **a)
 	return ;
 }
 
+/*
+@brief Builds string from args
+@param stack: Pointer to string - concatenated result
+@details Cat args into a string with spaces.
+Checks for empty args, exits with an error if found.
+@return concatenated string.
+*/
 static char	*build_string(char **argv, char **stack)
 {
 	int	i;
