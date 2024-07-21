@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/11 09:56:43 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/19 11:56:46 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/07/21 12:45:30 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,7 @@ int	main(int argc, char *argv[])
 	t_node	*a;
 	char	*stack;
 
-	if (argc < 2)
-	{
-		ft_printf("Usage: %s <numbers>\n", argv[0]);
-		return (1);
-	}
-	else
+	if (argc >= 2)
 	{
 		stack = NULL;
 		stack = build_string(argv, &stack);
