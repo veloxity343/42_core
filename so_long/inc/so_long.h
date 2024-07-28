@@ -16,11 +16,29 @@
 # include "../libft/inc/libft.h"
 # include "../libft/inc/get_next_line.h"
 # include "../libft/inc/ft_printf.h"
+# include "trgb_colors.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>
 # include <mlx.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
+// # include "mlx.h"
 
 # define IMG_SIZE 64
+
+typedef enum e_bool
+{
+	false,
+	true
+}	t_bool;
+
+typedef struct s_position
+{
+	int	x;
+	int	y;
+}	t_positon;
+
+
 
 #endif
