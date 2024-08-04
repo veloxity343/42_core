@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-static int	hrzt_wall(t_complete *game)
+static int	hori_wall(t_complete *game)
 {
 	int	i;
 	int	j;
@@ -28,7 +28,7 @@ static int	hrzt_wall(t_complete *game)
 	return (1);
 }
 
-static int	vrtc_wall(t_complete *game)
+static int	vert_wall(t_complete *game)
 {
 	int	height;
 	int	width;
@@ -47,12 +47,12 @@ static int	vrtc_wall(t_complete *game)
 
 static void	if_walls(t_complete *game)
 {
-	int	vrtc_walls;
-	int	hrzt_walls;
+	int	vert_walls;
+	int	hori_walls;
 
-	vrtc_walls = vrtc_wall(game);
-	hrzt_walls = hrzt_wall(game);
-	if (!vrtc_walls || !hrzt_walls)
+	vert_walls = vert_wall(game);
+	hori_walls = hori_wall(game);
+	if (!vert_walls || !hori_walls)
 	{
 		printf("\nThis map is missing the walls\n");
 		exit_point(game);
