@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 10:56:00 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/28 13:00:05 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/04 11:01:40 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libft/inc/get_next_line.h"
 # include "../libft/inc/libft.h"
 # include "trgb_colors.h"
+# include "asset_path.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <errno.h>

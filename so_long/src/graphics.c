@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:31:48 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/28 12:57:39 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/04 11:06:11 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,15 @@ void	place_images_in_game(t_complete *game)
 	int	j;
 
 	game->floor = mlx_xpm_file_to_image(game->mlxpointer,
-			"game_images/floor.xpm", &i, &j);
+			"assets/tileset/floor/floor.xpm", &i, &j);
 	game->barrier = mlx_xpm_file_to_image(game->mlxpointer,
-			"game_images/wall.xpm", &i, &j);
+			"assets/tileset/walls/wall.xpm", &i, &j);
 	game->player = mlx_xpm_file_to_image(game->mlxpointer,
-			"game_images/player.xpm", &i, &j);
+			PATH_PLAYER_IDLE, &i, &j);
 	game->exit = mlx_xpm_file_to_image(game->mlxpointer, "game_images/exit.xpm",
 			&i, &j);
 	game->collectable = mlx_xpm_file_to_image(game->mlxpointer,
-			"game_images/item.xpm", &i, &j);
+			"assets/collectable/starfish.xpm", &i, &j);
 }
 
 void	handle_tile(t_complete *game, int height, int width)
