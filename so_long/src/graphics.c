@@ -33,15 +33,15 @@ void	place_images_in_game(t_complete *game)
 	int	j;
 
 	game->floor = mlx_xpm_file_to_image(game->mlxpointer,
-			"assets/tileset/floor/floor.xpm", &i, &j);
+			"assets/tileset/floor.xpm", &i, &j);
 	game->barrier = mlx_xpm_file_to_image(game->mlxpointer,
-			"assets/tileset/walls/wall.xpm", &i, &j);
+			"assets/tileset/wall.xpm", &i, &j);
 	game->player = mlx_xpm_file_to_image(game->mlxpointer,
-			PATH_PLAYER_IDLE, &i, &j);
-	game->exit = mlx_xpm_file_to_image(game->mlxpointer, "game_images/exit.xpm",
-			&i, &j);
+			"assets/player/player.xpm", &i, &j);
+	game->exit = mlx_xpm_file_to_image(game->mlxpointer,
+			"assets/exit/exit.xpm", &i, &j);
 	game->collectable = mlx_xpm_file_to_image(game->mlxpointer,
-			"assets/collectable/starfish.xpm", &i, &j);
+			"assets/collectable/pentacle.xpm", &i, &j);
 }
 
 void	handle_tile(t_complete *game, int height, int width)

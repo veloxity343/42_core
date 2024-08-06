@@ -17,7 +17,6 @@
 # include "../libft/inc/get_next_line.h"
 # include "../libft/inc/libft.h"
 # include "trgb_colors.h"
-# include "asset_path.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <errno.h>
