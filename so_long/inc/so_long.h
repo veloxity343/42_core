@@ -22,22 +22,35 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>
-# include <mlx.h>
-// # include "mlx.h"
+# include "../minilibx_macos/mlx.h"
+// # include <mlx.h>
 
 # define IMG_SIZE 64
 
-typedef enum e_bool
+typedef struct t_start
 {
-	false,
-	true
-}		t_bool;
+	int		fd;
+	int		heightmap;
+	int		widthmap;
+	int		playercount;
+	int		columncount;
+	int		exitcount;
+	int		x_axis;
+	int		y_axis;
+	int		counter;
+	int		collectables;
 
-typedef struct s_position
-{
-	int	x;
-	int	y;
-}		t_positon;
+	char	**map;
+
+	void	*floor;
+	void	*barrier;
+	void	*player;
+	void	*exit;
+	void	*collectable;
+	void	*mlxpointer;
+	void	*winpointer;
+
+}	t_complete;
 
 void	place_collectable(t_complete *game, int height, int width);
 void	place_player(t_complete *game, int height, int width);
