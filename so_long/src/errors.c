@@ -6,11 +6,11 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:31:52 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/28 12:54:10 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/10 15:13:34 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 static int	hori_wall(t_complete *game)
 {

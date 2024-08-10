@@ -6,13 +6,13 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:31:45 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/28 11:31:46 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/10 15:22:22 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
-static int	width_of_map(char *string)
+int	width_of_map(char *string)
 {
 	int	width;
 
@@ -24,7 +24,7 @@ static int	width_of_map(char *string)
 	return (width);
 }
 
-static int	add_line(t_complete *game, char *line)
+int	add_line(t_complete *game, char *line)
 {
 	char	**temporary;
 	int		i;
@@ -34,6 +34,8 @@ static int	add_line(t_complete *game, char *line)
 	i = 0;
 	game->heightmap++;
 	temporary = (char **)malloc(sizeof(char *) * (game->heightmap + 1));
+	if (!temporary)
+		return (0);
 	temporary[game->heightmap] = NULL;
 	while (i < game->heightmap - 1)
 	{

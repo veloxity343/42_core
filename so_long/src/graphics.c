@@ -6,11 +6,11 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:31:48 by rcheong           #+#    #+#             */
-/*   Updated: 2024/08/04 11:06:11 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/10 15:56:39 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
 void	place_player(t_complete *game, int height, int width)
 {
@@ -32,16 +32,30 @@ void	place_images_in_game(t_complete *game)
 	int	i;
 	int	j;
 
-	game->floor = mlx_xpm_file_to_image(game->mlxpointer,
-			"assets/tileset/floor.xpm", &i, &j);
-	game->barrier = mlx_xpm_file_to_image(game->mlxpointer,
-			"assets/tileset/wall.xpm", &i, &j);
-	game->player = mlx_xpm_file_to_image(game->mlxpointer,
-			"assets/player/player.xpm", &i, &j);
-	game->exit = mlx_xpm_file_to_image(game->mlxpointer,
-			"assets/exit/exit.xpm", &i, &j);
-	game->collectable = mlx_xpm_file_to_image(game->mlxpointer,
-			"assets/collectable/pentacle.xpm", &i, &j);
+	game->floor = mlx_xpm_file_to_image(game->mlxpointer, "assets/tileset/floor.xpm", &i, &j);
+if (!game->floor) {
+    fprintf(stderr, "Error loading floor image\n");
+}
+
+game->barrier = mlx_xpm_file_to_image(game->mlxpointer, "assets/tileset/wall.xpm", &i, &j);
+if (!game->barrier) {
+    fprintf(stderr, "Error loading barrier image\n");
+}
+
+game->player = mlx_xpm_file_to_image(game->mlxpointer, "assets/player/player.xpm", &i, &j);
+if (!game->player) {
+    fprintf(stderr, "Error loading player image\n");
+}
+
+game->exit = mlx_xpm_file_to_image(game->mlxpointer, "assets/exit/exit.xpm", &i, &j);
+if (!game->exit) {
+    fprintf(stderr, "Error loading exit image\n");
+}
+
+game->collectable = mlx_xpm_file_to_image(game->mlxpointer, "assets/collectable/pentacle.xpm", &i, &j);
+if (!game->collectable) {
+    fprintf(stderr, "Error loading collectable image\n");
+}
 }
 
 void	handle_tile(t_complete *game, int height, int width)

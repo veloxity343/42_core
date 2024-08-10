@@ -6,9 +6,11 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 12:53:13 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/28 12:53:16 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/10 15:14:04 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../inc/so_long.h"
 
 static void	count_checker(t_complete *game, int height, int width)
 {

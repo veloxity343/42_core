@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 10:56:00 by rcheong           #+#    #+#             */
-/*   Updated: 2024/08/04 11:01:40 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/10 15:46:50 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,10 @@
 # include "../libft/inc/get_next_line.h"
 # include "../libft/inc/libft.h"
 # include "trgb_colors.h"
-# include <X11/X.h>
-# include <X11/keysym.h>
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>
-# include "../minilibx_macos/mlx.h"
-// # include <mlx.h>
-
-# define IMG_SIZE 64
+# include <mlx.h>
 
 typedef struct t_start
 {
@@ -66,7 +61,6 @@ int		add_line(t_complete *game, char *line);
 int		map_reading(t_complete *game, char **argv);
 void	check_errors(t_complete *game);
 int		exit_point(t_complete *game);
-void	ft_memset(void *b, int c, size_t length);
 void	char_valid(t_complete *game);
 
 #endif

@@ -1,5 +1,5 @@
 /* XPM */
-static char *_7e623042df34d8589e21110fbcb9b81QAtYz44Oe2lXTR5H[] = {
+static char *pentacle[] = {
 /* columns rows colors chars-per-pixel */
 "128 128 14 1 ",
 "  c None",

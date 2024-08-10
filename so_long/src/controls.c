@@ -6,13 +6,13 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:31:54 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/28 12:47:38 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/10 15:13:28 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../inc/so_long.h"
 
-static int	legal_move(t_complete *game, int i, int j)
+int	legal_move(t_complete *game, int i, int j)
 {
 	if (game->map[j][i] == 'E')
 	{

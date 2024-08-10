@@ -6,21 +6,11 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:31:40 by rcheong           #+#    #+#             */
-/*   Updated: 2024/07/28 11:31:41 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/10 15:15:53 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
-
-static void	*ft_memset(void *b, int c, size_t length)
-{
-	unsigned char	*p;
-
-	p = (unsigned char *)b;
-	while (length--)
-		*p++ = (unsigned char)c;
-	return (b);
-}
+#include "../inc/so_long.h"
 
 int	exit_point(t_complete *game)
 {
@@ -36,7 +26,7 @@ int	exit_point(t_complete *game)
 	exit(0);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char *argv[])
 {
 	t_complete	game;
 
