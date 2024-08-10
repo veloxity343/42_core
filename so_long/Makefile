@@ -7,10 +7,11 @@ INC		=	inc/
 SRC_DIR	=	src/
 OBJ_DIR	=	obj/
 
-# Mlx
+# MLX
 UNAME_S		:= $(shell uname -s)
 MLX_LINUX	= -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
-MLX_MACOS	= -lmlx -framework OpenGL -framework AppKit
+MLX_MACOS	= -L/opt/homebrew/Cellar/mlx/0.13.0/lib -lmlx -framework OpenGL -framework AppKit
+
 ifeq ($(UNAME_S), Darwin)
 	MLX		= $(MLX_MACOS)
 	MLX_CO	=
@@ -55,7 +56,7 @@ $(LIBFT):
 all:					$(NAME)
 
 $(NAME):				$(OBJS) $(LIBFT)
-						@$(CC) $(CFLAGS) $(IFLAGS) $(OBJS) $(LIBFT) $(MLX) -o $(NAME)
+						@$(CC) $(CFLAGS) $(IFLAGS) $(OBJS) $(LIBFT) $(MLX) -I/opt/homebrew/Cellar/mlx/0.13.0/include -o $(NAME)
 
 $(OBJ_DIR)%.o:			$(SRC_DIR)%.c 
 						@mkdir -p $(@D)

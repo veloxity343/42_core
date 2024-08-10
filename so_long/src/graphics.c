@@ -32,30 +32,16 @@ void	place_images_in_game(t_complete *game)
 	int	i;
 	int	j;
 
-	game->floor = mlx_xpm_file_to_image(game->mlxpointer, "assets/tileset/floor.xpm", &i, &j);
-if (!game->floor) {
-    fprintf(stderr, "Error loading floor image\n");
-}
-
-game->barrier = mlx_xpm_file_to_image(game->mlxpointer, "assets/tileset/wall.xpm", &i, &j);
-if (!game->barrier) {
-    fprintf(stderr, "Error loading barrier image\n");
-}
-
-game->player = mlx_xpm_file_to_image(game->mlxpointer, "assets/player/player.xpm", &i, &j);
-if (!game->player) {
-    fprintf(stderr, "Error loading player image\n");
-}
-
-game->exit = mlx_xpm_file_to_image(game->mlxpointer, "assets/exit/exit.xpm", &i, &j);
-if (!game->exit) {
-    fprintf(stderr, "Error loading exit image\n");
-}
-
-game->collectable = mlx_xpm_file_to_image(game->mlxpointer, "assets/collectable/pentacle.xpm", &i, &j);
-if (!game->collectable) {
-    fprintf(stderr, "Error loading collectable image\n");
-}
+	game->floor = mlx_xpm_file_to_image(game->mlxpointer,
+			"assets/floor.xpm", &i, &j);
+	game->barrier = mlx_xpm_file_to_image(game->mlxpointer,
+			"assets/wall.xpm", &i, &j);
+	game->player = mlx_xpm_file_to_image(game->mlxpointer,
+			"assets/player.xpm", &i, &j);
+	game->exit = mlx_xpm_file_to_image(game->mlxpointer,
+			"assets/exit.xpm", &i, &j);
+	game->collectable = mlx_xpm_file_to_image(game->mlxpointer,
+			"assets/item.xpm", &i, &j);
 }
 
 void	handle_tile(t_complete *game, int height, int width)

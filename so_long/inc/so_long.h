@@ -20,7 +20,8 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>
-# include <mlx.h>
+// # include <mlx.h>
+# include "../mlx/mlx.h"
 
 typedef struct t_start
 {
