@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/11 15:44:08 by rcheong           #+#    #+#             */
-/*   Updated: 2024/08/11 15:54:09 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/11 17:27:41 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,25 @@ int	exit_point(t_complete *game)
 	line = 0;
 	if (game->winpointer)
 		mlx_destroy_window(game->mlxpointer, game->winpointer);
-	free(game->mlxpointer);
-	while (line < game->heightmap - 1)
-		free(game->map[line++]);
-	free(game->map);
+	while (line < game->heightmap)
+	{
+		if (game->map[line])
+		{
+			free(game->map[line]);
+			game->map[line] = NULL;
+		}
+		line++;
+	}
+	if (game->map)
+	{
+		free(game->map);
+		game->map = NULL;
+	}
+	if (game->mlxpointer)
+	{
+		free(game->mlxpointer);
+		game->mlxpointer = NULL;
+	}
 	exit(0);
 }
 
