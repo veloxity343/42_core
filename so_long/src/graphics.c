@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:31:48 by rcheong           #+#    #+#             */
-/*   Updated: 2024/08/10 15:56:39 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/11 15:17:32 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	place_player(t_complete *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlxpointer, game->winpointer, game->player,
-		width * 40, height * 40);
+		width * 64, height * 64);
 	game->y_axis = height;
 	game->x_axis = width;
 }
@@ -23,7 +23,7 @@ void	place_player(t_complete *game, int height, int width)
 void	place_collectable(t_complete *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlxpointer, game->winpointer,
-		game->collectable, width * 40, height * 40);
+		game->collectable, width * 64, height * 64);
 	game->collectables++;
 }
 
@@ -51,17 +51,17 @@ void	handle_tile(t_complete *game, int height, int width)
 	tile = game->map[height][width];
 	if (tile == '1')
 		mlx_put_image_to_window(game->mlxpointer, game->winpointer,
-			game->barrier, width * 40, height * 40);
+			game->barrier, width * 64, height * 64);
 	else if (tile == 'C')
 		place_collectable(game, height, width);
 	else if (tile == 'P')
 		place_player(game, height, width);
 	else if (tile == 'E')
 		mlx_put_image_to_window(game->mlxpointer, game->winpointer, game->exit,
-			width * 40, height * 40);
+			width * 64, height * 64);
 	else if (tile == '0')
 		mlx_put_image_to_window(game->mlxpointer, game->winpointer, game->floor,
-			width * 40, height * 40);
+			width * 64, height * 64);
 }
 
 void	adding_in_graphics(t_complete *game)

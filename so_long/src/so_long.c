@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/28 11:31:40 by rcheong           #+#    #+#             */
-/*   Updated: 2024/08/10 15:15:53 by rcheong          ###   ########.fr       */
+/*   Created: Invalid date        by rcheong           #+#    #+#             */
+/*   Updated: 2024/08/11 15:18:11 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int	main(int argc, char *argv[])
 	map_reading(&game, argv);
 	check_errors(&game);
 	game.mlxpointer = mlx_init();
-	game.winpointer = mlx_new_window(game.mlxpointer, (game.widthmap * 40),
-			(game.heightmap * 40), "solong");
+	game.winpointer = mlx_new_window(game.mlxpointer, (game.widthmap * 64),
+			(game.heightmap * 64), "solong");
 	place_images_in_game(&game);
 	adding_in_graphics(&game);
 	mlx_key_hook(game.winpointer, controls_working, &game);
