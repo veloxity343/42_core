@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 12:53:13 by rcheong           #+#    #+#             */
-/*   Updated: 2024/08/10 15:14:04 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/11 17:01:38 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	count_checker(t_complete *game, int height, int width)
 		&& game->map[height][width] != 'P' && game->map[height][width] != 'E'
 		&& game->map[height][width] != 'C' && game->map[height][width] != '\n')
 	{
-		printf("\nError Here!%c\n", game->map[height][width]);
+		ft_printf("\nError!\nCheck here: %c\n", game->map[height][width]);
 		exit_point(game);
 	}
 	if (game->map[height][width] == 'C')
@@ -48,8 +48,7 @@ void	char_valid(t_complete *game)
 	if (!(game->playercount == 1 && game->columncount > 1
 			&& game->exitcount == 1))
 	{
-		printf("\nError\nSomething is wrong!\n");
-		printf("either player, exit or collectable issue\n");
+		ft_printf("\nFFS, Error!\nCheck player, exit or collectable\n");
 		exit_point(game);
 	}
 }

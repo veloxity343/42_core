@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:31:52 by rcheong           #+#    #+#             */
-/*   Updated: 2024/08/10 15:13:34 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/11 17:01:27 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	if_walls(t_complete *game)
 	hori_walls = hori_wall(game);
 	if (!vert_walls || !hori_walls)
 	{
-		printf("\nThis map is missing the walls\n");
+		ft_printf("\nThis map has missing walls, dumbass!\n");
 		exit_point(game);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:48:50 by rcheong           #+#    #+#             */
-/*   Updated: 2024/08/10 15:14:00 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/11 17:01:36 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	keyboard_w_s(t_complete *game, int movement)
 		k = move_up(game, i, j);
 	else if (movement == 1)
 		k = move_down(game, i, j);
-	printf("Steps Taken: %i\n", game->counter);
-	printf("Collectables Left: %i\n", game->collectables);
+	ft_printf("Steps Taken: %i\n", game->counter);
+	ft_printf("Collectables Left: %i\n", game->collectables);
 	return (k);
 }

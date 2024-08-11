@@ -28,7 +28,7 @@ OBJ_DIR	=	obj/
 
 # Compiler & flags
 CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS	=	-Wall -Wextra -Werror #-fsanitize=address -g3
 IFLAGS	=	-I$(INC)
 AR		=	ar -rcs
 RM		=	rm -rf

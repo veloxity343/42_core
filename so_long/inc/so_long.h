@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/19 10:56:00 by rcheong           #+#    #+#             */
-/*   Updated: 2024/08/10 15:46:50 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/11 16:00:13 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@
 # include "../libft/inc/ft_printf.h"
 # include "../libft/inc/get_next_line.h"
 # include "../libft/inc/libft.h"
-# include "trgb_colors.h"
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>
-// # include <mlx.h>
-# include "../mlx/mlx.h"
+# include <mlx.h>
 
 typedef struct t_start
 {
