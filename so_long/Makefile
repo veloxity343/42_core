@@ -20,12 +20,6 @@ else
 	MLX_CO	= $(MLX_LINUX)
 endif
 
-# Directories
-LIBFT	=	./libft/libft.a
-INC		=	inc/
-SRC_DIR	=	src/
-OBJ_DIR	=	obj/
-
 # Compiler & flags
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror #-fsanitize=address -g3
