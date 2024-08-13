@@ -1,8 +1,8 @@
 # Standard
-NAME		=	philo
+NAME		=	philo_bonus
 
 # Directories
-OBJ_DIR		=	obj/
+OBJ_DIR		=	obj_bonus/
 
 # Compiler & flags
 CC		=	gcc
