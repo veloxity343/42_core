@@ -65,6 +65,8 @@ char	*get_next_line(int fd)
 	char		*newline;
 	int			countread;
 
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+		return (NULL);
 	line = ft_strdup(buf);
 	while (!(newline = ft_strchr(line, '\n')) && (countread = read(fd, buf, BUFFER_SIZE)))
 	{
