@@ -1,4 +1,4 @@
-### macOS
+### macOS ###
 # General
 .DS_Store
 .AppleDouble
@@ -27,11 +27,11 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-### macOS Patch
+### macOS Patch ###
 # iCloud generated files
 *.icloud
 
-### C
+### C ###
 # Prerequisites
 *.d
 
