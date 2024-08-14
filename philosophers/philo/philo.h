@@ -12,7 +12,7 @@ typedef struct s_sim
 {
 	pthread_t			*threads;
 	pthread_mutex_t		*forks;
-	pthread_mutex_t		*message;
+	pthread_mutex_t		*msg;
 	pthread_mutex_t		*death;
 	pthread_mutex_t		*stop;
 	unsigned int		start;

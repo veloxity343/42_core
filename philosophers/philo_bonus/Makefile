@@ -1,12 +1,12 @@
 # Standard
-NAME		=	philo_bonus
+NAME	=	philo_bonus
 
 # Directories
-OBJ_DIR		=	obj_bonus/
+OBJ_DIR	=	obj_bonus/
 
 # Compiler & flags
 CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS	=	-Wall -Wextra -Werror #-pthread -lrt -O3 #-fsanitize=address -fsanitize=thread -g3
 IFLAGS	=	-I .
 RM		=	rm -rf
 
@@ -24,23 +24,23 @@ BLUE = \033[1;34m
 RESET = \033[0m
 
 # Build rules
-all:			$(NAME)
-	@echo "$(BLUE)██████████████████████ Successfully compiled ███████████████████████$(RESET)"
+all:		$(NAME)
+	@echo "$(GREEN)Successfully compiled$(RESET)"
 
-$(NAME):		$(OBJS)
+$(NAME):	$(OBJS)
 	@$(CC) $(CFLAGS) -o $@ $(OBJS)
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
-	@echo "$(BLUE)█ $(YELLOW)Compiling$(RESET) $<:\r\t\t\t\t\t\t\t$(GREEN){DONE}$(BLUE) █$(RESET)"
+	@echo "$(BLUE)Compiling\t$(RESET)$<"
 	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 clean:
-	@echo "$(RED)Deleting$(RESET): " $(OBJ_DIR)
+	@echo "$(RED)Deleting$(RESET)\t"$(OBJ_DIR)
 	@$(RM) -rf $(OBJ_DIR)
 
 fclean:	clean
-	@echo "$(RED)Deleting$(RESET): " $(NAME)
+	@echo "$(RED)Deleting$(RESET)\t"$(NAME)
 	@$(RM) -f $(NAME)
 
 re:		fclean all
