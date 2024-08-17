@@ -6,7 +6,23 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+# include <stdbool.h>
 # include <sys/time.h>
+# include <limits.h>
+
+enum e_exitstatus
+{
+	SUCCESS,
+	ERROR
+};
+
+enum e_actions
+{
+	FORK,
+	EAT,
+	SLEEP,
+	THINK	
+};
 
 typedef struct s_sim
 {

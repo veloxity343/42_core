@@ -5,9 +5,13 @@ NAME	=	philo
 OBJ_DIR	=	obj/
 
 # Compiler & flags
-CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror #-pthread -lrt -O3 #-fsanitize=address -fsanitize=thread -g3
+WFLAGS	=	-Wall -Wextra -Werror
 IFLAGS	=	-I .
+DSYM	=	-g3
+FSANT	=	-fsanitize=thread $(DSYM)
+FSANA	=	-fsanitize=address $(DSYM)
+CFLAGS	=	$(WFLAGS) $(IFLAGS) -pthread
+CC		=	gcc
 RM		=	rm -rf
 
 # Sources
@@ -33,7 +37,7 @@ $(NAME):	$(OBJS)
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	@echo "$(BLUE)Compiling\t$(RESET)$<"
-	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@echo "$(RED)Deleting$(RESET)\t"$(OBJ_DIR)

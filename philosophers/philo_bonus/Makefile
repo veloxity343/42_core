@@ -5,9 +5,13 @@ NAME	=	philo_bonus
 OBJ_DIR	=	obj_bonus/
 
 # Compiler & flags
-CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror #-pthread -lrt -O3 #-fsanitize=address -fsanitize=thread -g3
+WFLAGS	=	-Wall -Wextra -Werror
 IFLAGS	=	-I .
+DSYM	=	-g3
+FSANT	=	-fsanitize=thread $(DSYM)
+FSANA	=	-fsanitize=address $(DSYM)
+CFLAGS	=	$(WFLAGS) $(IFLAGS) -pthread
+CC		=	gcc
 RM		=	rm -rf
 
 # Sources
@@ -25,7 +29,7 @@ RESET = \033[0m
 
 # Build rules
 all:		$(NAME)
-	@echo "$(GREEN)Successfully compiled$(RESET)"
+	@echo "$(GREEN)Successfully compiled $(RESET)"
 
 $(NAME):	$(OBJS)
 	@$(CC) $(CFLAGS) -o $@ $(OBJS)
@@ -33,7 +37,7 @@ $(NAME):	$(OBJS)
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	@echo "$(BLUE)Compiling\t$(RESET)$<"
-	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@echo "$(RED)Deleting$(RESET)\t"$(OBJ_DIR)
