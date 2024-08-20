@@ -1,5 +1,36 @@
 #include "philo.h"
 
+int	ft_set_rest(t_sim *sim, int nbr, int i)
+{
+	if (i == 3)
+		sim->time_to_eat = nbr;
+	else if (i == 4)
+		sim->time_to_sleep = nbr;
+	else
+		ft_check_last(sim, nbr, i);
+	return (0);
+}
+
+int	ft_check_last(t_sim *sim, int nbr, int i)
+{
+	if (i == 5)
+	{
+		if (nbr == 0)
+		{
+			sim->eat_counter = -1;
+			sim->current_eat = -1;
+			sim->max_eat = -1;
+		}
+		else
+		{
+			sim->eat_counter = nbr;
+			sim->current_eat = 0;
+			sim->max_eat = nbr * sim->philo_id;
+		}
+	}
+	return (0);
+}
+
 int	ft_set_data(t_sim *sim, int nbr, int i)
 {
 	if (i == 1)
@@ -12,12 +43,7 @@ int	ft_set_data(t_sim *sim, int nbr, int i)
 		sim->forks = malloc(sizeof(pthread_mutex_t) * nbr);
 	}
 	else if (i == 2)
-	{
-		if (nbr < 60)
-			return (ft_error_put(sim,
-					"Error: time_to_die cannot be < 60 ms", 1));
 		sim->time_to_die = nbr;
-	}
 	else
 		ft_set_rest(sim, nbr, i);
 	return (0);
