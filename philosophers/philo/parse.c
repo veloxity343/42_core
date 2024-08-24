@@ -105,7 +105,7 @@ int	ft_get_nbr(char *arg)
 
 /*
 @brief Parse command-line arguments.
-@param av Array of argument strings.
+@param argv Array of argument strings.
 @param sim Pointer to the simulation structure (t_sim).
 @return 0 on success, non-zero on failure.
 @details Parses and validates command-line inputs to set up the simulation.
