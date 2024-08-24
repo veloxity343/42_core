@@ -97,7 +97,7 @@ void	ft_iterate_philo(t_sim *sim, t_philo *philo, int i)
 }
 
 /*
-@brief initialise philosopher structures.
+@brief Initialise philosopher structures.
 @param sim Pointer to the simulation structure (t_sim).
 @return Pointer to an array of philosopher structures (t_philo).
 @details Allocates and initialises philosopher structures based on simulation parameters.
