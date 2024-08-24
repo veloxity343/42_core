@@ -29,7 +29,7 @@ RESET = \033[0m
 
 # Build rules
 all:		$(NAME)
-	@echo "$(GREEN)Successfully compiled $(RESET)"
+	@echo "$(GREEN)Successfully compiled!$(RESET)"
 
 $(NAME):	$(OBJS)
 	@$(CC) $(CFLAGS) -o $@ $(OBJS)

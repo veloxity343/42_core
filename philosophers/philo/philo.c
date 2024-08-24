@@ -1,5 +1,12 @@
 #include "philo.h"
 
+/*
+@brief Checks if the philosopher has died.
+@param arg: Pointer to the philosopher's structure.
+@return NULL
+@details Continuously monitors the philosopher's time until the next meal. 
+If the philosopher's time runs out, marks them as dead and prints the death message.
+*/
 void	*ft_check_death(void *arg)
 {
 	t_philo	*philo;
@@ -19,6 +26,12 @@ void	*ft_check_death(void *arg)
 	return (NULL);
 }
 
+/*
+@brief Checks if all philosophers have eaten the required number of times.
+@param philo: Pointer to the philosopher's structure.
+@return 1 if eating continues, 0 if all philosophers are done eating.
+@details Verifies if the maximum eating count is reached. If yes, it marks the simulation as complete.
+*/
 int	ft_check_eat(t_philo *philo)
 {
 	if ((philo->data->eat_counter != -1)
@@ -33,6 +46,13 @@ int	ft_check_eat(t_philo *philo)
 	return (1);
 }
 
+/*
+@brief Maintais routine for each philosopher thread.
+@param arg: Pointer to the philosopher's structure.
+@return NULL
+@details Executes and maintains the cycle of taking forks, eating, sleeping, and thinking. 
+Spawns a thread to monitor the philosopher's death.
+*/
 void	*ft_routine(void *arg)
 {
 	t_philo		*philo;
@@ -56,6 +76,14 @@ void	*ft_routine(void *arg)
 	return (NULL);
 }
 
+/*
+@brief Prints an error message and frees resources.
+@param sim: Pointer to the simulation structure.
+@param msg: The error message to print.
+@param ret: The return value to pass back.
+@return The provided return value (ret).
+@details Cleans up allocated resources if an error occurs during initialisation.
+*/
 int	ft_error_put(t_sim *sim, char *msg, int ret)
 {
 	if (sim)
@@ -69,6 +97,10 @@ int	ft_error_put(t_sim *sim, char *msg, int ret)
 	return (ret);
 }
 
+/*
+@brief Initialises the simulation, creates philosopher threads, and manages their lifecycle.
+@return 0 on successful execution, error code on failure.
+*/
 int	main(int argc, char **argv)
 {
 	int				i;
