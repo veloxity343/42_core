@@ -6,20 +6,20 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:28:22 by rcheong           #+#    #+#             */
-/*   Updated: 2024/08/25 11:31:59 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/25 12:01:57 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 /*
-@brief Check for the last philosopher's status.
+@brief Check for optional fifth argument.
 @param sim Pointer to the simulation structure (t_sim).
-@param nbr Number of philosophers or forks.
-@param i Index or ID.
+@param nbr Value of argument.
+@param i Argument type.
 @return 0 on success, non-zero on failure.
-@details Verifies the status of the last philosopher, 
-	ensuring proper simulation closure.
+@details Verifies if fifth argument is provided, 
+	if so, set to value as eating needed to survive.
 */
 int	ft_check_last(t_sim *sim, int nbr, int i)
 {
@@ -37,18 +37,19 @@ int	ft_check_last(t_sim *sim, int nbr, int i)
 			sim->current_eat = 0;
 			sim->max_eat = nbr * sim->philo;
 		}
+		sim->is_dead = NO;
 	}
 	return (0);
 }
 
 /*
-@brief Set additional simulation parameters.
+@brief Set simulation parameters time_to_eat and _sleep.
 @param sim Pointer to the simulation structure (t_sim).
-@param nbr Number of philosophers or forks.
-@param i Index or ID.
+@param nbr Value of argument.
+@param i Argument type.
 @return 0 on success, non-zero on failure.
 @details Configures remaining simulation settings 
-	after initial parsing: eat and sleep.
+	after parsing: time_to_eat and _sleep.
 */
 int	ft_data_param(t_sim *sim, int nbr, int i)
 {
@@ -66,13 +67,13 @@ int	ft_data_param(t_sim *sim, int nbr, int i)
 }
 
 /*
-@brief Set core simulation data.
+@brief Set simulation paramenters philos, forks and time_to_die.
 @param sim Pointer to the simulation structure (t_sim).
-@param nbr Number of philosophers or forks.
-@param i Index or ID.
+@param nbr Value of argument.
+@param i Argument type.
 @return 0 on success, non-zero on failure.
-@details Initialises the main simulation parameters: 
-	time_to_die and counters for philosophers and forks.
+@details Initialises the first two simulation parameters: 
+	counters for philosophers and forks and time_to_die.
 */
 int	ft_set_data(t_sim *sim, int nbr, int i)
 {
@@ -141,12 +142,5 @@ int	ft_parse(char **argv, t_sim *sim)
 			return (1);
 		i++;
 	}
-	if (i == 5)
-	{
-		sim->eat_counter = -1;
-		sim->current_eat = -1;
-		sim->max_eat = -1;
-	}
-	sim->is_dead = NO;
 	return (0);
 }

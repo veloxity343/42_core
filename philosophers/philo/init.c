@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:28:19 by rcheong           #+#    #+#             */
-/*   Updated: 2024/08/25 11:40:30 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/25 12:06:32 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	ft_print_msg(int id, t_philo *philo)
 	else if (id == DIED)
 		printf("%u\t%d has died\n", time, philo->index + 1);
 	else if (id == DONE)
-		printf("Success! All philosophers made it through \
-			without a single food fight.\n");
+		printf("Success! All philosophers made it through "
+			"without a single food fight.\n");
 	if (id != DIED && id != DONE)
 		pthread_mutex_unlock(philo->data->msg);
 }
