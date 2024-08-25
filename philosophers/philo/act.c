@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   act.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/25 11:28:17 by rcheong           #+#    #+#             */
+/*   Updated: 2024/08/25 11:30:55 by rcheong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 /*
@@ -48,7 +60,8 @@ void	ft_sleep(t_philo *philo)
 /*
 @brief Get the current time in milliseconds.
 @return Current time in milliseconds.
-@details Retrieves the current time, typically used to time-stamp philosopher actions.
+@details Retrieves the current time,
+	typically used to time-stamp philosopher actions.
 */
 unsigned int	ft_get_time(void)
 {

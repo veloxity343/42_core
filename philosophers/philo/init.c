@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/25 11:28:19 by rcheong           #+#    #+#             */
+/*   Updated: 2024/08/25 11:40:30 by rcheong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 /*
@@ -23,7 +35,8 @@ void	ft_print_msg(int id, t_philo *philo)
 	else if (id == DIED)
 		printf("%u\t%d has died\n", time, philo->index + 1);
 	else if (id == DONE)
-		printf("Success! All philosophers made it through without a single food fight.\n");
+		printf("Success! All philosophers made it through \
+			without a single food fight.\n");
 	if (id != DIED && id != DONE)
 		pthread_mutex_unlock(philo->data->msg);
 }
@@ -32,7 +45,8 @@ void	ft_print_msg(int id, t_philo *philo)
 @brief Free allocated resources and destroy mutexes.
 @param sim Pointer to the simulation structure (t_sim).
 @param philo Pointer to an array of philosopher structures (t_philo).
-@details Cleans up by freeing memory and destroying mutexes used during the simulation.
+@details Cleans up by freeing memory and
+	destroying mutexes used during the simulation.
 */
 void	ft_destroy_all(t_sim *sim, t_philo *philo)
 {
@@ -100,7 +114,8 @@ void	ft_iterate_philo(t_sim *sim, t_philo *philo, int i)
 @brief Initialise philosopher structures.
 @param sim Pointer to the simulation structure (t_sim).
 @return Pointer to an array of philosopher structures (t_philo).
-@details Allocates and initialises philosopher structures based on simulation parameters.
+@details Allocates and initialises philosopher 
+	structures based on simulation parameters.
 */
 t_philo	*ft_philo_init(t_sim *sim)
 {

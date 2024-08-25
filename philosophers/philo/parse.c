@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/25 11:28:22 by rcheong           #+#    #+#             */
+/*   Updated: 2024/08/25 11:31:59 by rcheong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 /*
@@ -6,7 +18,8 @@
 @param nbr Number of philosophers or forks.
 @param i Index or ID.
 @return 0 on success, non-zero on failure.
-@details Verifies the status of the last philosopher, ensuring proper simulation closure.
+@details Verifies the status of the last philosopher, 
+	ensuring proper simulation closure.
 */
 int	ft_check_last(t_sim *sim, int nbr, int i)
 {
@@ -34,7 +47,8 @@ int	ft_check_last(t_sim *sim, int nbr, int i)
 @param nbr Number of philosophers or forks.
 @param i Index or ID.
 @return 0 on success, non-zero on failure.
-@details Configures remaining simulation settings after initial parsing: eat and sleep.
+@details Configures remaining simulation settings 
+	after initial parsing: eat and sleep.
 */
 int	ft_data_param(t_sim *sim, int nbr, int i)
 {
@@ -57,7 +71,8 @@ int	ft_data_param(t_sim *sim, int nbr, int i)
 @param nbr Number of philosophers or forks.
 @param i Index or ID.
 @return 0 on success, non-zero on failure.
-@details Initialises the main simulation parameters: time_to_die and counters for philosophers and forks.
+@details Initialises the main simulation parameters: 
+	time_to_die and counters for philosophers and forks.
 */
 int	ft_set_data(t_sim *sim, int nbr, int i)
 {
@@ -83,7 +98,8 @@ int	ft_set_data(t_sim *sim, int nbr, int i)
 @brief Converts a string to an integer.
 @param arg: String argument to be converted.
 @return Converted integer value.
-@details Converts the input string to an integer, handling errors if the input is invalid.
+@details Converts the input string to an integer, 
+	handling errors if the input is invalid.
 */
 int	ft_get_nbr(char *arg)
 {

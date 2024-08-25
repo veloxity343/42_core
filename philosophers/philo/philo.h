@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/25 11:28:27 by rcheong           #+#    #+#             */
+/*   Updated: 2024/08/25 11:33:09 by rcheong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -29,19 +41,23 @@ enum e_actions
 /*
 @brief Structure to hold simulation data.
 @param threads Pointer to an array of pthread_t representing philosopher threads.
-@param forks Pointer to an array of pthread_mutex_t representing forks as mutexes.
+@param forks Pointer to an array of pthread_mutex_t 
+	representing forks as mutexes.
 @param msg Pointer to a pthread_mutex_t for protecting message printing.
 @param death Pointer to a pthread_mutex_t for death detection.
 @param stop Pointer to a pthread_mutex_t to signal stopping the simulation.
 @param start Start time of the simulation in milliseconds.
 @param philo Number of philosophers.
-@param time_to_die Time in milliseconds after which a philosopher dies if not eating.
+@param time_to_die Time in milliseconds after which 
+	a philosopher dies if not eating.
 @param time_to_eat Time in milliseconds a philosopher spends eating.
 @param time_to_sleep Time in milliseconds a philosopher spends sleeping.
 @param eat_counter Counter for the number of times each philosopher has eaten.
-@param max_eat Maximum times philosophers should eat before ending the simulation.
+@param max_eat Maximum times philosophers 
+	should eat before ending the simulation.
 @param is_dead Flag indicating if any philosopher has died.
-@param current_eat Counter for the total number of meals eaten by all philosophers.
+@param current_eat Counter for the total number of 
+	meals eaten by all philosophers.
 */
 typedef struct s_sim
 {
@@ -63,7 +79,8 @@ typedef struct s_sim
 
 /*
 @brief Structure to hold individual philosopher data.
-@param eat Pointer to a pthread_mutex_t representing the philosopher's eating mutex.
+@param eat Pointer to a pthread_mutex_t 
+	representing the philosopher's eating mutex.
 @param data Pointer to the simulation data structure.
 @param eating_time Time in milliseconds when the philosopher starts eating.
 @param next_meal Time in milliseconds when the philosopher should eat next.

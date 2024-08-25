@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/25 11:28:25 by rcheong           #+#    #+#             */
+/*   Updated: 2024/08/25 11:41:07 by rcheong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
 
 /*
@@ -5,7 +17,8 @@
 @param arg: Pointer to the philosopher's structure.
 @return NULL
 @details Continuously monitors the philosopher's time until the next meal. 
-If the philosopher's time runs out, marks them as dead and prints the death message.
+If the philosopher's time runs out, 
+	marks them as dead and prints the death message.
 */
 void	*ft_check_death(void *arg)
 {
@@ -30,7 +43,8 @@ void	*ft_check_death(void *arg)
 @brief Checks if all philosophers have eaten the required number of times.
 @param philo: Pointer to the philosopher's structure.
 @return 1 if eating continues, 0 if all philosophers are done eating.
-@details Verifies if the maximum eating count is reached. If yes, it marks the simulation as complete.
+@details Verifies if the maximum eating count is reached. 
+	If yes, it marks the simulation as complete.
 */
 int	ft_check_eat(t_philo *philo)
 {
@@ -50,8 +64,9 @@ int	ft_check_eat(t_philo *philo)
 @brief Maintais routine for each philosopher thread.
 @param arg: Pointer to the philosopher's structure.
 @return NULL
-@details Executes and maintains the cycle of taking forks, eating, sleeping, and thinking. 
-Spawns a thread to monitor the philosopher's death.
+@details Executes and maintains the cycle of 
+	taking forks, eating, sleeping, and thinking. 
+	Spawns a thread to monitor the philosopher's death.
 */
 void	*ft_routine(void *arg)
 {
@@ -98,14 +113,15 @@ int	ft_error_put(t_sim *sim, char *msg, int ret)
 }
 
 /*
-@brief Initialises the simulation, creates philosopher threads, and manages their lifecycle.
+@brief Initialises the simulation, creates philosopher threads, 
+	and manages their lifecycle.
 @return 0 on successful execution, error code on failure.
 */
 int	main(int argc, char **argv)
 {
-	int				i;
+	int		i;
 	t_sim	sim;
-	t_philo			*philo;
+	t_philo	*philo;
 
 	i = 0;
 	if (argc == 5 || argc == 6)
