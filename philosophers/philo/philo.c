@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:28:25 by rcheong           #+#    #+#             */
-/*   Updated: 2024/08/25 11:41:07 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/25 11:43:22 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 @param arg: Pointer to the philosopher's structure.
 @return NULL
 @details Continuously monitors the philosopher's time until the next meal. 
-If the philosopher's time runs out, 
-	marks them as dead and prints the death message.
+	If the philosopher's time runs out, 
+		marks them as dead and prints the death message.
 */
 void	*ft_check_death(void *arg)
 {
