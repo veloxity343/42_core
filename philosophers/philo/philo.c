@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:28:25 by rcheong           #+#    #+#             */
-/*   Updated: 2024/08/25 11:43:22 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/08/25 12:32:52 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	ft_check_eat(t_philo *philo)
 }
 
 /*
-@brief Maintais routine for each philosopher thread.
+@brief Maintains routine for each philosopher thread.
 @param arg: Pointer to the philosopher's structure.
 @return NULL
 @details Executes and maintains the cycle of 
@@ -123,7 +123,6 @@ int	main(int argc, char **argv)
 	t_sim	sim;
 	t_philo	*philo;
 
-	i = 0;
 	if (argc == 5 || argc == 6)
 	{
 		if (ft_parse(argv, &sim))
@@ -132,6 +131,7 @@ int	main(int argc, char **argv)
 		sim.start = ft_get_time();
 		ft_create_mutex(&sim);
 		pthread_mutex_lock(sim.stop);
+		i = 0;
 		while (i < sim.philo)
 		{
 			pthread_create(sim.threads + i, NULL, ft_routine, philo + i);
