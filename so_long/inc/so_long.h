@@ -19,7 +19,7 @@
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>
-# include <mlx.h>
+# include "../minilibx_macos/mlx.h"
 
 typedef struct t_start
 {

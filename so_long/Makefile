@@ -50,7 +50,7 @@ $(LIBFT):
 all:					$(NAME)
 
 $(NAME):				$(OBJS) $(LIBFT)
-						@$(CC) $(CFLAGS) $(IFLAGS) $(OBJS) $(LIBFT) $(MLX) -o $(NAME)
+						@$(CC) $(CFLAGS) $(IFLAGS) $(OBJS) $(LIBFT) $(MLX_MACOS) -o $(NAME)
 
 $(OBJ_DIR)%.o:			$(SRC_DIR)%.c 
 						@mkdir -p $(@D)
