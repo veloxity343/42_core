@@ -40,6 +40,7 @@ $(OBJ_DIR)/%.o: %.c
 	@printf "$(YELLOW)Compiling\t$(RESET)%-33.33s\r" $@
 	@$(CC) $(CFLAGS) -c $< -o $@
 
+# Scruba dub dub
 clean:
 	@echo "$(RED)Deleting$(RESET)\t"$(OBJ_DIR)
 	@$(RM) -rf $(OBJ_DIR)
@@ -50,19 +51,23 @@ fclean:	clean
 
 re:		fclean all
 
-# Sanitizer targets
+# Sanitize
 thread:	FSAN = -fsanitize=thread $(DSYM)
 addr:	FSAN = -fsanitize=address $(DSYM)
 
 thread addr:	fclean test
 
-# Test
 test:	$(NAME)
 	@echo "$(BLUE)Testing with debugging on$(RESET)"
 	@echo "$(YELLOW)Running philo...$(RESET)"
 	./$(NAME) 5 800 200 200 7
 
+leaks:	$(NAME)
+	@echo "$(BLUE)Testing with leaks on$(RESET)"
+	@echo "$(YELLOW)Running philo...$(RESET)"
+	leaks --atExit -- ./$(NAME) 5 800 200 200 7
+
 norm:
 	norminette
 
-.PHONY:	all clean fclean re thread addr test norm
+.PHONY:	all clean fclean re thread addr test leaks norm
