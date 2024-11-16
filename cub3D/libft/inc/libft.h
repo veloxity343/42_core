@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 11:53:48 by ryan99            #+#    #+#             */
-/*   Updated: 2024/11/14 11:49:58 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/11/15 14:36:46 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t count, size_t size);
 void				ft_free2(void **tofree);
 void				ft_free3(void ***tofree);
+void				ft_free1(void *ptr);
 void				*ft_garbage_collector(void *ptr, bool clean);
 void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);

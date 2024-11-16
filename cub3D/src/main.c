@@ -17,14 +17,14 @@ int	error_msg(t_err error, int status_code)
  */
 static int	ft_args_handler(t_data *data, char **argv)
 {
-	if (ft_val_cub_file(argv[1]) == false)
+	if (ft_valid_cub_file(argv[1]) == false)
 		return (ft_error_msg(ERR_CUB, 4));
 	ft_init_map_handler(data, argv[1]);
 	if (ft_file_to_var(data) != 0)
 		return (ft_free_data(data));
 	if (ft_valid_map(data) != 0)
 		return (ft_free_data(data));
-	if (ft_valid_texture(&data->texture_det) != 0)
+	if (ft_valid_texture(&data->texture) != 0)
 		return (ft_free_data(data));
 	return (0);
 }

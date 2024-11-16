@@ -6,16 +6,19 @@
 /*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 11:38:54 by rcheong           #+#    #+#             */
-/*   Updated: 2024/11/14 11:40:25 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/11/15 14:37:03 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	ft_del(void *ptr)
+void	ft_free1(void *ptr)
 {
-	free(ptr);
-	ptr = NULL;
+	if (ptr)
+	{
+		free(ptr);
+		ptr = NULL;
+	}
 }
 
 /*
@@ -29,7 +32,7 @@ void	*ft_garbage_collector(void *ptr, bool clean)
 
 	if (clean)
 	{
-		ft_lstclear(&garbage_list, ft_del);
+		ft_lstclear(&garbage_list, ft_free1);
 		return (NULL);
 	}
 	else

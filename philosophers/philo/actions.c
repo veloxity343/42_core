@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:29:18 by rcheong           #+#    #+#             */
-/*   Updated: 2024/11/10 18:04:50 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/11/16 11:30:45 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	ft_philo_sleep(t_data *data, t_philo *thread)
 /**
  * @brief Simulates a philosopher eating.
  * @details This function handles the process of a philosopher taking forks,
- * eating, updating their state, and putting the forks back.
+ * eating, updating their state and last eat, and putting the forks back.
  * It also tracks how many times the philosopher has eaten
  * and updates the global full flag.
  * @param data Pointer to the main data structure holding program state.

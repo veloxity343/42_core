@@ -6,18 +6,19 @@
 /*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:29:10 by rcheong           #+#    #+#             */
-/*   Updated: 2024/11/10 18:02:07 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/11/16 11:34:16 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
 /**
- * @brief Main thread function for each philosopher.
+ * @brief Main thread function for each philosopher subsequent thread.
  * @details This function is the entry point for each philosopher's thread,
  * handling the cycle of eating, sleeping, and thinking.
  * It ensures that the philosopher performs these actions
  * repeatedly until the program ends or an error occurs.
+ * Delays for each even-numbered philosopher to prevent a deadlock.
  * @param func_arg The argument passed to the thread,
  * which is a pointer to a philosopher's struct.
  * @return Always returns NULL when the thread finishes execution.
@@ -75,7 +76,8 @@ static int	ft_create_threads(t_data *data)
 /**
  * @brief Joins all philosopher threads.
  * @details This function waits for each philosopher's thread to finish.
- * It calls pthread_join for each thread in the linked list of philosophers.
+ * It calls pthread_join for each thread in the
+ * linked list (main thread) of philosophers.
  * @param data Pointer to the shared data structure
  * containing the list of philosophers.
  * @return No return value. The function blocks until all threads have completed.

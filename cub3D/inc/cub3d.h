@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 11:05:57 by rcheong           #+#    #+#             */
-/*   Updated: 2024/11/14 11:10:13 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/11/15 14:49:38 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,18 @@
 # include <stdio.h>
 
 # include "../libft/inc/libft.h"
+# include "../libft/inc/get_next_line.h"
 # include "../minilibx-linux/mlx.h"
+# include "enum.h"
+# include "struct.h"
 
-typedef enum e_err
-{
-	ERR_ARGS,
-	ERR_MALC,
-	ERR_CUB,
-	ERR_MAP,
-	ERR_MAP7,
-	ERR_MAP8,
-	ERR_MAP_LAST,
-	ERR_MAP_DIR,
-	ERR_MAP9,
-	ERR_MAP_CHAR,
-	ERR_SING_PLAYER,
-	ERR_PLA_POS,
-	ERR_TEXT,
-	ERR_TEXT_MAP,
-	ERR_TEXT_COL,
-	ERR_TEXT_PATH,
-	ERR_RGB,
-	ERR_RGB_VAL,
-	ERR_MLX_IMG,
-	ERR_MLX_WIN,
-	ERR_MLX_INIT
-}			t_err;
+# define TITLE "cub3D"
+
+# define WIDTH 640
+# define HEIGHT 480
+# define PIX 64
+
+# define x 0
+# define y 1
 
 #endif

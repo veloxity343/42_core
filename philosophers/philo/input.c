@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/10 17:29:15 by rcheong           #+#    #+#             */
-/*   Updated: 2024/11/10 18:07:10 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/11/16 11:21:51 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  * @details This function parses the input arguments,
  * converts them into integers, and stores them in the data structure.
  * It checks if the input is valid and ensures that
- * the number of philosophers is at least 1.
+ * the number of philosophers is at least 1. Converts time to ms
  * @param data Pointer to the shared data structure
  * where parsed input values will be stored.
  * @return Returns SUCCESS if parsing is successful,
