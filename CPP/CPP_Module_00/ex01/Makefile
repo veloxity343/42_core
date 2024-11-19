@@ -10,13 +10,13 @@ INC_DIR	=	inc/
 CC		=	g++
 WFLAGS	=	-Wall -Wextra -Werror -std=c++98 -pedantic
 IFLAGS	=	-I$(INC)
+DSYM	=	-g3
+FSAN	=	-fsanitize=address $(DSYM)
 CFLAGS	=	$(WFLAGS) $(IFLAGS)
 RM		=	rm -f
 
-# Sources
+# Sources & objects
 SRC		=	$(shell find $(SRC_DIR) -type f -name "*.cpp")
-
-# Objects
 OBJ		=	$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
 
 # Colors
@@ -59,4 +59,10 @@ fclean:	clean
 
 re:		fclean all
 
-.PHONY: all clean fclean re norm
+# Debugging
+asan:	CFLAGS	+=	$(FSAN)
+asan:	re
+	@echo "$(YELLOW)Running with AddressSanitizer...$(RESET)"
+	./$(NAME)
+
+.PHONY: all clean fclean re asan
