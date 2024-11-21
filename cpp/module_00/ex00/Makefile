@@ -2,9 +2,9 @@
 NAME	=	megaphone
 
 # Directories
+INC		=	inc/
 SRC_DIR	=	src
 OBJ_DIR	=	obj
-INC_DIR	=	inc/
 
 # Compiler & flags
 CC		=	g++
