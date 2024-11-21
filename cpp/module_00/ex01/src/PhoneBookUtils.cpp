@@ -6,25 +6,24 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:27:09 by rcheong           #+#    #+#             */
-/*   Updated: 2024/11/21 13:43:47 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/11/21 15:07:11 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBookUtils.hpp"
 
-/* void	display_welcome(void)
-{
-	system("clear");
-	std::cout << "Welcome to PhoneBook" << std::endl;
-	wait_for_enter();
-} */
-
+/**
+ * @brief Display main menu and prompt user for input
+ * @param input User input
+ */
 void	display_menu_and_prompt(std::string &input)
 {
 	std::cout << "+------------MAIN MENU------------+" << std::endl;
+	std::cout << "|                                 |" << std::endl;
 	std::cout << "| ADD: to add a new contact       |" << std::endl;
 	std::cout << "| SEARCH: to search for a contact |" << std::endl;
-	std::cout << "| EXIT: to exit the phonebook     |" << std::endl;
+	std::cout << "| EXIT: to exit the Phonebook     |" << std::endl;
+	std::cout << "|                                 |" << std::endl;
 	std::cout << "+---------------------------------+" << std::endl;
 	std::cout << "Enter your command (ADD, SEARCH, EXIT): ";
 	std::getline(std::cin, input);
@@ -33,6 +32,10 @@ void	display_menu_and_prompt(std::string &input)
 	input = trim_whitespace(input);
 }
 
+/**
+ * @brief Truncates a string to 10 chars, appending '.' if longer
+ * @param str String to truncate
+ */
 std::string	truncate(std::string str)
 {
 	if (str.length() > 10)
@@ -41,6 +44,10 @@ std::string	truncate(std::string str)
 		return(str);
 }
 
+/**
+ * @brief Trims whitespace from a string
+ * @param str String to trim
+ */
 std::string	trim_whitespace(std::string str)
 {
 	std::string	whitespace	= " \t\n\r\v\f";
@@ -56,6 +63,11 @@ std::string	trim_whitespace(std::string str)
 	return (str.substr(start, end - start + 1));
 }
 
+/**
+ * @brief Get user input
+ * @param prompt Prompt message
+ * @param str User input
+ */
 void	get_input(std::string prompt, std::string &str)
 {
 	std::cout << prompt;
@@ -65,6 +77,9 @@ void	get_input(std::string prompt, std::string &str)
 	str = trim_whitespace(str);
 }
 
+/**
+ * @brief Wait for user to continue session
+ */
 void	wait_for_enter(void)
 {
 	std::cout << "Press Enter to continue..." << std::endl;

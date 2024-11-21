@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
+/*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:26:48 by rcheong           #+#    #+#             */
-/*   Updated: 2024/11/21 11:26:49 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/11/21 14:43:47 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 
 # include <iostream>
 
+/**
+ * @brief Contact class
+ * @details Contains contact details & setters/getters
+ * @param _first_name First name of contact
+ * @param _last_name Last name of contact
+ * @param _nickname Nickname of contact
+ * @param _phone_number Phone number of contact
+ * @param _secret Darkest secret of contact
+ */
 class Contact
 {
 	private:

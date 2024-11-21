@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBookUtils.hpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
+/*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:26:58 by rcheong           #+#    #+#             */
-/*   Updated: 2024/11/21 11:26:59 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/11/21 14:33:52 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <cstdlib>
 # include <iostream>
 
-void		display_welcome(void);
 void		display_menu_and_prompt(std::string &input);
 void		wait_for_enter(void);
 void		get_input(std::string prompt, std::string &str);

@@ -6,23 +6,35 @@
 /*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:27:07 by rcheong           #+#    #+#             */
-/*   Updated: 2024/11/21 13:46:00 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/11/21 15:13:59 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
+/**
+ * @brief Constructor for PhoneBook class
+ * @details Initializes the index to 0
+ */
 PhoneBook::PhoneBook(void)
 {
 	this->_index = 0;
 	return ;
 }
 
+/**
+ * @brief Destructor for PhoneBook class
+ * @details Returns
+ */
 PhoneBook::~PhoneBook(void)
 {
 	return ;
 }
 
+/**
+ * @brief Add a new contact to the phonebook
+ * @details If contact exceeds 8, it overwrites first contact
+ */
 void	PhoneBook::add_contact(void)
 {
 	std::string	input;
@@ -36,10 +48,14 @@ void	PhoneBook::add_contact(void)
 		this->_index = 0;
 	else
 		this->_index++;
-	std::cout << "Contact added Successfully" << std::endl;
+	std::cout << "Contact added successfully" << std::endl << std::endl;
 	wait_for_enter();
 }
 
+/**
+ * @brief Search for a contact in the phonebook
+ * @details Displays contact details if found, else reprompts
+ */
 void	PhoneBook::search_contact(void)
 {
 	std::string	input;
@@ -49,16 +65,25 @@ void	PhoneBook::search_contact(void)
 	while (1)
 	{
 		display_contact_table();
-		std::cout << "Enter BACK to return to main menu." << std::endl;
+		std::cout << "Enter BACK to return to the Main Menu." << std::endl;
+		std::cout << "Enter EXIT to exit the Phonebook." << std::endl << std::endl;
 		get_input("Enter index to display contact [1 - 8]: ", input);
 		index = input[0] - '0' - 1;
 		system("clear");
-		if (input == "BACK" || input == "back")
+		if (input == "BACK")
 			return ;
+		else if (input == "EXIT")
+        {
+            system("clear");
+            exit(0);
+        }
 		else if (input.length() != 1 || index > 7)
-			std::cout << "Invalid index! Please enter a digit from 1 to 8." << std::endl;
+			std::cout << "Invalid index. Please enter a digit from 1 to 8." << std::endl << std::endl;
 		else if (this->_contact_array[index].get_first_name() == "")
-			std::cout << "No record at index [" << index + 1 << "]. ADD a contact and try again." << std::endl;
+		{
+			std::cout << "No record at index [" << index + 1 << "]." << std::endl;
+			std::cout << "SEARCH for another, or ADD a contact and try again." << std::endl << std::endl;
+		}
 		else
 		{
 			std::cout << "----------CONTACT ["<< index + 1 << "]----------" << std::endl;
@@ -67,13 +92,14 @@ void	PhoneBook::search_contact(void)
 			std::cout << "Nickname      : " << this->_contact_array[index].get_nickname() << std::endl;
 			std::cout << "Phone Number  : " << this->_contact_array[index].get_phone_number() << std::endl;
 			std::cout << "Darkest Secret: " << this->_contact_array[index].get_secret() << std::endl << std::endl;
-			wait_for_enter();
-			return ;
 		}
 		wait_for_enter();
 	}
 }
 
+/**
+ * @brief Display contact table
+ */
 void	PhoneBook::display_contact_table(void)
 {
 	std::cout	<< "+----------+----------+----------+----------+" << std::endl
@@ -99,6 +125,11 @@ void	PhoneBook::display_contact_table(void)
 	}
 }
 
+/**
+ * @brief Sets contact details accordingly
+ * @param t_contact Contact object
+ * @return true if successfully and validly set, false otherwise
+ */
 bool PhoneBook::set_contact_details(Contact &t_contact)
 {
 	if (parse_and_set_input("Enter First Name: ", t_contact, &Contact::set_first_name) == false)
@@ -115,27 +146,40 @@ bool PhoneBook::set_contact_details(Contact &t_contact)
 	return (true);
 }
 
-bool PhoneBook::parse_and_set_input(std::string prompt, Contact &t_contact, void (Contact::*func)(std::string))
+/**
+ * @brief Parses and sets input for adding a contact
+ * @param prompt Prompt message
+ * @param t_contact Contact object
+ * @param contact_field Member function of Contact class
+ * @return true if successfully and validly set, false otherwise
+ */
+bool PhoneBook::parse_and_set_input(std::string prompt, Contact &t_contact, void (Contact::*contact_field)(std::string))
 {
 	std::string input;
 
 	while (1)
 	{
 		system("clear");
-		std::cout << "Enter BACK to return to main menu." << std::endl;
+		std::cout << "Enter BACK to return to the Main Menu." << std::endl;
+		std::cout << "Enter EXIT to exit the Phonebook." << std::endl << std::endl;
 		get_input(prompt, input);
 		if (input.empty())
 			continue ;
-		else if (input == "BACK" || input == "back")
+		else if (input == "BACK")
 		{
 			system("clear");
-			std::cout << "Contact not added" << std::endl;
+			std::cout << "Contact not added" << std::endl << std::endl;
 			wait_for_enter();
 			return (false);
 		}
+		else if (input == "EXIT")
+        {
+            system("clear");
+            exit(0);
+        }
 		else
 		{
-			(t_contact.*func)(input);
+			(t_contact.*contact_field)(input);
 			break;
 		}
 	}
