@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:27:14 by rcheong           #+#    #+#             */
-/*   Updated: 2024/11/21 11:27:15 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/11/21 11:43:52 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	Account::_displayTimestamp( void ) {
     std::cout << tm->tm_min;
     std::cout << tm->tm_sec;
     std::cout << "] ";
-	// std::cout << "[19920104_091532] ";
 }
 
 void	Account::displayAccountsInfos( void ) {
