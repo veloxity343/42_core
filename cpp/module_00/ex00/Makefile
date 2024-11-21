@@ -47,14 +47,14 @@ clean:
 	@if [ -d "$(OBJ_DIR)" ]; then \
 	$(RM) -rf $(OBJ_DIR); \
 	echo "$(RED)Deleting$(RESET)\t"$(OBJ_DIR); else \
-	echo "$(BLUE)No objects to remove."; \
+	echo "$(BLUE)No $(NAME) objects to remove."; \
 	fi;
 
 fclean:	clean
 	@if [ -f "$(NAME)" ]; then \
 	$(RM) -f $(NAME); \
 	echo "$(RED)Deleting$(RESET)\t"$(NAME); else \
-	echo "$(BLUE)No executable to remove.$(RESET)"; \
+	echo "$(BLUE)No executable $(NAME) to remove.$(RESET)"; \
 	fi;
 
 re:		fclean all
