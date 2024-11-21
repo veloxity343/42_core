@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
+/*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:27:07 by rcheong           #+#    #+#             */
-/*   Updated: 2024/11/21 11:27:08 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/11/21 13:46:00 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	PhoneBook::search_contact(void)
 		get_input("Enter index to display contact [1 - 8]: ", input);
 		index = input[0] - '0' - 1;
 		system("clear");
-		if (input == "BACK")
+		if (input == "BACK" || input == "back")
 			return ;
 		else if (input.length() != 1 || index > 7)
 			std::cout << "Invalid index! Please enter a digit from 1 to 8." << std::endl;
@@ -126,7 +126,7 @@ bool PhoneBook::parse_and_set_input(std::string prompt, Contact &t_contact, void
 		get_input(prompt, input);
 		if (input.empty())
 			continue ;
-		else if (input == "BACK")
+		else if (input == "BACK" || input == "back")
 		{
 			system("clear");
 			std::cout << "Contact not added" << std::endl;

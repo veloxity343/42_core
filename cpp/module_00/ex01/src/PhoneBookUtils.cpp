@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBookUtils.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
+/*   By: rcheong <rcheong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 11:27:09 by rcheong           #+#    #+#             */
-/*   Updated: 2024/11/21 11:29:29 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/11/21 13:43:47 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBookUtils.hpp"
 
-void	display_welcome(void)
+/* void	display_welcome(void)
 {
 	system("clear");
 	std::cout << "Welcome to PhoneBook" << std::endl;
 	wait_for_enter();
-}
+} */
 
 void	display_menu_and_prompt(std::string &input)
 {
