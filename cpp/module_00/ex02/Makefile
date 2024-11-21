@@ -56,6 +56,12 @@ fclean:	clean
 	echo "$(RED)Deleting$(RESET)\t"$(NAME); else \
 	echo "$(BLUE)No executable $(NAME) to remove.$(RESET)"; \
 	fi;
+	@if [ "$(shell find . -type f -name '*.log' ! -name '19920104_091532.log' | wc -l)" -gt "0" ]; then \
+		echo "$(RED)Deleting$(RESET)\t.log files except for '19920104_091532.log'"; \
+		find . -type f -name "*.log" ! -name "19920104_091532.log" -exec rm -f {} \;; \
+	else \
+		echo "$(BLUE)No .log files except '19920104_091532.log'.$(RESET)"; \
+	fi;
 
 re:		fclean all
 
