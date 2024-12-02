@@ -6,12 +6,13 @@
 /*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:45:21 by rcheong           #+#    #+#             */
-/*   Updated: 2024/12/02 11:21:54 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/12/02 11:40:16 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 #include <cctype>
+#include <cstring>
 
 int	main(int argc, char **argv)
 {
