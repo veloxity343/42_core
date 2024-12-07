@@ -1,5 +1,5 @@
 # Standard
-NAME	=	horde
+NAME	=	zombie
 
 # Directories
 INC		=	inc/
@@ -61,7 +61,7 @@ re:		fclean all
 
 test: re
 	@echo "$(YELLOW)Testing...$(RESET)"
-	./$(NAME) 10
+	./$(NAME)
 
 # Debugging
 asan:	CFLAGS	+=	$(FSAN)

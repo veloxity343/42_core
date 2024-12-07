@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/02 10:45:24 by rcheong           #+#    #+#             */
-/*   Updated: 2024/12/02 11:24:18 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/12/06 15:43:26 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,21 @@ void	Harl::error(void)
 	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
+/**
+ * @brief Handles complaints based on the specified severity level.
+ * @param level A string indicating the severity level ("DEBUG", "INFO", "WARNING", "ERROR").
+ * @details This function uses a pointer-to-member-function array to map severity levels 
+ *          to their corresponding member functions (`debug`, `info`, `warning`, `error`). 
+ *          It compares the input `level` to a predefined list of complaint levels.
+ *          - If a match is found, it executes the corresponding function(s) based on the 
+ *            severity level using a `switch` statement.
+ *          - If the input `level` doesn't match any predefined level, it outputs a default 
+ *            message.
+ *          The use of `FALLTHROUGH` ensures that, for each case, subsequent severity levels 
+ *          are also executed sequentially (cascading complaints).
+ * @note The function demonstrates a practical use of pointer-to-member functions and 
+ *       efficient control flow with arrays and `switch` statements.
+ */
 void	Harl::complain(std::string level)
 {
 	void (Harl::*complainPtr[])( void ) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};

@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:07:01 by rcheong           #+#    #+#             */
-/*   Updated: 2024/11/27 11:07:02 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/12/06 16:10:46 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	Zombie::announce(void) const
 	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl << std::endl;
 }
 
-void	Zombie::set_name(std::string name)
+void	Zombie::setName(std::string name)
 {
 	this->_name = name;
 }

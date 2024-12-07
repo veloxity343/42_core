@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:14:05 by rcheong           #+#    #+#             */
-/*   Updated: 2024/11/27 15:05:06 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/12/06 17:10:20 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "HumanB.hpp"
 #include "Weapon.hpp"
 
-int main()
+int main(void)
 {
 	{
 		Weapon club = Weapon("crude spiked club");
@@ -39,19 +39,20 @@ int main()
 
 int main(int argc, char **argv)
 {
+    system("clear");
     if (argc != 5)
 	{
         std::cerr << "Usage: " << argv[0] << " <HumanA name> <HumanA weapon> <HumanB name> <HumanB weapon (or 'none')>" << std::endl;
-        return EXIT_FAILURE;
+        return (EXIT_FAILURE);
     }
     std::srand(std::time(0));
 	
-    std::string humanAName = argv[1];
+    std::string humanAName = "\033[1;36m" + std::string(argv[1]) + "\033[0m";
     std::string humanAWeaponType = argv[2];
     Weapon weaponA(humanAWeaponType);
     HumanA humanA(humanAName, weaponA);
 
-    std::string humanBName = argv[3];
+    std::string humanBName = "\033[1;35m" + std::string(argv[3]) + "\033[0m";
     std::string humanBWeaponType = argv[4];
     HumanB humanB(humanBName);
     Weapon *weaponB = nullptr;
@@ -63,7 +64,7 @@ int main(int argc, char **argv)
 
     int humanAHealth = 10;
     int humanBHealth = 10;
-    std::cout << "\n--- Fight begins! ---\n" << std::endl;
+    std::cout << "\n\033[1;32m--- Fight begins! ---\033[0m\n" << std::endl;
     while (humanAHealth > 0 && humanBHealth > 0)
 	{
         humanA.attack();
@@ -78,7 +79,7 @@ int main(int argc, char **argv)
         std::cout << humanBName << "'s health: " << humanBHealth << std::endl << std::endl;
         if (humanBHealth <= 0)
 		{
-            std::cout << humanBName << " is defeated!" << std::endl;
+            std::cout << humanBName << " is \033[1;31mdefeated\033[0m!" << std::endl;
             break;
         }
 
@@ -102,7 +103,7 @@ int main(int argc, char **argv)
         std::cout << humanAName << "'s health: " << humanAHealth << std::endl << std::endl;
         if (humanAHealth <= 0)
 		{
-            std::cout << humanAName << " is defeated!" << std::endl;
+            std::cout << humanAName << " is \033[1;31mdefeated\033[0m!" << std::endl;
             break;
         }
     }

@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 12:17:08 by rcheong           #+#    #+#             */
-/*   Updated: 2024/12/06 16:24:06 by rcheong          ###   ########.fr       */
+/*   Created: 2024/12/03 20:44:32 by rcheong           #+#    #+#             */
+/*   Updated: 2024/12/04 10:45:16 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#pragma once
 
-/**
- * @brief Returning the heap-allcoated Zombie object allows
- * the object to be used beyond the lifetime of the function that created it
- */
-Zombie *newZombie(std::string name)
+# include <iostream>
+
+class Fixed
 {
-	Zombie *elite = new Zombie(name);
-	elite->announce();
-	return (elite);
-}
+	private:
+		int	_fp_value;
+		static const int _fract_bits;
+	public:
+		Fixed();
+		Fixed(const Fixed& copy);
+		~Fixed();
+		Fixed &operator=(const Fixed &src);
+		int getRawBits(void)const;
+		void setRawBits(int const raw);
+};

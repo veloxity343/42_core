@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 12:17:08 by rcheong           #+#    #+#             */
-/*   Updated: 2024/12/06 16:24:06 by rcheong          ###   ########.fr       */
+/*   Created: 2024/12/03 20:44:28 by rcheong           #+#    #+#             */
+/*   Updated: 2024/12/03 20:44:29 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Fixed.hpp"
 
-/**
- * @brief Returning the heap-allcoated Zombie object allows
- * the object to be used beyond the lifetime of the function that created it
- */
-Zombie *newZombie(std::string name)
+int main(void)
 {
-	Zombie *elite = new Zombie(name);
-	elite->announce();
-	return (elite);
+	Fixed a;
+	Fixed b(a);
+	Fixed c;
+
+	c = b;
+
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	return 0;
 }

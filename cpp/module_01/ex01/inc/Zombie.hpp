@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:06:58 by rcheong           #+#    #+#             */
-/*   Updated: 2024/11/27 11:07:00 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/12/06 16:10:35 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Zombie
 		Zombie();
 		~Zombie();
 		void	announce(void)const;
-		void	set_name(std::string name);
+		void	setName(std::string name);
 };
 
 Zombie	*zombieHorde(int N, std::string name);
