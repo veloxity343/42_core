@@ -1,5 +1,5 @@
 # Standard
-NAME	=	fixed
+NAME	=	claptrap
 
 # Directories
 INC		=	inc/

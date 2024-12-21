@@ -59,10 +59,14 @@ fclean:	clean
 
 re:		fclean all
 
+test: re
+	@echo "$(YELLOW)Running...$(RESET)"
+	./$(NAME)
+
 # Debugging
 asan:	CFLAGS	+=	$(FSAN)
 asan:	re
 	@echo "$(YELLOW)Running with AddressSanitizer...$(RESET)"
 	./$(NAME)
 
-.PHONY: all clean fclean re asan
+.PHONY: all clean fclean re test asan

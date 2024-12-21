@@ -1,5 +1,5 @@
 # Standard
-NAME	=	zombie
+NAME	=	bsp
 
 # Directories
 INC		=	inc/
@@ -61,7 +61,9 @@ re:		fclean all
 
 test: re
 	@echo "$(YELLOW)Testing...$(RESET)"
-	./$(NAME)
+	./$(NAME) 0 0 10 0 0 10 1 1
+	./$(NAME) -1.5 -1.5 2.5 2.5 -1 1 0 1
+	./$(NAME) -1.5 -1.5 2.5 2.5 -1 1 0 0
 
 # Debugging
 asan:	CFLAGS	+=	$(FSAN)

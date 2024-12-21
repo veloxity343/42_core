@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:06:55 by rcheong           #+#    #+#             */
-/*   Updated: 2024/12/06 16:25:13 by rcheong          ###   ########.fr       */
+/*   Updated: 2024/12/09 10:27:58 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,5 @@ int main(int argc, char **argv)
 	for (int i = 0; i < zombieAmount; ++i)
 		horde[i].announce();
 	delete[] horde;
-	horde = zombieHorde(0, "Failed");
 	return (EXIT_SUCCESS);
 }

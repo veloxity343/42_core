@@ -1,5 +1,5 @@
 # Standard
-NAME	=	fixed
+NAME	=	bsp
 
 # Directories
 INC		=	inc/
