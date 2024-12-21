@@ -7,7 +7,7 @@ SRC_DIR	=	src
 OBJ_DIR	=	obj
 
 # Compiler & flags
-CC		=	c++
+CC		=	g++
 WFLAGS	=	-Wall -Wextra -Werror -std=c++98 -pedantic
 IFLAGS	=	-I$(INC)
 DSYM	=	-g3
