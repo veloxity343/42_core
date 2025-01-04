@@ -60,18 +60,24 @@ void ClapTrap::takeDamage(unsigned int amount)
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (getEnergyPoints() > 0 && getHitPoints() > 0 && getHitPoints() + amount <= 10)
+	if (getEnergyPoints() > 0 && getHitPoints() > 0 && getHitPoints() + amount <= getMaxHitPoints())
 	{
 		setHitPoints(getHitPoints() + amount);
 		std::cout << "ClapTrap " << getName() << " repaired itself and gained " << amount << " hit points, it now has " << getHitPoints() << " hit points." << std::endl;
 		setEnergyPoints(getEnergyPoints() - 1);
 	}
 	else if (getEnergyPoints() == 0)
+	{
 		std::cout << "\033[31mClapTrap " << getName() << " is not able to repair itself, because it doesn't have enough energy points.\033[0m" << std::endl;
+	}
 	else if (getHitPoints() == 0)
+	{
 		std::cout << "\033[31mClapTrap " << getName() << " is not able to repair itself, because it doesn't have enough hit points.\033[0m" << std::endl;
+	}
 	else
-		std::cout << "\033[33mClapTrap " << getName() << " can't be repaired to exceed more than 10 hit points.\033[0m" << std::endl;
+	{
+		std::cout << "\033[33mClapTrap " << getName() << " can't be repaired to exceed more than " << getMaxHitPoints() << " hit points.\033[0m" << std::endl;
+	}
 }
 
 std::string ClapTrap::getName() const
@@ -92,6 +98,11 @@ unsigned int ClapTrap::getEnergyPoints() const
 unsigned int ClapTrap::getAttackDamage() const
 {
 	return (_attack_dmg);
+}
+
+unsigned int ClapTrap::getMaxHitPoints() const
+{
+	return (10);
 }
 
 void ClapTrap::setName(const std::string &name)

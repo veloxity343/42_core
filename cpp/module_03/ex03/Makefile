@@ -1,5 +1,5 @@
 # Standard
-NAME	=	bsp
+NAME	=	diamondtrap
 
 # Directories
 INC		=	inc/

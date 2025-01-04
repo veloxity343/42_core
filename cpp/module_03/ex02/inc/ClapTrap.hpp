@@ -11,6 +11,8 @@ class ClapTrap
 		unsigned int _energy_pts;
 		unsigned int _attack_dmg;
 		
+		virtual unsigned int getMaxHitPoints() const;
+		
 	public:
 		ClapTrap();
 		ClapTrap(const ClapTrap &copy);

@@ -1,5 +1,5 @@
 # Standard
-NAME	=	bsp
+NAME	=	fragtrap
 
 # Directories
 INC		=	inc/

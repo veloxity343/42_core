@@ -1,5 +1,5 @@
 # Standard
-NAME	=	bsp
+NAME	=	scavtrap
 
 # Directories
 INC		=	inc/
