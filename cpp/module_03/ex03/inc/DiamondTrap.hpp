@@ -9,7 +9,7 @@ class DiamondTrap : public FragTrap, public ScavTrap
 	protected:
 		unsigned int getMaxHitPoints() const;
 	private:
-		std::string _name;
+		std::string _diamond_name;
 
 	public:
 	DiamondTrap();
