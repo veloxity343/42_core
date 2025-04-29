@@ -1,5 +1,5 @@
 # Standard
-NAME	=	materia
+NAME	=	bureaucrat
 
 # Directories
 INC		=	inc/
@@ -61,12 +61,16 @@ re:		fclean all
 
 test: re
 	@echo "$(YELLOW)Testing...$(RESET)"
-	./$(NAME) John Alice
+	./$(NAME)
 
 # Debugging
 asan:	CFLAGS	+=	$(FSAN)
 asan:	re
 	@echo "$(YELLOW)Running with AddressSanitizer...$(RESET)"
-	./$(NAME) John Alice
+	./$(NAME)
 
-.PHONY: all clean fclean re test asan
+valgrind:	$(NAME)
+	@echo "$(YELLOW)Running with Valgrind...$(RESET)"
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
+
+.PHONY: all clean fclean re test asan valgrind
