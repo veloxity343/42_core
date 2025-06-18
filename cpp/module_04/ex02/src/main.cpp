@@ -6,7 +6,7 @@
 /*   By: rcheong <rcheong@student.42kl.edu.my>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/18 11:05:30 by rcheong           #+#    #+#             */
-/*   Updated: 2025/01/18 11:05:31 by rcheong          ###   ########.fr       */
+/*   Updated: 2025/01/18 16:19:02 by rcheong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@
 
 int main()
 {
-	// std::cout << "\033[34mConstructing\033[0m" << std::endl;
-	// const AAnimal	*meta = new AAnimal();
-	// std::cout << std::endl;
-	// std::cout << "\033[34mTesting\033[0m" << std::endl;
+	std::cout << "\033[34mConstructing\033[0m" << std::endl;
+	const AAnimal	*meta = new AAnimal();
+	std::cout << std::endl;
+	std::cout << "\033[34mTesting\033[0m" << std::endl;
 
-	// std::cout << "AAnimal _type: " << meta->getType() << std::endl;
-	// meta->makeSound();
-	// std::cout << std::endl;
+	std::cout << "AAnimal _type: " << meta->getType() << std::endl;
+	meta->makeSound();
+	std::cout << std::endl;
 
-	// std::cout << "\033[34mDestructing\033[0m" << std::endl;
-	// delete meta;
-	// std::cout << std::endl;
+	std::cout << "\033[34mDestructing\033[0m" << std::endl;
+	delete meta;
+	std::cout << std::endl;
 
-	// std::cout << "-------------------------------------------------------" << std::endl;
+	std::cout << "-------------------------------------------------------" << std::endl;
 
 	std::cout << std::endl;
 	std::cout << "\033[34mConstructing\033[0m" << std::endl;
