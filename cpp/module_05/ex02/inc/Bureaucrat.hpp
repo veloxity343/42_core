@@ -2,7 +2,7 @@
 
 #include <string>
 #include <ostream>
-#include "Form.hpp"
+#include "AForm.hpp"
 
 class Bureaucrat {
 private:
@@ -27,7 +27,9 @@ public:
 	int getGrade() const;
 	void incrementGrade();
 	void decrementGrade();
-	void signForm(Form&);
+	// Form operations
+	void signForm(AForm&);
+	void executeForm(AForm const&);
 };
 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& b);
