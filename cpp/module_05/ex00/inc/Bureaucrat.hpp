@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <ostream>
+#include <iostream>
 
 class Bureaucrat {
 private:
@@ -24,6 +24,7 @@ public:
 
 	std::string getName() const;
 	int getGrade() const;
+	void setGrade(int grade);
 	void incrementGrade();
 	void decrementGrade();
 };
