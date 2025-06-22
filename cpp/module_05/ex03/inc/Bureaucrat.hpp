@@ -25,6 +25,7 @@ public:
 
 	std::string getName() const;
 	int getGrade() const;
+	void setGrade(int grade);
 	void incrementGrade();
 	void decrementGrade();
 	// Form operations

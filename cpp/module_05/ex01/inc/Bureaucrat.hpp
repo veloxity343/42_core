@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <ostream>
+#include <iostream>
 #include "Form.hpp"
 
 class Bureaucrat {
@@ -25,6 +25,7 @@ public:
 
 	std::string getName() const;
 	int getGrade() const;
+	void setGrade(int grade);
 	void incrementGrade();
 	void decrementGrade();
 	void signForm(Form&);
