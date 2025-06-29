@@ -72,9 +72,8 @@ int main() {
 						std::string choice;
 
 						std::cout << "\n=== Bureaucrat Menu ===\n";
-						std::cout << "[i] Increment Bureaucrat grade\n";
-						std::cout << "[d] Decrement Bureaucrat grade\n";
-						std::cout << "[l] List all forms\n";
+						std::cout << "[p] Promote Bureaucrat\n";
+						std::cout << "[d] Demote Bureaucrat\n";
 						std::cout << "[s] Sign a form\n";
 						std::cout << "[b] Go back to form creation\n";
 						std::cout << "[quit] Quit program\n";
@@ -86,29 +85,29 @@ int main() {
 							return 0;
 						else if (choice == "b")
 							break;
-						else if (choice == "i") {
+						else if (choice == "p") {
 							try {
+								std::cout << "Promoting " << b.getName() << std::endl;
 								b.incrementGrade();
-								std::cout << "Grade incremented. Now: " << b << std::endl;
+								std::cout << "Now: " << b << std::endl;
 							} catch (const std::exception& e) {
 								std::cerr << "Error: " << e.what() << std::endl;
 							}
 						}
 						else if (choice == "d") {
 							try {
+								std::cout << "Demoting " << b.getName() << std::endl;
 								b.decrementGrade();
-								std::cout << "Grade decremented. Now: " << b << std::endl;
+								std::cout << "Now: " << b << std::endl;
 							} catch (const std::exception& e) {
 								std::cerr << "Error: " << e.what() << std::endl;
 							}
 						}
-						else if (choice == "l") {
+						else if (choice == "s") {
 							std::cout << "\n=== List of Forms ===\n";
 							for (size_t i = 0; i < forms.size(); ++i) {
-								std::cout << "[" << i << "] " << forms[i] << std::endl;
+								std::cout << "[" << (i + 1) << "] " << forms[i] << std::endl;
 							}
-						}
-						else if (choice == "s") {
 							if (forms.empty()) {
 								std::cout << "No forms available to sign.\n";
 								continue;
@@ -117,7 +116,7 @@ int main() {
 							std::cout << "Enter form index to sign: ";
 							std::getline(std::cin, indexStr);
 							try {
-								int idx = my_stoi(indexStr);
+								int idx = my_stoi(indexStr) - 1;
 								if (idx < 0 || static_cast<size_t>(idx) >= forms.size()) {
 									std::cout << "Invalid index.\n";
 								} else {
@@ -129,7 +128,7 @@ int main() {
 							}
 						}
 						else {
-							std::cout << "Invalid input. Use 'i', 'd', 'l', 's', 'b', or 'quit'.\n";
+							std::cout << "Invalid input. Use 'p', 'd', 's', 'b', or 'quit'.\n";
 						}
 					}
 				}

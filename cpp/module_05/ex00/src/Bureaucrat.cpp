@@ -10,8 +10,8 @@ Bureaucrat::Bureaucrat(const Bureaucrat& b): name(b.name), grade(b.grade) {
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade): name(name) {
-	std::cout << "Bureaucrat Constructor called for " << name <<
-		" with a grade of " << grade << std::endl;
+	std::cout << "\033[1;32mBureaucrat Constructor called for \033[0m" << name <<
+		"\033[1;32m with a grade of \033[0m" << grade << std::endl;
 	this->setGrade(grade);
 }
 
@@ -24,7 +24,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& b) {
 }
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat Destructor called for " << name << std::endl;
+	std::cout << "\033[1;31mBureaucrat Destructor called for \033[0m" << name << std::endl;
 }
 
 const char* Bureaucrat::GradeTooHighException::what(void) const throw() {
@@ -32,7 +32,7 @@ const char* Bureaucrat::GradeTooHighException::what(void) const throw() {
 }
 
 const char* Bureaucrat::GradeTooLowException::what(void) const throw() {
-	return ("Grade too low");
+	return ("Grade too low"); 
 }
 
 std::string Bureaucrat::getName() const { return (name); }

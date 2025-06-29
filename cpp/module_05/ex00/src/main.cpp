@@ -19,13 +19,12 @@ int main() {
 		int grade;
 
 		std::cout << "\n=== Create a Bureaucrat ===\n";
-		std::cout << "Type 'quit' to exit" << std::endl;
+		std::cout << "Type 'quit' to exit anytime" << std::endl;
 		std::cout << "Enter Bureaucrat name: ";
 		std::getline(std::cin, name);
 		if (name == "quit")
 			break;
 		
-		std::cout << "Type 'quit' to exit" << std::endl;
 		std::cout << "Enter Bureaucrat grade (1-150): ";
 		std::getline(std::cin, gradeInput);
 		if (gradeInput == "quit")
@@ -38,11 +37,11 @@ int main() {
 
 			while (true) {
 				std::string choice;
-				std::cout << "\nWould you like to increment, decrement, or quit? (i/d/quit): ";
+				std::cout << "\nWould you like to promote, demote, go back or quit? (p/d/b/quit): ";
 				std::getline(std::cin, choice);
 
 				try {
-					if (choice == "i") {
+					if (choice == "p") {
 						std::cout << "Promoting " << b.getName() << std::endl;
 						b.incrementGrade();
 						std::cout << "Now: " << b << std::endl;
@@ -52,11 +51,14 @@ int main() {
 						b.decrementGrade();
 						std::cout << "Now: " << b << std::endl;
 					}
-					else if (choice == "quit") {
+					else if (choice == "b") {
 						break;
 					}
+					else if (choice == "quit") {
+						return 0;
+					}
 					else {
-						std::cout << "Invalid input. Type 'i', 'd', or 'quit'." << std::endl;
+						std::cout << "Invalid input. Type 'p', 'd', 'b' or 'quit'." << std::endl;
 					}
 				}
 				catch (const std::exception& e) {

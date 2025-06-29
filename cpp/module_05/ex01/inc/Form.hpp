@@ -29,7 +29,7 @@ public:
 	int 		getGradeToSign() const;
 	int 		getGradeToExec() const;
 	bool		getIsSigned() const;
-	void beSigned(const Bureaucrat&);
+	void		beSigned(const Bureaucrat&);
 };
 
 std::ostream& operator<<(std::ostream&, const Form&);
