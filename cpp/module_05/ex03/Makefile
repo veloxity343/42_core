@@ -56,6 +56,11 @@ fclean:	clean
 	echo "$(RED)Deleting$(RESET)\t"$(NAME); else \
 	echo "$(BLUE)No executable $(NAME) to remove.$(RESET)"; \
 	fi;
+	@if ls *_shrubbery >/dev/null 2>&1; then \
+	echo "$(RED)Deleting$(RESET)\t$$(ls *_shrubbery)"; \
+	$(RM) -f *_shrubbery; else \
+	echo "$(BLUE)No shrubbery files to remove.$(RESET)"; \
+	fi;
 
 re:		fclean all
 

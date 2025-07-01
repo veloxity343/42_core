@@ -1,4 +1,3 @@
-#include <iostream>
 #include "../inc/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(): name("Default"), grade(150) {
