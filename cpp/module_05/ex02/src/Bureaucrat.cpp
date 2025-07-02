@@ -39,16 +39,14 @@ std::string Bureaucrat::getName() const { return (name); }
 
 int Bureaucrat::getGrade() const { return (grade); }
 
-void	Bureaucrat::incrementGrade(void)
-{
+void	Bureaucrat::incrementGrade(void) {
 	if (grade == 1)
 		throw GradeTooHighException();
 	else
 		grade--;
 }
 
-void	Bureaucrat::setGrade(int grade)
-{
+void	Bureaucrat::setGrade(int grade) {
 	if (grade > 150)
 		throw Bureaucrat::GradeTooLowException();
 	else if (grade < 1)
@@ -57,8 +55,7 @@ void	Bureaucrat::setGrade(int grade)
 		this->grade = grade;
 }
 
-void	Bureaucrat::decrementGrade(void)
-{
+void	Bureaucrat::decrementGrade(void) {
 	if (grade == 150)
 		throw GradeTooLowException();
 	else
@@ -70,8 +67,7 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& b) {
 	return (os);
 }
 
-void	Bureaucrat::signForm(AForm& targetform)
-{
+void	Bureaucrat::signForm(AForm& targetform) {
 	if (targetform.getIsSigned() == true) {
 		std::cout << name << " is trying to sign " << targetform.getName() << " but it is already signed\n";
 		return ;
@@ -79,9 +75,7 @@ void	Bureaucrat::signForm(AForm& targetform)
 	try {
 		targetform.beSigned(*this);
 		std::cout << name << " signed " << targetform.getName() << std::endl;
-	}
-	catch (std::exception& e)
-	{
+	} catch (std::exception& e) {
 		std::cout << name << " couldn't sign " << targetform.getName() << " because " << e.what() << std::endl;
 	}
 }
@@ -91,8 +85,7 @@ void	Bureaucrat::executeForm(AForm const& form)
 	try {
 		form.execute(*this);
 		std::cout << name << " executed " << form.getName() << std::endl;
-	}
-	catch (std::exception& e) {
+	} catch (std::exception& e) {
 		std::cout << name << " couldn't execute " <<  form.getName() << " because " << e.what() << std::endl;
 	}
 }

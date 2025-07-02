@@ -7,7 +7,6 @@ private:
 	const std::string target;
 	void executeForm() const;
 public:
-	//constructors, destructors and assignment overload
 	ShrubberyCreationForm();
 	ShrubberyCreationForm(const ShrubberyCreationForm&);
 	ShrubberyCreationForm(std::string);

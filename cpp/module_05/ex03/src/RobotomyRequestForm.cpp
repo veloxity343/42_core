@@ -11,8 +11,7 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& robo):
 RobotomyRequestForm::RobotomyRequestForm(std::string tg):
 	AForm("Robotomy Request Form", 72, 45), target(tg) {}
 
-RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& rhs)
-{
+RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& rhs) {
 	if (&rhs != this)
 		AForm::operator=(rhs);
 	return (*this);
@@ -20,8 +19,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& r
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
-void RobotomyRequestForm::executeForm() const
-{
+void RobotomyRequestForm::executeForm() const {
 	int outcome;
 
 	std::cout << "WRRRRR BZZZZTTTT~~\n";

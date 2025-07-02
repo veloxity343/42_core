@@ -6,10 +6,9 @@
 
 Intern::Intern() {}
 
-Intern::Intern(const Intern& i) { *this = i; } //intern has no members to copy
+Intern::Intern(const Intern& i) { *this = i; }
 
-Intern& Intern::operator=(const Intern& rhs)
-{
+Intern& Intern::operator=(const Intern& rhs) {
 	(void)rhs;
 	return (*this);
 }
@@ -20,8 +19,7 @@ const char* Intern::InvalidFormException::what() const throw() {
 	return ("Form name doesn't exist.");
 }
 
-AForm *Intern::makeForm(std::string formtype, std::string target)
-{
+AForm *Intern::makeForm(std::string formtype, std::string target) {
 	AForm* newform;
 	const std::string forms[3] = {"Shrubbery Creation Form", "Robotomy Request Form", "Presidential Pardon Form"};
 	size_t i;

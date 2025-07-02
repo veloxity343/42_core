@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <ostream>
+#include <iostream>
 
 class Bureaucrat;
 
@@ -9,12 +9,11 @@ class Form {
 private:
 	const std::string name;
 	const int grade_to_sign;
-	const int grade_to_exec;
 	bool is_signed;
 public:
 	Form();
 	Form(const Form&);
-	Form(std::string, int, int);
+	Form(std::string, int);
 	Form& operator=(const Form&);
 	~Form();
 
@@ -27,7 +26,6 @@ public:
 
 	std::string	getName() const;
 	int 		getGradeToSign() const;
-	int 		getGradeToExec() const;
 	bool		getIsSigned() const;
 	void		beSigned(const Bureaucrat&);
 };

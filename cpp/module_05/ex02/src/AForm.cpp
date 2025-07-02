@@ -3,7 +3,6 @@
 
 AForm::AForm(): name("blank form"), grade_to_sign(150), grade_to_exec(150), is_signed(false) {}
 
-// don't copy is_signed because a new form should be not signed yet
 AForm::AForm(const AForm& f):
 	name(f.name),
 	grade_to_sign(f.grade_to_sign),
@@ -14,17 +13,14 @@ AForm::AForm(std::string n, int tosign, int toexec):
 	name(n),
 	grade_to_sign(tosign),
 	grade_to_exec(toexec),
-	is_signed(false)
-{
+	is_signed(false) {
 	if (grade_to_sign <= 0 || grade_to_exec <= 0)
 		throw GradeTooHighException();
 	else if (grade_to_sign >= 151 || grade_to_exec >= 151)
 		throw GradeTooLowException();
 }
 
-//only copy the signed status as the others are const
-AForm& AForm::operator=(const AForm& rhs)
-{
+AForm& AForm::operator=(const AForm& rhs) {
 	if (&rhs != this)
 		is_signed = rhs.is_signed;
 	return (*this);
@@ -52,16 +48,14 @@ int AForm::getGradeToExec() const { return (grade_to_exec); }
 
 bool AForm::getIsSigned() const { return (is_signed); }
 
-void AForm::beSigned(const Bureaucrat& bureau)
-{
+void AForm::beSigned(const Bureaucrat& bureau) {
 	if (bureau.getGrade() > grade_to_sign)
 		throw GradeTooLowException();
 	else
 		is_signed = true;
 }
 
-void AForm::execute(Bureaucrat const& executor) const
-{
+void AForm::execute(Bureaucrat const& executor) const {
 	if (getIsSigned() == false)
 		throw NotSignedException();
 	if (executor.getGrade() > getGradeToExec())
@@ -69,8 +63,7 @@ void AForm::execute(Bureaucrat const& executor) const
 	executeForm();
 }
 
-std::ostream& operator<<(std::ostream& os, const AForm& f)
-{
+std::ostream& operator<<(std::ostream& os, const AForm& f) {
 	os << f.getName()
 		<< ", Grade to sign: " << f.getGradeToSign()
 		<< " | Grade to execute: " << f.getGradeToExec()

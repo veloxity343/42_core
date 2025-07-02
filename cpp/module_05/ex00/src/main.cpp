@@ -45,19 +45,15 @@ int main() {
 						std::cout << "Promoting " << b.getName() << std::endl;
 						b.incrementGrade();
 						std::cout << "Now: " << b << std::endl;
-					}
-					else if (choice == "d") {
+					} else if (choice == "d") {
 						std::cout << "Demoting " << b.getName() << std::endl;
 						b.decrementGrade();
 						std::cout << "Now: " << b << std::endl;
-					}
-					else if (choice == "b") {
+					} else if (choice == "b") {
 						break;
-					}
-					else if (choice == "q") {
+					} else if (choice == "q") {
 						return 0;
-					}
-					else {
+					} else {
 						std::cout << "Invalid input. Type 'p', 'd', 'b' or 'q'." << std::endl;
 					}
 				}

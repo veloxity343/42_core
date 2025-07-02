@@ -39,8 +39,8 @@ int main() {
 			std::vector<Form> forms;
 
 			while (true) {
-				std::string fname, signGradeStr, execGradeStr;
-				int signGrade, execGrade;
+				std::string fname, signGradeStr;
+				int signGrade;
 
 				std::cout << "\n=== Create a Form ===\n";
 				std::cout << "(Type 'b' to go back to bureaucrat creation)\n";
@@ -55,16 +55,10 @@ int main() {
 				if (signGradeStr == "b")
 					break;
 
-				std::cout << "Enter grade required to execute: ";
-				std::getline(std::cin, execGradeStr);
-				if (execGradeStr == "b")
-					break;
-
 				try {
 					signGrade = my_stoi(signGradeStr);
-					execGrade = my_stoi(execGradeStr);
 
-					Form f(fname, signGrade, execGrade);
+					Form f(fname, signGrade);
 					std::cout << "\nCreated Form: " << f << std::endl;
 					forms.push_back(f);
 
@@ -93,8 +87,7 @@ int main() {
 							} catch (const std::exception& e) {
 								std::cerr << "Error: " << e.what() << std::endl;
 							}
-						}
-						else if (choice == "d") {
+						} else if (choice == "d") {
 							try {
 								std::cout << "Demoting " << b.getName() << std::endl;
 								b.decrementGrade();
@@ -102,8 +95,7 @@ int main() {
 							} catch (const std::exception& e) {
 								std::cerr << "Error: " << e.what() << std::endl;
 							}
-						}
-						else if (choice == "s") {
+						} else if (choice == "s") {
 							std::cout << "\n=== List of Forms ===\n";
 							for (size_t i = 0; i < forms.size(); ++i) {
 								std::cout << "[" << (i + 1) << "] " << forms[i] << std::endl;
@@ -126,23 +118,19 @@ int main() {
 							} catch (...) {
 								std::cout << "Invalid input.\n";
 							}
-						}
-						else {
+						} else {
 							std::cout << "Invalid input. Use 'p', 'd', 's', 'b', or 'q'.\n";
 						}
 					}
-				}
-				catch (const std::exception& e) {
+				} catch (const std::exception& e) {
 					std::cerr << "Error creating form: " << e.what() << std::endl;
 				}
 			}
-		}
-		catch (const std::exception& e) {
+		} catch (const std::exception& e) {
 			std::cerr << "Error creating bureaucrat: " << e.what() << std::endl;
 			std::cout << "Please try again.\n";
 		}
 	}
-
 	std::cout << "\nExiting program. Goodbye.\n";
 	return 0;
 }

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <ostream>
+#include <iostream>
 
 class Bureaucrat;
 
@@ -13,14 +13,12 @@ private:
 	bool is_signed;
 	virtual void	executeForm() const = 0;
 public:
-	//constructors, destructors, and assignment overload
 	AForm();
 	AForm(const AForm&);
 	AForm(std::string, int, int);
 	AForm& operator=(const AForm&);
 	~AForm();
 
-	//exception
 	class GradeTooHighException: public std::exception {
 		const char* what() const throw();
 	};
@@ -31,7 +29,6 @@ public:
 		const char* what() const throw();
 	};
 
-	//getters
 	std::string	getName() const;
 	int 		getGradeToSign() const;
 	int 		getGradeToExec() const;
