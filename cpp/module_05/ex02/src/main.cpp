@@ -27,7 +27,6 @@ int main() {
 		forms.push_back(&robo);
 		forms.push_back(&pres);
 
-		// Create bureaucrats
 		Bureaucrat newbie("Newbie John", 145);
 		Bureaucrat manager("Manager Hans", 40);
 		Bureaucrat smanager("Senior Manager Carrie", 70);
@@ -40,80 +39,97 @@ int main() {
 		bureaucrats.push_back(&boss);
 
 		while (true) {
-			std::string input;
-			std::cout << "\nAvailable Bureaucrats:\n";
-			for (size_t i = 0; i < bureaucrats.size(); ++i)
-				std::cout << "[" << i + 1 << "] " << *bureaucrats[i] << "\n";
-			std::cout << "Select bureaucrat index (or type 'q' to quit): ";
-			std::getline(std::cin, input);
-			if (input == "q")
+			std::string command;
+			std::cout << "\n--- Main Menu ---\n";
+			std::cout << "[1] Sign a form\n";
+			std::cout << "[2] Execute a form\n";
+			std::cout << "[3] Reset all forms\n";
+			std::cout << "[4] List forms\n";
+			std::cout << "[5] List bureaucrats\n";
+			std::cout << "[q] Quit\n";
+			std::cout << "Enter your choice: ";
+			std::getline(std::cin, command);
+
+			if (command == "q")
 				break;
 
-			int b_idx = my_stoi(input) - 1;
-			if (b_idx < 0 || static_cast<size_t>(b_idx) >= bureaucrats.size()) {
-				std::cout << "Invalid index.\n";
-				continue;
-			}
+			if (command == "1" || command == "2") {
+				if (forms.empty()) {
+					std::cout << "No forms available.\n";
+					continue;
+				}
 
-			Bureaucrat& actor = *bureaucrats[b_idx];
-
-			while (true) {
-				std::cout << "\nSelected Bureaucrat: " << actor.getName() << "\n";
-				// std::cout << "\nAvailable Forms:\n";
-				// for (size_t i = 0; i < forms.size(); ++i)
-				// 	std::cout << "[" << i + 1 << "] " << *forms[i];
-				// std::cout << std::endl;
-
-				std::cout << "[s] Sign a form\n";
-				std::cout << "[e] Execute a form\n";
-				std::cout << "[r] Reset all forms\n";
-				std::cout << "[b] Back to Bureaucrat selection\n";
-				std::cout << "[q] Quit program\n";
-				std::cout << "Enter choice: ";
-
+				std::cout << "\nAvailable Bureaucrats:\n";
+				for (size_t i = 0; i < bureaucrats.size(); ++i)
+					std::cout << "[" << i + 1 << "] " << *bureaucrats[i] << "\n";
+				std::cout << "Select bureaucrat index: ";
+				std::string input;
 				std::getline(std::cin, input);
 
-				if (input == "q")
-					return 0;
-				else if (input == "b")
-					break;
-				else if (input == "r") {
-					shrub = ShrubberyCreationForm("home");
-					robo = RobotomyRequestForm("Johnny");
-					pres = PresidentialPardonForm("Bob");
-					std::cout << "Forms have been reset.\n";
-					std::cout << std::endl;
-					for (size_t i = 0; i < forms.size(); ++i)
-						std::cout << "[" << i + 1 << "] " << *forms[i];
+				int b_idx = -1;
+				try {
+					b_idx = my_stoi(input) - 1;
+					if (b_idx < 0 || static_cast<size_t>(b_idx) >= bureaucrats.size()) {
+						std::cout << "Invalid index.\n";
+						continue;
+					}
+				} catch (...) {
+					std::cout << "Invalid input.\n";
+					continue;
 				}
-				else if (input == "s" || input == "e") {
-					std::string indexStr;
-					std::cout << "\nAvailable Forms:\n";
-					for (size_t i = 0; i < forms.size(); ++i)
-						std::cout << "[" << i + 1 << "] " << *forms[i];
-					std::cout << "Enter form index: ";
-					std::getline(std::cin, indexStr);
-					int f_idx = my_stoi(indexStr) - 1;
+				Bureaucrat& actor = *bureaucrats[b_idx];
+
+				std::cout << "\nAvailable Forms:\n";
+				for (size_t i = 0; i < forms.size(); ++i)
+					std::cout << "[" << i + 1 << "] " << *forms[i];
+				std::cout << "Select form index: ";
+				std::getline(std::cin, input);
+
+				int f_idx = -1;
+				try {
+					f_idx = my_stoi(input) - 1;
 					if (f_idx < 0 || static_cast<size_t>(f_idx) >= forms.size()) {
 						std::cout << "Invalid form index.\n";
 						continue;
 					}
-
-					if (input == "s") {
-						actor.signForm(*forms[f_idx]);
-						std::cout << std::endl;
-						for (size_t i = 0; i < forms.size(); ++i)
-							std::cout << "[" << i + 1 << "] " << *forms[i];
-					} else {
-						actor.executeForm(*forms[f_idx]);
-						std::cout << std::endl;
-						for (size_t i = 0; i < forms.size(); ++i)
-							std::cout << "[" << i + 1 << "] " << *forms[i];
-					}
-				}
-				else {
+				} catch (...) {
 					std::cout << "Invalid input.\n";
+					continue;
 				}
+
+				if (command == "1")
+					actor.signForm(*forms[f_idx]);
+				else
+					actor.executeForm(*forms[f_idx]);
+			}
+
+			else if (command == "3") {
+				shrub = ShrubberyCreationForm("home");
+				robo = RobotomyRequestForm("Johnny");
+				pres = PresidentialPardonForm("Bob");
+
+				forms.clear();
+				forms.push_back(&shrub);
+				forms.push_back(&robo);
+				forms.push_back(&pres);
+
+				std::cout << "Forms have been reset.\n";
+			}
+
+			else if (command == "4") {
+				std::cout << "\n--- Forms ---\n";
+				for (size_t i = 0; i < forms.size(); ++i)
+					std::cout << "[" << i + 1 << "] " << *forms[i];
+			}
+
+			else if (command == "5") {
+				std::cout << "\n--- Bureaucrats ---\n";
+				for (size_t i = 0; i < bureaucrats.size(); ++i)
+					std::cout << "[" << i + 1 << "] " << *bureaucrats[i] << "\n";
+			}
+
+			else {
+				std::cout << "Invalid command.\n";
 			}
 		}
 	}
