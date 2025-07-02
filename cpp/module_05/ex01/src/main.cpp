@@ -3,7 +3,7 @@
 #include <sstream>
 #include <vector>
 
-int my_stoi(const std::string& s) {
+static int my_stoi(const std::string& s) {
 	std::istringstream iss(s);
 	int result;
 	char leftover;
@@ -19,16 +19,16 @@ int main() {
 		int grade;
 
 		std::cout << "\n=== Create a Bureaucrat ===\n";
-		std::cout << "(Type 'quit' at any time to exit)\n";
+		std::cout << "(Type 'q' at any time to exit)\n";
 
 		std::cout << "Enter Bureaucrat name: ";
 		std::getline(std::cin, name);
-		if (name == "quit")
+		if (name == "q")
 			break;
 
 		std::cout << "Enter Bureaucrat grade (1-150): ";
 		std::getline(std::cin, gradeInput);
-		if (gradeInput == "quit")
+		if (gradeInput == "q")
 			break;
 
 		try {
@@ -76,12 +76,12 @@ int main() {
 						std::cout << "[d] Demote Bureaucrat\n";
 						std::cout << "[s] Sign a form\n";
 						std::cout << "[b] Go back to form creation\n";
-						std::cout << "[quit] Quit program\n";
+						std::cout << "[q] Quit program\n";
 						std::cout << "Enter choice: ";
 
 						std::getline(std::cin, choice);
 
-						if (choice == "quit")
+						if (choice == "q")
 							return 0;
 						else if (choice == "b")
 							break;
@@ -128,7 +128,7 @@ int main() {
 							}
 						}
 						else {
-							std::cout << "Invalid input. Use 'p', 'd', 's', 'b', or 'quit'.\n";
+							std::cout << "Invalid input. Use 'p', 'd', 's', 'b', or 'q'.\n";
 						}
 					}
 				}

@@ -3,10 +3,21 @@
 #include "../inc/RobotomyRequestForm.hpp"
 #include "../inc/PresidentialPardonForm.hpp"
 #include <iostream>
+#include <sstream>
+
+static int my_stoi(const std::string& s) {
+	std::istringstream iss(s);
+	int result;
+	char leftover;
+
+	if (!(iss >> result) || (iss >> leftover)) {
+		throw std::invalid_argument("Invalid input for integer conversion");
+	}
+	return result;
+}
 
 int main() {
 	try {
-		// Create initial form objects
 		ShrubberyCreationForm shrub("home");
 		RobotomyRequestForm robo("Johnny");
 		PresidentialPardonForm pres("Bob");
@@ -38,7 +49,7 @@ int main() {
 			if (input == "q")
 				break;
 
-			int b_idx = std::atoi(input.c_str()) - 1;
+			int b_idx = my_stoi(input) - 1;
 			if (b_idx < 0 || static_cast<size_t>(b_idx) >= bureaucrats.size()) {
 				std::cout << "Invalid index.\n";
 				continue;
@@ -82,7 +93,7 @@ int main() {
 						std::cout << "[" << i + 1 << "] " << *forms[i];
 					std::cout << "Enter form index: ";
 					std::getline(std::cin, indexStr);
-					int f_idx = std::atoi(indexStr.c_str()) - 1;
+					int f_idx = my_stoi(indexStr) - 1;
 					if (f_idx < 0 || static_cast<size_t>(f_idx) >= forms.size()) {
 						std::cout << "Invalid form index.\n";
 						continue;

@@ -66,6 +66,7 @@ re:		fclean all
 
 test: re
 	@echo "$(YELLOW)Testing...$(RESET)"
+	@clear
 	./$(NAME)
 
 # Debugging

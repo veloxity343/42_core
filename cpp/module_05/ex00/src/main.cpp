@@ -1,7 +1,7 @@
 #include "../inc/Bureaucrat.hpp"
 #include <sstream>
 
-int ft_stoi(const std::string& s) {
+static int my_stoi(const std::string& s) {
 	std::istringstream iss(s);
 	int result;
 	char leftover;
@@ -19,25 +19,25 @@ int main() {
 		int grade;
 
 		std::cout << "\n=== Create a Bureaucrat ===\n";
-		std::cout << "Type 'quit' to exit anytime" << std::endl;
+		std::cout << "Type 'q' to exit anytime" << std::endl;
 		std::cout << "Enter Bureaucrat name: ";
 		std::getline(std::cin, name);
-		if (name == "quit")
+		if (name == "q")
 			break;
 		
 		std::cout << "Enter Bureaucrat grade (1-150): ";
 		std::getline(std::cin, gradeInput);
-		if (gradeInput == "quit")
+		if (gradeInput == "q")
 			break;
 
 		try {
-			grade = ft_stoi(gradeInput);
+			grade = my_stoi(gradeInput);
 			Bureaucrat b(name, grade);
 			std::cout << "Created: " << b << std::endl;
 
 			while (true) {
 				std::string choice;
-				std::cout << "\nWould you like to promote, demote, go back or quit? (p/d/b/quit): ";
+				std::cout << "\nWould you like to promote, demote, go back or quit? (p/d/b/q): ";
 				std::getline(std::cin, choice);
 
 				try {
@@ -54,11 +54,11 @@ int main() {
 					else if (choice == "b") {
 						break;
 					}
-					else if (choice == "quit") {
+					else if (choice == "q") {
 						return 0;
 					}
 					else {
-						std::cout << "Invalid input. Type 'p', 'd', 'b' or 'quit'." << std::endl;
+						std::cout << "Invalid input. Type 'p', 'd', 'b' or 'q'." << std::endl;
 					}
 				}
 				catch (const std::exception& e) {
