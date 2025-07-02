@@ -4,6 +4,7 @@
 #include "../inc/PresidentialPardonForm.hpp"
 #include <iostream>
 #include <sstream>
+#include <vector>
 
 static int my_stoi(const std::string& s) {
 	std::istringstream iss(s);
