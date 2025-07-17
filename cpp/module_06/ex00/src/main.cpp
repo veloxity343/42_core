@@ -13,16 +13,12 @@ int main() {
 			break;
 
 		try {
-			ScalarConverter converter(input);
-		}
-		catch (const ScalarConverter::ErrorException& e) {
-			std::cerr << "Conversion error: " << e.what() << std::endl;
+			ScalarConverter::Convert(input);
 		}
 		catch (const std::exception& e) {
-			std::cerr << "Unexpected error: " << e.what() << std::endl;
+			std::cerr << "Conversion error: " << e.what() << std::endl;
 		}
 	}
-
-	std::cout << "Exiting ScalarConverter. Goodbye!" << std::endl;
+	std::cout << "\nExiting converter. Goodbye!" << std::endl;
 	return 0;
 }

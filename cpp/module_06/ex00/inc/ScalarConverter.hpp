@@ -9,40 +9,26 @@
 #include <cmath>
 #include <limits>
 
+#define SCALAR_PRECISION 1
+
 class ScalarConverter {
 private:
-	std::string _input;
-
-public:
 	ScalarConverter();
-	ScalarConverter(const std::string& input);
-	ScalarConverter(const ScalarConverter& src);
-	ScalarConverter& operator=(const ScalarConverter& src);
+	ScalarConverter(const ScalarConverter&);
+	ScalarConverter& operator=(const ScalarConverter&);
 	~ScalarConverter();
 
-	void detectType(const std::string& literal);
+	static bool isChar(const std::string& lit);
+	static bool isInt(const std::string& lit);
+	static bool isFloat(const std::string& lit);
+	static bool isDouble(const std::string& lit);
+	static bool isPseudoLit(const std::string& lit);
 
-private:
-	bool is_char(const std::string& literal);
-	bool is_int(const std::string& literal);
-	bool is_float(const std::string& literal);
-	bool is_double(const std::string& literal);
-	bool handle_pseudo_literals(const std::string& literal);
+	static void toChar(const std::string& literal);
+	static void toInt(const std::string& literal);
+	static void toFloat(const std::string& literal);
+	static void toDouble(const std::string& literal);
 
-	void literal_to_char(const std::string& literal);
-	void literal_to_int(const std::string& literal);
-	void literal_to_float(const std::string& literal);
-	void literal_to_double(const std::string& literal);
-
-    public:
-        class ErrorException : public std::exception {
-        private:
-            std::string _message;
-        public:
-            ErrorException(const std::string& message) : _message(message) {}
-            virtual ~ErrorException() throw() {}
-            virtual const char* what() const throw() {
-                return _message.c_str();
-            }
-        };
+public:
+	static void Convert(const std::string& lit);
 };

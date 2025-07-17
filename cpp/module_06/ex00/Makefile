@@ -1,5 +1,5 @@
 # Standard
-NAME	=	converter
+NAME	=	convert
 
 # Directories
 INC		=	inc/
