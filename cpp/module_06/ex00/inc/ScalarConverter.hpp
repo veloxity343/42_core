@@ -30,5 +30,5 @@ private:
 	static void toDouble(const std::string& literal);
 
 public:
-	static void Convert(const std::string& lit);
+	static void convert(const std::string& lit);
 };

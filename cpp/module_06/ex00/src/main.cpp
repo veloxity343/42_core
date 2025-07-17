@@ -1,4 +1,4 @@
-#include "ScalarConverter.hpp"
+#include "../inc/ScalarConverter.hpp"
 
 int main() {
 	std::string input;
@@ -13,7 +13,7 @@ int main() {
 			break;
 
 		try {
-			ScalarConverter::Convert(input);
+			ScalarConverter::convert(input);
 		}
 		catch (const std::exception& e) {
 			std::cerr << "Conversion error: " << e.what() << std::endl;

@@ -88,7 +88,7 @@ bool ScalarConverter::isPseudoLit(const std::string& lit) {
 	return false;
 }
 
-void ScalarConverter::Convert(const std::string& lit) {
+void ScalarConverter::convert(const std::string& lit) {
 	if (isPseudoLit(lit))
 		return;
 
