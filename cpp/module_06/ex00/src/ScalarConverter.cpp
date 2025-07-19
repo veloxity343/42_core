@@ -142,7 +142,7 @@ void ScalarConverter::toDouble(const std::string& lit) {
 
 void ScalarConverter::Print(double val) {
 	std::cout << "char: ";
-	if (std::isnan(val) || val < 0 || val > 127)
+	if (std::isnan(val) || val < 0 || val > 127 || std::floor(val) != val)
 		std::cout << "impossible" << std::endl;
 	else if (val < 32 || val == 127)
 		std::cout << "Non-displayable" << std::endl;
