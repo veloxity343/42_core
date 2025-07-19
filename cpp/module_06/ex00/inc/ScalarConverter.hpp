@@ -29,6 +29,8 @@ private:
 	static void toFloat(const std::string& literal);
 	static void toDouble(const std::string& literal);
 
+	static void Print(double val);
+
 public:
 	static void convert(const std::string& lit);
 };
