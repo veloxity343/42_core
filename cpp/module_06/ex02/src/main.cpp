@@ -5,6 +5,7 @@
 
 #include <cstdlib>
 #include <cstdio>
+#include <typeinfo>
 
 static Base *generate(void) {
 	switch (rand() % 3) {
