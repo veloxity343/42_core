@@ -8,6 +8,6 @@ template <typename T> typename T::iterator easyfind(T &cont, int n) {
 
 	it = std::find(cont.begin(), cont.end(), n);
 	if (it == cont.end())
-		throw NotFoundExeption();
+		throw NotFoundException();
 	return (it);
 }

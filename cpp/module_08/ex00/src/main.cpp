@@ -1,86 +1,98 @@
 #include <vector>
 #include <list>
 #include <deque>
+#include <limits>
 #include "../inc/easyfind.hpp"
 
-int main()
-{
-	std::cout << "\033[1;36m\n-----------------------\n\033[0m";
-	std::cout << "\033[1;36m\nExecuting Test for ex00\n\033[0m";
-	std::cout << "\033[1;36m\n-----------------------\n\033[0m";
 
-	std::cout << "\033[33m\nTest for vector container (elements 0 - 9)\n\033[0m";
+void printMenu() {
+	std::cout << "\n=== Container Selection Menu ===\n";
+	std::cout << "[1] Vector\n";
+	std::cout << "[2] List\n";
+	std::cout << "[3] Deque\n";
+	std::cout << "[0] Exit\n";
+	std::cout << "Select a container type: ";
+}
 
-	std::vector<int> v;
+int getInput(const std::string &prompt) {
+	int val;
+	while (true) {
+		std::cout << prompt;
+		if (std::cin >> val)
+			return val;
+		std::cout << "Invalid input. Please enter an integer.\n";
+		std::cin.clear();
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	}
+}
 
-	for (int i = 0; i < 10; i++) {
-		v.push_back(i);
+template <typename T>
+void runContainerTest(const std::string &containerName) {
+	int size = getInput("Enter number of elements: ");
+	if (size < 0) {
+		std::cout << "Size cannot be negative. Returning to menu.\n";
+		return;
 	}
 
-	std::cout << "\033[34m\nFinding 5 within container\n\033[0m";
+	T container;
+	for (int i = 0; i < size; ++i)
+		container.push_back(i);
 
-	try {
-		std::cout << *easyfind(v, 5) << std::endl;
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+	std::cout << containerName << " contents: ";
+	for (typename T::iterator it = container.begin(); it != container.end(); ++it)
+		std::cout << *it << ' ';
+	std::cout << '\n';
+
+	while (true) {
+		std::cout << "\n=== Easyfind Menu ===\n";
+		std::cout << "[1] Find a number\n";
+		std::cout << "[0] Back to main menu\n";
+
+		int choice = getInput("Select an option: ");
+		switch (choice) {
+			case 0:
+				return;
+			case 1: {
+				int target = getInput("Enter number to find: ");
+				try {
+					typename T::iterator found = easyfind(container, target);
+					std::cout << "Found: " << *found << '\n';
+				} catch (const std::exception &e) {
+					std::cout << e.what() << '\n';
+				}
+				break;
+			}
+			default:
+				std::cout << "Invalid option. Try again.\n";
+				break;
+		}
 	}
+}
 
-	std::cout << "\033[34m\nFinding 20 within container\n\033[0m";
-
-	try {
-		std::cout << *easyfind(v, 20) << std::endl;
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+int main() {
+	while (true) {
+		printMenu();
+		int choice = getInput("");
+		switch (choice) {
+			case 1: {
+				runContainerTest<std::vector<int> >("Vector");
+				break;
+			}
+			case 2: {
+				runContainerTest<std::list<int> >("List");
+				break;
+			}
+			case 3: {
+				runContainerTest<std::deque<int> >("Deque");
+				break;
+			}
+			case 0: {
+				std::cout << "Goodbye!\n";
+				return 0;
+			}
+			default:
+				std::cout << "Invalid option. Try again.\n";
+				continue;
+		}
 	}
-
-
-	std::cout << "\033[33m\nTest for list container (elements 0 - 9)\n\033[0m";
-	
-	std::list<int> l;
-
-	for (int i = 0; i < 10; i++) {
-		l.push_back(i);
-	}
-
-	std::cout << "\033[34m\nFinding 5 within container\n\033[0m";
-
-	try {
-		std::cout << *easyfind(l, 0) << std::endl;
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-
-	std::cout << "\033[34m\nFinding 20 within container\n\033[0m";
-
-	try {
-		std::cout << *easyfind(l, 20) << std::endl;
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-
-	std::cout << "\033[33m\nTest for deque container (elements 0 - 9)\n\033[0m";
-
-	std::deque<int> d;
-
-	for (int i = 0; i < 10; i++) {
-		d.push_back(i);
-	}
-
-	std::cout << "\033[34m\nFinding 5 within container\n\033[0m";
-
-	try {
-		std::cout << *easyfind(d, 5) << std::endl;
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-
-	std::cout << "\033[34m\nFinding 20 within container\n\033[0m";
-
-	try {
-		std::cout << *easyfind(d, 20) << std::endl;
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-	
-	return (0);
 }

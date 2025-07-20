@@ -1,5 +1,5 @@
 # Standard
-NAME	=	array
+NAME	=	easyfind
 
 # Directories
 INC		=	inc/
