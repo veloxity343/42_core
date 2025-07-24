@@ -7,7 +7,6 @@ int main() {
 	std::srand(static_cast<unsigned int>(std::time(NULL)));
 
 	try {
-		std::cout << "=== Test 1: Basic usage ===\n";
 		Span sp(5);
 		sp.addNumber(6);
 		sp.addNumber(3);
@@ -15,28 +14,24 @@ int main() {
 		sp.addNumber(9);
 		sp.addNumber(11);
 
-		std::cout << "Shortest span: " << sp.shortestSpan() << '\n';
-		std::cout << "Longest span: " << sp.longestSpan() << '\n';
+		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
+		std::cout << "Longest span: " << sp.longestSpan() << std::endl;
 
-		std::cout << "\n=== Test 2: Overfilling ===\n";
 		sp.addNumber(42);
 	} catch (const std::exception& e) {
-		std::cerr << "Caught exception: " << e.what() << '\n';
+		std::cerr << "Exception: " << e.what() << std::endl;
 	}
 
 	try {
-		std::cout << "\n=== Test 3: Not enough elements ===\n";
 		Span sp2(2);
 		sp2.addNumber(5);
 		// sp2.addNumber(10);
-		std::cout << "Attempting shortest span...\n";
-		std::cout << "Shortest span: " << sp2.shortestSpan() << '\n';
+		std::cout << "Shortest span: " << sp2.shortestSpan() << std::endl;
 	} catch (const std::exception& e) {
-		std::cerr << "Caught exception: " << e.what() << '\n';
+		std::cerr << "Exception: " << e.what() << std::endl;
 	}
 
 	try {
-		std::cout << "\n=== Test 4: Bulk range add ===\n";
 		unsigned int N = 10000;
 		Span bigSpan(N);
 		std::vector<int> nums;
@@ -45,23 +40,22 @@ int main() {
 
 		bigSpan.addRange(nums.begin(), nums.end());
 
-		std::cout << "Shortest span: " << bigSpan.shortestSpan() << '\n';
-		std::cout << "Longest span: " << bigSpan.longestSpan() << '\n';
+		std::cout << "Shortest span: " << bigSpan.shortestSpan() << std::endl;
+		std::cout << "Longest span: " << bigSpan.longestSpan() << std::endl;
 	} catch (const std::exception& e) {
-		std::cerr << "Caught exception: " << e.what() << '\n';
+		std::cerr << "Exception: " << e.what() << std::endl;
 	}
 
 	try {
-		std::cout << "\n=== Test 5: Range too large ===\n";
 		Span sp3(3);
-		std::vector<int> few;
+		std::deque<int> few;
 		few.push_back(1);
 		few.push_back(2);
 		few.push_back(3);
 		few.push_back(4);
 		sp3.addRange(few.begin(), few.end());
 	} catch (const std::exception& e) {
-		std::cerr << "Caught exception: " << e.what() << '\n';
+		std::cerr << "Exception: " << e.what() << std::endl;
 	}
 
 	return 0;

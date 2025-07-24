@@ -6,7 +6,7 @@
 
 
 void printMenu() {
-	std::cout << "\n=== Container Selection Menu ===\n";
+	std::cout << "\nContainer selection\n";
 	std::cout << "[1] Vector\n";
 	std::cout << "[2] List\n";
 	std::cout << "[3] Deque\n";
@@ -35,7 +35,7 @@ void runContainerTest(const std::string &containerName) {
 	}
 
 	T container;
-	for (int i = 0; i < size; ++i)
+	for (int i = 1; i <= size; ++i)
 		container.push_back(i);
 
 	std::cout << containerName << " contents: ";
@@ -44,7 +44,7 @@ void runContainerTest(const std::string &containerName) {
 	std::cout << '\n';
 
 	while (true) {
-		std::cout << "\n=== Easyfind Menu ===\n";
+		std::cout << "\nEasyfind\n";
 		std::cout << "[1] Find a number\n";
 		std::cout << "[0] Back to main menu\n";
 

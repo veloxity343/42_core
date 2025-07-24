@@ -6,7 +6,7 @@
 class NotFoundException: public std::exception {
 public:
 	virtual const char *what() const throw() {
-		return ("Error: Given number not within the elements of the container\n");
+		return ("Error: Int not found in container\n");
 	}
 };
 

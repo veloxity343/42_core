@@ -3,11 +3,9 @@
 #include <algorithm>
 #include "easyfind.hpp"
 
-template <typename T> typename T::iterator easyfind(T &cont, int n) {
-	typename T::iterator it;
-
-	it = std::find(cont.begin(), cont.end(), n);
-	if (it == cont.end())
+template <typename T> typename T::iterator easyfind(T &container, int n) {
+	typename T::iterator it = std::find(container.begin(), container.end(), n);
+	if (it == container.end())
 		throw NotFoundException();
 	return (it);
 }
