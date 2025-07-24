@@ -1,5 +1,5 @@
 # Standard
-NAME	=	array
+NAME	=	span
 
 # Directories
 INC		=	inc/
