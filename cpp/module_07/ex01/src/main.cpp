@@ -17,18 +17,18 @@ void toUpper(char& c) {
 }
 
 int main() {
-	std::cout << "=== Integer Test ===" << std::endl;
+	std::cout << "Integer Test" << std::endl;
 	int intArr[] = {1, 2, 3, 4, 5};
 	::iter(intArr, 5, print<int>);
 	std::cout << std::endl;
 	::iter(intArr, 5, doubleValue<int>);
 	::iter(intArr, 5, print<int>);
 
-	std::cout << "\n=== String Test ===" << std::endl;
+	std::cout << "\nString Test" << std::endl;
 	std::string strArr[] = {"apple", "banana", "cherry"};
 	::iter(strArr, 3, print<std::string>);
 
-	std::cout << "\n=== Char Test ===" << std::endl;
+	std::cout << "\nChar Test" << std::endl;
 	char charArr[] = {'a', 'b', 'c', 'd'};
     ::iter(charArr, 4, print<char>);
 	std::cout << std::endl;
