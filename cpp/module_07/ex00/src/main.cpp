@@ -41,7 +41,7 @@ void handleInput(const std::string& typeName) {
 	std::string extra;
 
 	if (!(iss >> a >> b) || (iss >> extra)) {
-		std::cout << "Invalid input. Please enter exactly two " << typeName << "s.\n";
+		std::cout << "Invalid input. Please enter exactly two " << typeName << "s." << std::endl;
 		return;
 	}
 
@@ -70,7 +70,7 @@ int main() {
 		if (!(std::cin >> choice)) {
 			std::cin.clear();
 			std::cin.ignore(10000, '\n');
-			std::cout << "Invalid input. Try again.\n";
+			std::cout << "Invalid input. Try again." << std::endl;
 			continue;
 		}
 
@@ -78,7 +78,7 @@ int main() {
 
 		switch (choice) {
 			case 0:
-				std::cout << "Goodbye!\n";
+				std::cout << "Goodbye!" << std::endl;
 				return 0;
 			case 1:
 				handleInput<int>("int");
@@ -93,7 +93,7 @@ int main() {
 				handleInput<std::string>("string");
 				break;
 			default:
-				std::cout << "Invalid option. Try again.\n";
+				std::cout << "Invalid option. Try again." << std::endl;
 		}
 	}
 }

@@ -4,15 +4,15 @@
 #include "../inc/MutantStack.hpp"
 
 // void testMutantStack() {
-// 	std::cout << "MutantStack Test\n";
+// 	std::cout << "MutantStack Test" << std::endl;
 // 	MutantStack<int> mstack;
 
 // 	mstack.push(5);
 // 	mstack.push(17);
-// 	std::cout << "Top: " << mstack.top() << "\n";
-// 	std::cout << "Size: " << mstack.size() << "\n";
+// 	std::cout << "Top: " << mstack.top() << "" << std::endl;
+// 	std::cout << "Size: " << mstack.size() << "" << std::endl;
 // 	mstack.pop();
-// 	std::cout << "Size after pop: " << mstack.size() << "\n";
+// 	std::cout << "Size after pop: " << mstack.size() << "" << std::endl;
 
 // 	mstack.push(3);
 // 	mstack.push(5);
@@ -20,19 +20,19 @@
 // 	mstack.push(0);
 
 // 	for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); ++it)
-// 		std::cout << *it << "\n";
+// 		std::cout << *it << "" << std::endl;
 // }
 
 // void testList() {
-// 	std::cout << "std::list Test\n";
+// 	std::cout << "std::list Test" << std::endl;
 // 	std::list<int> lst;
 
 // 	lst.push_back(5);
 // 	lst.push_back(17);
-// 	std::cout << "Back: " << lst.back() << "\n";
-// 	std::cout << "Size: " << lst.size() << "\n";
+// 	std::cout << "Back: " << lst.back() << "" << std::endl;
+// 	std::cout << "Size: " << lst.size() << "" << std::endl;
 // 	lst.pop_back();
-// 	std::cout << "Size after pop: " << lst.size() << "\n";
+// 	std::cout << "Size after pop: " << lst.size() << "" << std::endl;
 
 // 	lst.push_back(3);
 // 	lst.push_back(5);
@@ -40,7 +40,7 @@
 // 	lst.push_back(0);
 
 // 	for (std::list<int>::iterator it = lst.begin(); it != lst.end(); ++it)
-// 		std::cout << *it << "\n";
+// 		std::cout << *it << "" << std::endl;
 // }
 
 // int main() {
@@ -84,7 +84,7 @@ int main() {
 		if (std::cin.fail()) {
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			std::cout << "Invalid input.\n";
+			std::cout << "Invalid input." << std::endl;
 			continue;
 		}
 
@@ -95,21 +95,21 @@ int main() {
 				if (std::cin.fail()) {
 					std::cin.clear();
 					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-					std::cout << "Invalid input.\n";
+					std::cout << "Invalid input." << std::endl;
 					continue;
 				}
 				mstack.push(value);
 				lst.push_back(value);
-				std::cout << "Value pushed.\n";
+				std::cout << "Value pushed." << std::endl;
 				break;
 
 			case 2:
 				if (!mstack.empty() && !lst.empty()) {
 					mstack.pop();
 					lst.pop_back();
-					std::cout << "Top/back popped.\n";
+					std::cout << "Top/back popped." << std::endl;
 				} else {
-					std::cout << "Both containers are empty.\n";
+					std::cout << "Both containers are empty." << std::endl;
 				}
 				break;
 
@@ -118,7 +118,7 @@ int main() {
 					std::cout << "MutantStack top:	" << mstack.top() << std::endl;
 					std::cout << "List back:		" << lst.back() << std::endl;
 				} else {
-					std::cout << "Both containers are empty.\n";
+					std::cout << "Both containers are empty." << std::endl;
 				}
 				break;
 
@@ -132,11 +132,11 @@ int main() {
 				break;
 
 			case 6:
-				std::cout << "Goodbye!\n";
+				std::cout << "Goodbye!" << std::endl;
 				return 0;
 
 			default:
-				std::cout << "Invalid choice.\n";
+				std::cout << "Invalid choice." << std::endl;
 				break;
 		}
 	}

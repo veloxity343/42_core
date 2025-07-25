@@ -6,11 +6,11 @@
 
 
 void printMenu() {
-	std::cout << "\nContainer selection\n";
-	std::cout << "[1] Vector\n";
-	std::cout << "[2] List\n";
-	std::cout << "[3] Deque\n";
-	std::cout << "[0] Exit\n";
+	std::cout << "\nContainer selection" << std::endl;
+	std::cout << "[1] Vector" << std::endl;
+	std::cout << "[2] List" << std::endl;
+	std::cout << "[3] Deque" << std::endl;
+	std::cout << "[0] Exit" << std::endl;
 	std::cout << "Select a container type: ";
 }
 
@@ -20,7 +20,7 @@ int getInput(const std::string &prompt) {
 		std::cout << prompt;
 		if (std::cin >> val)
 			return val;
-		std::cout << "Invalid input. Please enter an integer.\n";
+		std::cout << "Invalid input. Please enter an integer." << std::endl;
 		std::cin.clear();
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
@@ -30,7 +30,7 @@ template <typename T>
 void runContainerTest(const std::string &containerName) {
 	int size = getInput("Enter number of elements: ");
 	if (size < 0) {
-		std::cout << "Size cannot be negative. Returning to menu.\n";
+		std::cout << "Size cannot be negative. Returning to menu." << std::endl;
 		return;
 	}
 
@@ -44,9 +44,9 @@ void runContainerTest(const std::string &containerName) {
 	std::cout << '\n';
 
 	while (true) {
-		std::cout << "\nEasyfind\n";
-		std::cout << "[1] Find a number\n";
-		std::cout << "[0] Back to main menu\n";
+		std::cout << "\nEasyfind" << std::endl;
+		std::cout << "[1] Find a number" << std::endl;
+		std::cout << "[0] Back to main menu" << std::endl;
 
 		int choice = getInput("Select an option: ");
 		switch (choice) {
@@ -63,7 +63,7 @@ void runContainerTest(const std::string &containerName) {
 				break;
 			}
 			default:
-				std::cout << "Invalid option. Try again.\n";
+				std::cout << "Invalid option. Try again." << std::endl;
 				break;
 		}
 	}
@@ -87,11 +87,11 @@ int main() {
 				break;
 			}
 			case 0: {
-				std::cout << "Goodbye!\n";
+				std::cout << "Goodbye!" << std::endl;
 				return 0;
 			}
 			default:
-				std::cout << "Invalid option. Try again.\n";
+				std::cout << "Invalid option. Try again." << std::endl;
 				continue;
 		}
 	}
