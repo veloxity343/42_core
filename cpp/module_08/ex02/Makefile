@@ -1,5 +1,5 @@
 # Standard
-NAME	=	array
+NAME	=	mutantstack
 
 # Directories
 INC		=	inc/
