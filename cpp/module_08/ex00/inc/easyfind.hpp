@@ -1,7 +1,11 @@
-#pragma once
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 
-#include <exception>
-#include <iostream>
+# include <vector>
+# include <list>
+# include <deque>
+# include <exception>
+# include <iostream>
 
 class NotFoundException: public std::exception {
 public:
@@ -10,4 +14,6 @@ public:
 	}
 };
 
-#include "easyfind.tpp"
+# include "easyfind.tpp"
+
+#endif

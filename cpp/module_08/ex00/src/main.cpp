@@ -1,9 +1,5 @@
-#include <vector>
-#include <list>
-#include <deque>
 #include <limits>
 #include "../inc/easyfind.hpp"
-
 
 void printMenu() {
 	std::cout << "\nContainer selection" << std::endl;

@@ -1,5 +1,3 @@
-#pragma once
-
 #include "MutantStack.hpp"
 
 template <typename T>

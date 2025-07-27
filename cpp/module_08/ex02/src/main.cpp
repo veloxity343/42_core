@@ -57,7 +57,7 @@ void printMenu() {
 			  << "[3] View top/back\n"
 			  << "[4] View size\n"
 			  << "[5] Print all elements\n"
-			  << "[6] Exit\n"
+			  << "[0] Exit\n"
 			  << "Enter choice: ";
 }
 
@@ -131,7 +131,7 @@ int main() {
 				printContainers(mstack, lst);
 				break;
 
-			case 6:
+			case 0:
 				std::cout << "Goodbye!" << std::endl;
 				return 0;
 

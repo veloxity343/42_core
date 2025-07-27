@@ -1,10 +1,13 @@
-#pragma once
+#ifndef SPAN_HPP
+# define SPAN_HPP
 
-#include <vector>
-#include <exception>
-#include <algorithm>
-#include <iterator>
-#include <limits>
+# include <vector>
+# include <list>
+# include <deque>
+# include <exception>
+# include <algorithm>
+# include <iterator>
+# include <limits>
 
 class Span {
 public:
@@ -46,3 +49,5 @@ void Span::addRange(InputIterator begin, InputIterator end) {
 		throw RangeException();
 	_storage.insert(_storage.end(), begin, end);
 }
+
+#endif

@@ -1,6 +1,7 @@
-#pragma once
+#ifndef MUTANTSTACK_HPP
+# define MUTANTSTACK_HPP
 
-#include <stack>
+# include <stack>
 
 template <typename T>
 class MutantStack;
@@ -29,4 +30,6 @@ public:
 	const_reverse_iterator rend() const;
 };
 
-#include "MutantStack.tpp"
+# include "MutantStack.tpp"
+
+#endif
