@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <sstream>
-#include <vector>
 #include <ctime>
 #include <sys/time.h>
 #include "PmergeMe.hpp"
