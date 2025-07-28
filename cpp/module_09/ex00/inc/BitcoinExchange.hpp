@@ -1,10 +1,10 @@
 #ifndef BTC_HPP
-#define BTC_HPP
+# define BTC_HPP
 
-#include <iostream>
-#include <map>
+# include <iostream>
+# include <map>
 
-#define WHITESPACES " \t\n\r\v\f"
+# define WHITESPACES " \t\n\r\v\f"
 
 class BitcoinExchange {
 private:
