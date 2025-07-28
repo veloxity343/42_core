@@ -4,27 +4,29 @@
 # include <iostream>
 # include <map>
 
+typedef std::string Str;
+
 class BitcoinExchange {
 private:
-	std::map<std::string, double> _db;
+	std::map<Str, double> _db;
 
-	bool isValidDate(const std::string& s) const;
-	bool parseLine(const std::string& line, const std::string& delim,
-				   std::string& dateOut, std::string& valueStrOut) const;
-	bool validEntry(const std::string& date, const std::string& valueStr,
-							std::pair<std::string, double>& out) const;
-	void printError(const std::string& msg, const std::string& context) const;
+	bool isValidDate(const Str& s) const;
+	bool parseLine(const Str& line, const Str& delim,
+				   Str& dateOut, Str& valueStrOut) const;
+	bool validEntry(const Str& date, const Str& valueStr,
+							std::pair<Str, double>& out) const;
+	void printError(const Str& msg, const Str& context) const;
 public:
 	BitcoinExchange();
 	BitcoinExchange(const BitcoinExchange& other);
 	BitcoinExchange& operator=(const BitcoinExchange& other);
 	~BitcoinExchange();
 	
-	void loadDB(const std::string& path);
-	void checkInput(const std::string& path);
+	void loadDB(const Str& path);
+	void checkInput(const Str& path);
 	void printDB() const;
-	bool parseToPair(std::pair<std::string, double>& p, const std::string& line, const std::string& delim);
-	void matchDB(const std::pair<std::string, double>& p) const;
+	bool parseToPair(std::pair<Str, double>& p, const Str& line, const Str& delim);
+	void matchDB(const std::pair<Str, double>& p) const;
 };
 
 #endif

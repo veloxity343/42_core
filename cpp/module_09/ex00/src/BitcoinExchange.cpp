@@ -22,14 +22,14 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other) {
 
 BitcoinExchange::~BitcoinExchange() {}
 
-void BitcoinExchange::loadDB(const std::string& path) {
+void BitcoinExchange::loadDB(const Str& path) {
 	std::ifstream inFile(path.c_str());
 	if (!inFile)
 		throw std::runtime_error("Error: Failed to open csv file");
 
-	std::string line;
+	Str line;
 	std::getline(inFile, line);
-	std::pair<std::string, double> entry;
+	std::pair<Str, double> entry;
 
 	while (std::getline(inFile, line)) {
 		if (!parseToPair(entry, line, ","))
@@ -38,16 +38,16 @@ void BitcoinExchange::loadDB(const std::string& path) {
 	}
 }
 
-bool BitcoinExchange::parseToPair(std::pair<std::string, double>& entry,
-								  const std::string& line, const std::string& delim) {
-	std::string date, valueStr;
+bool BitcoinExchange::parseToPair(std::pair<Str, double>& entry,
+								  const Str& line, const Str& delim) {
+	Str date, valueStr;
 	if (!parseLine(line, delim, date, valueStr))
 		return false;
 	return validEntry(date, valueStr, entry);
 }
 
-bool BitcoinExchange::parseLine(const std::string& line, const std::string& delim,
-								std::string& dateOut, std::string& valueStrOut) const {
+bool BitcoinExchange::parseLine(const Str& line, const Str& delim,
+								Str& dateOut, Str& valueStrOut) const {
 	if (delim.empty()) {
 		printError("Missing delimiter", line);
 		return false;
@@ -60,8 +60,8 @@ bool BitcoinExchange::parseLine(const std::string& line, const std::string& deli
 	return true;
 }
 
-bool BitcoinExchange::validEntry(const std::string& date, const std::string& valueStr,
-								 std::pair<std::string, double>& out) const {
+bool BitcoinExchange::validEntry(const Str& date, const Str& valueStr,
+								 std::pair<Str, double>& out) const {
 	if (!isValidDate(date)) {
 		printError("Invalid date", date);
 		return false;
@@ -95,11 +95,11 @@ bool BitcoinExchange::validEntry(const std::string& date, const std::string& val
 	return true;
 }
 
-bool BitcoinExchange::isValidDate(const std::string& dateStr) const {
+bool BitcoinExchange::isValidDate(const Str& dateStr) const {
 	const int daysInMonth[] = {0, 31, 28, 31, 30, 31, 30,
 							   31, 31, 30, 31, 30, 31};
 
-	std::string sy, sm, sd;
+	Str sy, sm, sd;
 	std::stringstream ss(dateStr);
 	if (!std::getline(ss, sy, '-') || !std::getline(ss, sm, '-') || !std::getline(ss, sd))
 		return false;
@@ -127,14 +127,14 @@ bool BitcoinExchange::isValidDate(const std::string& dateStr) const {
 	return true;
 }
 
-void BitcoinExchange::checkInput(const std::string& path) {
+void BitcoinExchange::checkInput(const Str& path) {
 	std::ifstream inFile(path.c_str());
 	if (!inFile)
 		throw std::runtime_error("Error: Failed to open input file");
 
-	std::string line;
+	Str line;
 	std::getline(inFile, line);
-	std::pair<std::string, double> entry;
+	std::pair<Str, double> entry;
 
 	while (std::getline(inFile, line)) {
 		if (!parseToPair(entry, line, "|"))
@@ -143,8 +143,8 @@ void BitcoinExchange::checkInput(const std::string& path) {
 	}
 }
 
-void BitcoinExchange::matchDB(const std::pair<std::string, double>& entry) const {
-	std::map<std::string, double>::const_iterator it = _db.lower_bound(entry.first);
+void BitcoinExchange::matchDB(const std::pair<Str, double>& entry) const {
+	std::map<Str, double>::const_iterator it = _db.lower_bound(entry.first);
 
 	if (it != _db.end() && it->first == entry.first) {
 		std::cout << entry.first << " => " << entry.second
@@ -161,15 +161,15 @@ void BitcoinExchange::matchDB(const std::pair<std::string, double>& entry) const
 }
 
 void BitcoinExchange::printDB() const {
-	std::map<std::string, double>::const_iterator it = _db.begin();
+	std::map<Str, double>::const_iterator it = _db.begin();
 	std::size_t i = 0;
 	for (; it != _db.end(); ++it, ++i) {
 		std::cout << i << ". [" << it->first << "]: '" << it->second << "'" << std::endl;
 	}
 }
 
-void BitcoinExchange::printError(const std::string& msg, const std::string& context) const {
-	std::cerr << "Error: " << msg;
+void BitcoinExchange::printError(const Str& msg, const Str& context) const {
+	std::cerr << "\033[1;31mError: \033[0m" << msg;
 	if (!context.empty())
 		std::cerr << " => " << context;
 	std::cerr << std::endl;

@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
 		return 1;
 	}
 
-	std::string dbPath = "data.csv";
+	Str dbPath = "data.csv";
 
 	BitcoinExchange btc;
 	(void)argv;
