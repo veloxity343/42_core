@@ -1,4 +1,4 @@
-NAME = BitcoinExchange
+NAME = btc
 
 SRC_DIR = src
 INC_DIR = include
