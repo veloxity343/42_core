@@ -1,6 +1,6 @@
 #include <list>
 #include <sstream>
-#include "RPN.hpp"
+#include "../inc/RPN.hpp"
 
 RPN::RPN() {}
 

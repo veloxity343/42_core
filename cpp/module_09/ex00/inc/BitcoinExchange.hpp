@@ -1,17 +1,19 @@
-#ifndef BTC_HPP
-# define BTC_HPP
+#ifndef BITCOINEXCHANGE_HPP
+# define BITCOINEXCHANGE_HPP
 
 # include <iostream>
 # include <map>
 
-# define WHITESPACES " \t\n\r\v\f"
-
 class BitcoinExchange {
 private:
-	std::map<std::string, float> _db;
+	std::map<std::string, double> _db;
 
-	bool ss_split(std::pair<std::string, float>& p, const std::string& s, const std::string& c);
-	void matchDB(std::pair<std::string, float>& p) const;
+	bool isValidDate(const std::string& s) const;
+	bool parseLine(const std::string& line, const std::string& delim,
+				   std::string& dateOut, std::string& valueStrOut) const;
+	bool validEntry(const std::string& date, const std::string& valueStr,
+							std::pair<std::string, double>& out) const;
+	void printError(const std::string& msg, const std::string& context) const;
 public:
 	BitcoinExchange();
 	BitcoinExchange(const BitcoinExchange& other);
@@ -21,6 +23,8 @@ public:
 	void loadDB(const std::string& path);
 	void checkInput(const std::string& path);
 	void printDB() const;
+	bool parseToPair(std::pair<std::string, double>& p, const std::string& line, const std::string& delim);
+	void matchDB(const std::pair<std::string, double>& p) const;
 };
 
 #endif

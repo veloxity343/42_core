@@ -22,16 +22,16 @@ template <typename T>
 std::string ctToStr(const T& c) {
 	const std::string sep = " ";
 
-    std::ostringstream oss;
-    typename T::const_iterator it = c.begin();
-    if (it != c.end()) {
-        oss << *it;
-        ++it;
-    }
-    for (; it != c.end(); ++it) {
-        oss << sep << *it;
-    }
-    return oss.str();
+	std::ostringstream oss;
+	typename T::const_iterator it = c.begin();
+	if (it != c.end()) {
+		oss << *it;
+		++it;
+	}
+	for (; it != c.end(); ++it) {
+		oss << sep << *it;
+	}
+	return oss.str();
 }
 
 bool PmergeMe::checkAndLoadInput(const std::string& s) {

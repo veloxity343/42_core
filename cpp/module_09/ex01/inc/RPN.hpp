@@ -1,10 +1,9 @@
 #ifndef RPN_HPP
-#define RPN_HPP
+# define RPN_HPP
 
-#include <iostream>
-#include <list>
+# include <iostream>
+# include <list>
 
-#define WHITESPACES " \t\n\r\v\f"
 typedef long long rpn_ll;
 
 class RPN {

@@ -1,8 +1,7 @@
-#include <iostream>
-#include "RPN.hpp"
+#include "../inc/RPN.hpp"
 
-int main(int ac, char** av) {
-	if (ac != 2) {
+int main(int argc, char** argv) {
+	if (argc != 2) {
 		std::cerr << "Invalid input! Usage: <./RPN \"1 2 + 3 +\">" << std::endl;
 		return 1;
 	}
@@ -11,7 +10,7 @@ int main(int ac, char** av) {
 
 	try {
 		std::cout << "===RPN===\n";
-		rpn.calculate(av[1]);
+		rpn.calculate(argv[1]);
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;

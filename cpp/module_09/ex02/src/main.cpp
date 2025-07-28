@@ -1,24 +1,23 @@
-#include "PmergeMe.hpp"
 #include <exception>
-#include <iostream>
+#include "../inc/PmergeMe.hpp"
 
-std::string avjoin(int ac, char **av) {
+std::string argjoin(int argc, char **argv) {
 	std::string s;
-	for (int i = 1; i < ac; i++) {
-		s += av[i];
-		if (i != ac - 1)
+	for (int i = 1; i < argc; i++) {
+		s += argv[i];
+		if (i != argc - 1)
 			s += " ";
 	}
 	return s;
 }
 
-int main(int ac, char **av) {
-	if (ac < 2) {
+int main(int argc, char **argv) {
+	if (argc < 2) {
 		std::cerr << "Invalid input! Usage: ./PmergeMe <elements of positive value>" << std::endl;
 		return 1;
 	}
 	
-	std::string s = avjoin(ac, av);
+	std::string s = argjoin(argc, argv);
 	PmergeMe mi;
 
 	try {

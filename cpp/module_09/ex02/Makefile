@@ -1,58 +1,80 @@
-NAME = PmergeMe
+# Standard
+NAME	=	PmergeMe
 
-SRC_DIR = src
-INC_DIR = include
+# Directories
+INC		=	inc/
+SRC_DIR	=	src
+OBJ_DIR	=	obj
 
-SRC = $(wildcard $(SRC_DIR)/*.cpp)
+# Compiler & flags
+CC		=	c++
+WFLAGS	=	-Wall -Wextra -Werror -std=c++98 -pedantic
+IFLAGS	=	-I$(INC)
+DSYM	=	-g3
+FSAN	=	-fsanitize=address $(DSYM)
+CFLAGS	=	$(WFLAGS) $(IFLAGS)
+RM		=	rm -f
 
-OBJ = $(SRC:$(SRC_DIR)/%.cpp=$(SRC_DIR)/%.o)
+# Sources & objects
+SRC		=	$(shell find $(SRC_DIR) -type f -name "*.cpp")
+OBJ		=	$(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC))
 
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-IFLAGS = -I$(INC_DIR)
+# Colors
+RED		=	\033[1;31m
+GREEN	=	\033[1;32m
+YELLOW	=	\033[1;33m
+BLUE	=	\033[1;34m
+RESET	=	\033[0m
 
-all: $(NAME)
+# Build rules
+all:		$(NAME)
+	@echo "$(GREEN)Successfully compiled!$(RESET)"
 
-$(NAME): $(OBJ)
-	@echo "Creating $(NAME)..."
-	@$(CC) $(CFLAGS) $(IFLAGS) $(OBJ) -o $(NAME) 
-	@echo "Created $(NAME)"
+$(NAME):	$(OBJ)
+	@echo "\n$(BLUE)Building$(RESET)\t$(NAME)"
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
-bonus: all
+$(OBJ_DIR):
+	@mkdir -p $(OBJ_DIR)
 
-%.o: %.cpp
-	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(dir $@)
+	@printf "$(YELLOW)Compiling\t$(RESET)%-33.33s\r" $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 
+# Scruba dub dub
 clean:
-	@echo "Removing objects files..."
-	@rm -f $(OBJ)
-	@echo "Objects files removed."
+	@if [ -d "$(OBJ_DIR)" ]; then \
+	$(RM) -rf $(OBJ_DIR); \
+	echo "$(RED)Deleting$(RESET)\t"$(OBJ_DIR); else \
+	echo "$(BLUE)No $(NAME) objects to remove."; \
+	fi;
 
-fclean: clean
-	@echo "Removing $(NAME)..."
-	@rm -f $(NAME)
-	@echo "$(NAME) removed."
+fclean:	clean
+	@if [ -f "$(NAME)" ]; then \
+	$(RM) -f $(NAME); \
+	echo "$(RED)Deleting$(RESET)\t"$(NAME); else \
+	echo "$(BLUE)No executable $(NAME) to remove.$(RESET)"; \
+	fi;
 
-re: fclean all
+re:		fclean all
 
-# debug: CFLAGS += -g3 -fpic
-# debug: clean all
-# 	@make -C $(LIBFT_DIR) debug
-# 	@echo "Enable debug mode"
-#
-# valgrind:
-# 	valgrind --leak-check=full ./$(NAME)
-#
-# fval:
-# 	valgrind -v --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
-#
-# fsanitize: CFLAGS += -fsanitize=address,leak -g3 -O1
-# fsanitize: clean all
-# 	@echo "AddressSanitizer enabled for $(NAME)"
-#
-# fsan: fsanitize
+test: re
+	@echo "$(YELLOW)Testing...$(RESET)"
+	@clear
+	./$(NAME)
+
+# Debugging
+asan:	CFLAGS	+=	$(FSAN)
+asan:	re
+	@echo "$(YELLOW)Running with AddressSanitizer...$(RESET)"
+	./$(NAME)
+
+valgrind:	$(NAME)
+	@echo "$(YELLOW)Running with Valgrind...$(RESET)"
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
 
 shuf:
-	./PmergeMe `shuf -i 1-100000 -n 3000 | tr "\n" " "`
+	./$(NAME) `shuf -i 1-100000 -n 3000 | tr "\n" " "`
 
-.PHONY: all clean fclean re bonus debug valgrind fsanitize fsan fval shuf
+.PHONY: all clean fclean re test asan valgrind shuf
