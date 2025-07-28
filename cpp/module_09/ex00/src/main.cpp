@@ -1,7 +1,6 @@
 #include <cmath>
 #include <exception>
 #include <fstream>
-#include <iostream>
 #include <ostream>
 #include <string>
 #include "BitcoinExchange.hpp"
