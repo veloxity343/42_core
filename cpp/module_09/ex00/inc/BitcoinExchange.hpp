@@ -16,12 +16,13 @@ private:
 	bool validEntry(const Str& date, const Str& valueStr,
 							std::pair<Str, double>& out) const;
 	void printError(const Str& msg, const Str& context) const;
+
 public:
 	BitcoinExchange();
 	BitcoinExchange(const BitcoinExchange& other);
 	BitcoinExchange& operator=(const BitcoinExchange& other);
 	~BitcoinExchange();
-	
+
 	void loadDB(const Str& path);
 	void checkInput(const Str& path);
 	void printDB() const;

@@ -1,13 +1,12 @@
 #include <cmath>
 #include <exception>
 #include <fstream>
-#include <iostream>
 #include <string>
 #include "../inc/BitcoinExchange.hpp"
 
 int main(int argc, char** argv) {
 	if (argc != 2) {
-		std::cerr << "Usage: ./btc <path_to_csv>" << std::endl;
+		std::cerr << "Usage: " << argv[0] << " <path_to_csv>" << std::endl;
 		return 1;
 	}
 

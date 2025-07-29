@@ -25,7 +25,7 @@ BitcoinExchange::~BitcoinExchange() {}
 void BitcoinExchange::loadDB(const Str& path) {
 	std::ifstream inFile(path.c_str());
 	if (!inFile)
-		throw std::runtime_error("Error: Failed to open csv file");
+		throw std::runtime_error("Error: Could not open csv file");
 
 	Str line;
 	std::getline(inFile, line);
