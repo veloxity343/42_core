@@ -62,7 +62,7 @@ re:		fclean all
 test: re
 	@echo "$(YELLOW)Testing...$(RESET)"
 	@clear
-	./$(NAME)
+	./$(NAME) "3 4 + 2 * 7 /"
 
 # Debugging
 asan:	CFLAGS	+=	$(FSAN)

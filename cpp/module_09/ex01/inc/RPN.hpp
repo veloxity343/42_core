@@ -4,7 +4,7 @@
 # include <iostream>
 # include <list>
 
-typedef long long rpn_ll;
+typedef long rpn_ll;
 
 class RPN {
 private:
