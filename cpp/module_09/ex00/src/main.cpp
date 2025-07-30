@@ -6,7 +6,7 @@
 
 int main(int argc, char** argv) {
 	if (argc != 2) {
-		std::cerr << "Error: Usage: " << argv[0] << " <path_to_csv>" << std::endl;
+		std::cerr << "Error: Usage: " << argv[0] << " <file.txt>" << std::endl;
 		return 1;
 	}
 

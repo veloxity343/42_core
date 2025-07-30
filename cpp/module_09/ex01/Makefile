@@ -63,6 +63,13 @@ test: re
 	@echo "$(YELLOW)Testing...$(RESET)"
 	@clear
 	./$(NAME) "3 4 + 2 * 7 /"
+	./$(NAME) "12a 4 +"
+	./$(NAME) "4 +"
+	./$(NAME) "4 0 /"
+	./$(NAME) "1 2 3 +"
+	./$(NAME) ""
+	./$(NAME) "2 2 ^"
+	./$(NAME) "3 4 + 2 * 7 / 5 -"
 
 # Debugging
 asan:	CFLAGS	+=	$(FSAN)

@@ -9,7 +9,7 @@ int main(int argc, char** argv) {
 	RPN rpn;
 
 	try {
-		rpn.calculate(argv[1]);
+		rpn.Calculate(argv[1]);
 	}
 	catch (const std::exception& e) {
 		std::cerr << e.what() << std::endl;

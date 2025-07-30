@@ -62,7 +62,7 @@ re:		fclean all
 test: re
 	@echo "$(YELLOW)Testing...$(RESET)"
 	@clear
-	./$(NAME)
+	./$(NAME) 77 88 12 45 23 67 89 34 56 78 90 11 22 33 44 55
 
 # Debugging
 asan:	CFLAGS	+=	$(FSAN)
@@ -75,6 +75,13 @@ valgrind:	$(NAME)
 	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME)
 
 shuf:
-	./$(NAME) `shuf -i 1-100000 -n 3000 | tr "\n" " "`
+	@OS=$$(uname); \
+	if [ "$$OS" = "Linux" ]; then \
+		echo "$(BLUE)Running shuf on $$OS$(RESET)"; \
+		./$(NAME) $$(shuf -i 1-100000 -n 3000 | tr '\n' ' '); \
+	else \
+		echo "$(BLUE)Running jot on $$OS$(RESET)"; \
+		./$(NAME) $$(jot -r 3000 1 100000 | tr '\n' ' '); \
+	fi
 
 .PHONY: all clean fclean re test asan valgrind shuf
