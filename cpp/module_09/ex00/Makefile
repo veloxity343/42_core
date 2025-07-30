@@ -63,6 +63,7 @@ test: re
 	@echo "$(YELLOW)Testing...$(RESET)"
 	@clear
 	./$(NAME) input.txt
+	./$(NAME) invalid.txt
 
 # Debugging
 asan:	CFLAGS	+=	$(FSAN)
