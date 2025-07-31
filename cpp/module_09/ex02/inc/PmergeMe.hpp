@@ -16,6 +16,12 @@ T mergeInsertSort(const T& container);
 template <typename T>
 T genJacobsthal(const std::size_t n);
 
+template <typename Container>
+static double measureCPUTime(Container& cont, Container (*sortFunc)(const Container&));
+
+template <typename Container>
+static double measureRealTime(Container& cont, Container (*sortFunc)(const Container&));
+
 class PmergeMe {
 private:
 	std::vector<std::size_t> _vector;
@@ -24,6 +30,7 @@ private:
 	bool checkAndLoadInput(const Str& input);
 	void cpuRunTime(const Str& input);
 	void realRunTime(const Str& input);
+
 public:
 	PmergeMe();
 	PmergeMe(const PmergeMe& other);
@@ -31,6 +38,8 @@ public:
 	~PmergeMe();
 
 	void Run(const Str& input);
+	void printBenchmark(const Str& benchmarkType, const Str& input, 
+		double vectorTime, double dequeTime);
 };
 
 # include "PmergeMe.tpp"

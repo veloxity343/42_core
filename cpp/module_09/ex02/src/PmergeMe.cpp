@@ -22,7 +22,7 @@ PmergeMe::~PmergeMe() {}
 
 void PmergeMe::Run(const Str& input) {
 	if (!checkAndLoadInput(input))
-		throw std::runtime_error("Error: only accept positive value");
+		throw std::runtime_error("Error: Input must be positive integers");
 	
 	cpuRunTime(input);
 	realRunTime(input);
@@ -49,50 +49,23 @@ bool PmergeMe::checkAndLoadInput(const Str& input) {
 }
 
 void PmergeMe::cpuRunTime(const Str& input) {
-	std::clock_t st, end;
-
-	st = std::clock();
-	_vector = mergeInsertSort(_vector);
-	end = std::clock();
-	double vec_ms = static_cast<double>(end - st) / CLOCKS_PER_SEC * 1000.0;
-
-
-	st = std::clock();
-	_deque = mergeInsertSort(_deque);
-	end = std::clock();
-	double deq_ms = static_cast<double>(end - st) / CLOCKS_PER_SEC * 1000.0;
-
-
-	std::cout
-		<< "CPU Benchmark\n"
-		<< "Before:	" << input << "\n"
-		<< "After:	" << containerToStr(_vector) << "\n" 
-		<< "Time to process a range of " << _vector.size() << " elements with std::vector : " << vec_ms << " ms\n"
-		<< "Time to process a range of " << _deque.size() << " elements with std::deque : " << deq_ms << " ms\n"
-		<< std::endl;
+	double vecTime = measureCPUTime(_vector, mergeInsertSort<std::vector<std::size_t> >);
+	double deqTime = measureCPUTime(_deque, mergeInsertSort<std::deque<std::size_t> >);
+	printBenchmark("CPU", input, vecTime, deqTime);
 }
 
 void PmergeMe::realRunTime(const Str& input) {
-	struct timeval st, end;
+	double vecTime = measureRealTime(_vector, mergeInsertSort<std::vector<std::size_t> >);
+	double deqTime = measureRealTime(_deque, mergeInsertSort<std::deque<std::size_t> >);
+	printBenchmark("Real-time", input, vecTime, deqTime);
+}
 
-	gettimeofday(&st, NULL);
-	_vector = mergeInsertSort(_vector);
-	gettimeofday(&end, NULL);
-
-	double vec_ms = (end.tv_sec - st.tv_sec) * 1000.0 + (end.tv_usec - st.tv_usec) / 1000.0;
-
-
-	gettimeofday(&st, NULL);
-	_deque = mergeInsertSort(_deque);
-	gettimeofday(&end, NULL);
-
-	double deq_ms = (end.tv_sec - st.tv_sec) * 1000.0 + (end.tv_usec - st.tv_usec) / 1000.0;
-
-	std::cout
-		<< "Real-time Benchmark\n"
-		<< "Before:	" << input << "\n"
-		<< "After:	" << containerToStr(_vector) << "\n" 
-		<< "Time to process a range of " << _vector.size() << " elements with std::vector : " << vec_ms << " ms\n"
-		<< "Time to process a range of " << _deque.size() << " elements with std::deque : " << deq_ms << " ms\n"
-		<< std::endl;
+void PmergeMe::printBenchmark(const Str& benchmarkType, const Str& input, 
+						   double vectorTime, double dequeTime) {
+	std::cout << benchmarkType << " Benchmark\n"
+			  << "Before:\t" << input << std::endl
+			  << "After:\t" << containerToStr(_vector) << std::endl
+			  << "Time to process a range of " << _vector.size() << " elements with std::vector: " << vectorTime << " ms" << std::endl
+			  << "Time to process a range of " << _deque.size() << " elements with std::deque: " << dequeTime << " ms" << std::endl
+			  << std::endl;
 }

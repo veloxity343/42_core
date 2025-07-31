@@ -18,21 +18,21 @@ RPN::~RPN() {}
 
 void RPN::Calculate(const std::string& input) {
 	if (input.empty())
-		throw std::runtime_error("Error: empty expression");
+		throw std::runtime_error("Error: Empty expression");
 
 	loadToken(input);
 
 	if (_token.empty())
-		throw std::runtime_error("Error: no valid tokens in expression");
+		throw std::runtime_error("Error: No valid tokens in expression");
 
 	for (std::list<std::string>::iterator it = _token.begin(); it != _token.end(); ++it) {
 		processToken(*it);
 	}
 
 	if (_stack.size() > 1)
-		throw std::runtime_error("Error: not enough operators for all numbers");
+		throw std::runtime_error("Error: Not enough operators for all numbers");
 	if (_stack.size() != 1)
-		throw std::runtime_error("Error: invalid RPN syntax");
+		throw std::runtime_error("Error: Invalid RPN syntax");
 
 	std::cout << "(" << input << ") = " << _stack.front() << "." << std::endl;
 }
@@ -48,14 +48,14 @@ void RPN::loadToken(const Str& input) {
 void RPN::processToken(const Str& token) {
 	if (isOperator(token)) {
 		if (_stack.size() < 2)
-			throw std::runtime_error("Error: not enough numbers for operator '" + token + "'");
+			throw std::runtime_error("Error: Not enough numbers for operator '" + token + "'");
 		performOperation(token[0]);
 	} else if (token.length() == 1 && std::ispunct(token[0])) {
-		throw std::runtime_error("Error: invalid operator '" + token + "'");
+		throw std::runtime_error("Error: Invalid operator '" + token + "'");
 	} else if (!token.empty()) {
 		_stack.push_front(toNumber(token));
 	} else {
-		throw std::runtime_error("Error: empty token");
+		throw std::runtime_error("Error: Empty token");
 	}
 }
 
@@ -68,7 +68,7 @@ rpn_l RPN::toNumber(const Str& token) const {
 	rpn_l num;
 	char extra;
 	if (!(ss >> num) || (ss >> extra))
-		throw std::runtime_error("Error: invalid number '" + token + "'");
+		throw std::runtime_error("Error: Invalid number '" + token + "'");
 	return num;
 }
 
@@ -88,10 +88,10 @@ void RPN::performOperation(char op) {
 			break;
 		case '/':
 			if (b == 0)
-				throw std::runtime_error("Error: division by zero");
+				throw std::runtime_error("Error: Division by zero");
 			_stack.push_front(a / b);
 			break;
 		default:
-			throw std::runtime_error("Error: unknown operator");
+			throw std::runtime_error("Error: Unknown operator");
 	}
 }

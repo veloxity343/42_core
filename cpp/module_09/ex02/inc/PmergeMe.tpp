@@ -4,6 +4,8 @@
 # include <algorithm>
 # include <sstream>
 # include <vector>
+# include <ctime>
+# include <sys/time.h>
 
 typedef std::string Str;
 
@@ -11,16 +13,16 @@ template <typename T>
 Str containerToStr(const T& container) {
 	const Str sep = " ";
 
-    std::ostringstream oss;
-    typename T::const_iterator it = container.begin();
-    if (it != container.end()) {
-        oss << *it;
-        ++it;
-    }
-    for (; it != container.end(); ++it) {
-        oss << sep << *it;
-    }
-    return oss.str();
+	std::ostringstream oss;
+	typename T::const_iterator it = container.begin();
+	if (it != container.end()) {
+		oss << *it;
+		++it;
+	}
+	for (; it != container.end(); ++it) {
+		oss << sep << *it;
+	}
+	return oss.str();
 }
 
 template <typename T>
@@ -85,6 +87,23 @@ T mergeInsertSort(const T& container) {
 		main.insert(pos, pending[*it]);
 	}
 	return main;
+}
+
+template <typename Container>
+static double measureCPUTime(Container& cont, Container (*sortFunc)(const Container&)) {
+	std::clock_t start = std::clock();
+	cont = sortFunc(cont);
+	std::clock_t end = std::clock();
+	return static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
+}
+
+template <typename Container>
+static double measureRealTime(Container& cont, Container (*sortFunc)(const Container&)) {
+	struct timeval start, end;
+	gettimeofday(&start, NULL);
+	cont = sortFunc(cont);
+	gettimeofday(&end, NULL);
+	return (end.tv_sec - start.tv_sec) * 1000.0 + (end.tv_usec - start.tv_usec) / 1000.0;
 }
 
 #endif
