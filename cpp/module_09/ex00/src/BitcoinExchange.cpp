@@ -160,17 +160,17 @@ void BitcoinExchange::matchDB(const std::pair<Str, double>& entry) const {
 	}
 }
 
+void BitcoinExchange::printError(const Str& msg, const Str& context) const {
+	std::cerr << "\033[1;31mError: \033[0m" << msg;
+	if (!context.empty())
+		std::cerr << " => " << context;
+	std::cerr << std::endl;
+}
+
 void BitcoinExchange::printDB() const {
 	std::map<Str, double>::const_iterator it = _db.begin();
 	std::size_t i = 0;
 	for (; it != _db.end(); ++it, ++i) {
 		std::cout << i << ". [" << it->first << "]: '" << it->second << "'" << std::endl;
 	}
-}
-
-void BitcoinExchange::printError(const Str& msg, const Str& context) const {
-	std::cerr << "\033[1;31mError: \033[0m" << msg;
-	if (!context.empty())
-		std::cerr << " => " << context;
-	std::cerr << std::endl;
 }
