@@ -17,12 +17,15 @@ int Span::shortestSpan() const {
 	std::vector<int> temp = _storage;
 	std::sort(temp.begin(), temp.end());
 
+	std::vector<int> diffs(temp.size());
+	std::adjacent_difference(temp.begin(), temp.end(), diffs.begin());
+
 	int minSpan = std::numeric_limits<int>::max();
-	for (std::size_t i = 1; i < temp.size(); ++i) {
-		int span = temp[i] - temp[i - 1];
-		if (span < minSpan)
-			minSpan = span;
+	for (std::size_t i = 1; i < diffs.size(); ++i) {
+		if (diffs[i] < minSpan)
+			minSpan = diffs[i];
 	}
+
 	return minSpan;
 }
 

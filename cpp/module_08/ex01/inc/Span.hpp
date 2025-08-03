@@ -6,6 +6,7 @@
 # include <deque>
 # include <exception>
 # include <algorithm>
+# include <numeric>
 # include <iterator>
 # include <limits>
 
