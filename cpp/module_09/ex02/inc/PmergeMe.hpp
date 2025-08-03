@@ -13,14 +13,11 @@ Str containerToStr(const T& container);
 template <typename T>
 T mergeInsertSort(const T& container);
 
-template <typename T>
-T genJacobsthal(const std::size_t n);
+template <typename Container>
+double measureCPUTime(Container& cont, Container (*sortFunc)(const Container&));
 
 template <typename Container>
-static double measureCPUTime(Container& cont, Container (*sortFunc)(const Container&));
-
-template <typename Container>
-static double measureRealTime(Container& cont, Container (*sortFunc)(const Container&));
+double measureRealTime(Container& cont, Container (*sortFunc)(const Container&));
 
 class PmergeMe {
 private:

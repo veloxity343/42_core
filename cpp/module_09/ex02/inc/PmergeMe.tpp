@@ -10,6 +10,15 @@
 typedef std::string Str;
 
 template <typename T>
+static void splitContainer(const T& container, T& main, T& pending);
+
+template <typename T>
+static void genJacobIndices(std::size_t n, T& jSeq);
+
+template <typename T>
+static T genJacobsthal(std::size_t n);
+
+template <typename T>
 Str containerToStr(const T& container) {
 	const Str sep = " ";
 
@@ -26,7 +35,42 @@ Str containerToStr(const T& container) {
 }
 
 template <typename T>
-T genJacobsthal(std::size_t n) {
+T mergeInsertSort(const T& container) {
+
+	if (container.size() < 2)
+		return container;
+	
+	T main, pending;
+
+	splitContainer(container, main, pending);
+
+	main = mergeInsertSort(main);
+
+	T jseq = genJacobsthal<T>(pending.size());
+	for (typename T::const_iterator it = jseq.begin(); it != jseq.end(); ++it) {
+		typename T::iterator pos = std::lower_bound(main.begin(), main.end(), pending[*it]);
+		main.insert(pos, pending[*it]);
+	}
+	return main;
+}
+
+template <typename T>
+static void splitContainer(const T& container, T& main, T& pending) {
+	for (std::size_t i = 0; i + 1 < container.size(); i += 2) {
+		if (container[i] >= container[i + 1]) {
+			main.push_back(container[i]);
+			pending.push_back(container[i + 1]);
+		} else {
+			main.push_back(container[i + 1]);
+			pending.push_back(container[i]);
+		}
+	}
+	if (container.size() % 2 != 0)
+		main.push_back(container.back());
+}
+
+template <typename T>
+static T genJacobsthal(std::size_t n) {
 	T iSeq, jSeq;
 	if (n < 1)
 		return iSeq;
@@ -35,18 +79,7 @@ T genJacobsthal(std::size_t n) {
 		return iSeq;
 	}
 
-	jSeq.push_back(1);
-	std::size_t j0 = 0, j1 = 1, jval;
-	
-	while (true) {
-		jval = j1 + 2 * j0;
-		if (jval >= n)
-			break;
-		if (jval != jSeq.back())
-			jSeq.push_back(jval);
-		j0 = j1;
-		j1 = jval;
-	}
+	genJacobIndices(n, jSeq);
 
 	iSeq.insert(iSeq.end(), jSeq.begin(), jSeq.end());
 
@@ -58,39 +91,26 @@ T genJacobsthal(std::size_t n) {
 }
 
 template <typename T>
-T mergeInsertSort(const T& container) {
+static void genJacobIndices(std::size_t n, T& jSeq) {
+	if (n == 0)
+		return;
 
-	if (container.size() < 2)
-		return container;
-	
+	jSeq.push_back(1);
+	std::size_t j0 = 0, j1 = 1;
 
-	T main, pending;
-	
-	for (std::size_t i = 0; i + 1 < container.size(); i += 2) {
-		if (container[i] >= container[i + 1]) {
-			main.push_back(container[i]);
-			pending.push_back(container[i + 1]);
-		}
-		else {
-			main.push_back(container[i + 1]);
-			pending.push_back(container[i]);
-		} 
+	while (true) {
+		std::size_t jval = j1 + 2 * j0;
+		if (jval >= n)
+			break;
+		if (jval != jSeq.back())
+			jSeq.push_back(jval);
+		j0 = j1;
+		j1 = jval;
 	}
-	if (container.size() % 2 != 0)
-		main.push_back(container.back());
-
-	main = mergeInsertSort(main);
-
-	T jseq = genJacobsthal<T>(pending.size());
-	for (typename T::iterator it = jseq.begin(); it != jseq.end(); ++it) {
-		typename T::iterator pos = std::lower_bound(main.begin(), main.end(), pending[*it]);
-		main.insert(pos, pending[*it]);
-	}
-	return main;
 }
 
 template <typename Container>
-static double measureCPUTime(Container& cont, Container (*sortFunc)(const Container&)) {
+double measureCPUTime(Container& cont, Container (*sortFunc)(const Container&)) {
 	std::clock_t start = std::clock();
 	cont = sortFunc(cont);
 	std::clock_t end = std::clock();
@@ -98,7 +118,7 @@ static double measureCPUTime(Container& cont, Container (*sortFunc)(const Contai
 }
 
 template <typename Container>
-static double measureRealTime(Container& cont, Container (*sortFunc)(const Container&)) {
+double measureRealTime(Container& cont, Container (*sortFunc)(const Container&)) {
 	struct timeval start, end;
 	gettimeofday(&start, NULL);
 	cont = sortFunc(cont);
