@@ -1,13 +1,10 @@
 #include <fstream>
 #include <sstream>
+#include <ctime>
 #include <exception>
 #include <string>
 #include <utility>
 #include "../inc/BitcoinExchange.hpp"
-
-static const int MIN_YEAR = 1900;
-static const int MAX_YEAR = 3000;
-static const double MAX_VALUE = 2147483647.0;
 
 BitcoinExchange::BitcoinExchange() {}
 
@@ -27,23 +24,76 @@ void BitcoinExchange::loadDB(const Str& path) {
 	if (!inFile)
 		throw std::runtime_error("Error: Could not open csv file");
 
+	if (inFile.peek() == std::ifstream::traits_type::eof()) {
+		throw std::runtime_error("Error: CSV file is empty");
+	}
+
 	Str line;
 	std::getline(inFile, line);
+
+	if (inFile.peek() == std::ifstream::traits_type::eof()) {
+		throw std::runtime_error("Error: CSV file contains no data");
+	}
+	
 	std::pair<Str, double> entry;
 
 	while (std::getline(inFile, line)) {
-		if (!parseToPair(entry, line, ","))
+		if (!parseToPair(entry, line, ",", 2147483647.0))
 			continue;
 		_db[entry.first] = entry.second;
 	}
 }
 
+void BitcoinExchange::checkInput(const Str& path) {
+	std::ifstream inFile(path.c_str());
+	if (!inFile)
+		throw std::runtime_error("Error: Failed to open input file");
+
+	if (inFile.peek() == std::ifstream::traits_type::eof()) {
+		printError("Input file is empty", "");
+		return;
+	}
+
+	Str line;
+	std::getline(inFile, line);
+
+	if (inFile.peek() == std::ifstream::traits_type::eof()) {
+		printError("Input file contains no data", "");
+		return;
+	}
+
+	std::pair<Str, double> entry;
+
+	while (std::getline(inFile, line)) {
+		if (!parseToPair(entry, line, "|", 1000.0))
+			continue;
+		matchDB(entry);
+	}
+}
+
+void BitcoinExchange::matchDB(const std::pair<Str, double>& entry) const {
+	std::map<Str, double>::const_iterator it = _db.lower_bound(entry.first);
+
+	if (it != _db.end() && it->first == entry.first) {
+		std::cout << entry.first << " => " << entry.second
+				  << " = " << entry.second * it->second << std::endl;
+	}
+	else if (it != _db.begin()) {
+		--it;
+		std::cout << entry.first << " => " << entry.second
+				  << " = " << entry.second * it->second << std::endl;
+	}
+	else {
+		printError("No earlier date found", entry.first);
+	}
+}
+
 bool BitcoinExchange::parseToPair(std::pair<Str, double>& entry,
-								  const Str& line, const Str& delim) {
+								  const Str& line, const Str& delim, double maxValue) {
 	Str date, valueStr;
 	if (!parseLine(line, delim, date, valueStr))
 		return false;
-	return validEntry(date, valueStr, entry);
+	return validEntry(date, valueStr, entry, maxValue);
 }
 
 bool BitcoinExchange::parseLine(const Str& line, const Str& delim,
@@ -61,7 +111,7 @@ bool BitcoinExchange::parseLine(const Str& line, const Str& delim,
 }
 
 bool BitcoinExchange::validEntry(const Str& date, const Str& valueStr,
-								 std::pair<Str, double>& out) const {
+								 std::pair<Str, double>& out, double maxValue) const {
 	if (!isValidDate(date)) {
 		printError("Invalid date", date);
 		return false;
@@ -86,7 +136,7 @@ bool BitcoinExchange::validEntry(const Str& date, const Str& valueStr,
 		return false;
 	}
 
-	if (value > MAX_VALUE) {
+	if (value > maxValue) {
 		printError("Too large a number", valueStr);
 		return false;
 	}
@@ -96,68 +146,29 @@ bool BitcoinExchange::validEntry(const Str& date, const Str& valueStr,
 }
 
 bool BitcoinExchange::isValidDate(const Str& dateStr) const {
-	const int daysInMonth[] = {0, 31, 28, 31, 30, 31, 30,
-							   31, 31, 30, 31, 30, 31};
-
-	Str sy, sm, sd;
-	std::stringstream ss(dateStr);
-	if (!std::getline(ss, sy, '-') || !std::getline(ss, sm, '-') || !std::getline(ss, sd))
-		return false;
-
 	int y, m, d;
-	std::stringstream yss(sy), mss(sm), dss(sd);
-	yss >> y;
-	mss >> m;
-	dss >> d;
+	char dash1, dash2;
 
-	char c;
-	if (yss.fail() || yss >> c || mss.fail() || mss >> c || dss.fail() || dss >> c)
+	std::istringstream iss(dateStr);
+	if (!(iss >> y >> dash1 >> m >> dash2 >> d) ||
+		dash1 != '-' || dash2 != '-')
 		return false;
 
-	if (y < MIN_YEAR || y > MAX_YEAR || m < 1 || m > 12)
+	if (y < 1900 || y > 3000)
 		return false;
 
-	int maxDay = daysInMonth[m];
-	if (m == 2 && ((y % 4 == 0 && y % 100 != 0) || (y % 400 == 0)))
-		maxDay = 29;
+	std::tm timeinfo = {};
+	timeinfo.tm_year = y - 1900;
+	timeinfo.tm_mon = m - 1;
+	timeinfo.tm_mday = d;
 
-	if (d < 1 || d > maxDay)
+	std::time_t t = std::mktime(&timeinfo);
+	if (t == -1)
 		return false;
 
-	return true;
-}
-
-void BitcoinExchange::checkInput(const Str& path) {
-	std::ifstream inFile(path.c_str());
-	if (!inFile)
-		throw std::runtime_error("Error: Failed to open input file");
-
-	Str line;
-	std::getline(inFile, line);
-	std::pair<Str, double> entry;
-
-	while (std::getline(inFile, line)) {
-		if (!parseToPair(entry, line, "|"))
-			continue;
-		matchDB(entry);
-	}
-}
-
-void BitcoinExchange::matchDB(const std::pair<Str, double>& entry) const {
-	std::map<Str, double>::const_iterator it = _db.lower_bound(entry.first);
-
-	if (it != _db.end() && it->first == entry.first) {
-		std::cout << entry.first << " => " << entry.second
-				  << " = " << entry.second * it->second << std::endl;
-	}
-	else if (it != _db.begin()) {
-		--it;
-		std::cout << entry.first << " => " << entry.second
-				  << " = " << entry.second * it->second << std::endl;
-	}
-	else {
-		printError("No earlier date found", entry.first);
-	}
+	return timeinfo.tm_year == y - 1900 &&
+		   timeinfo.tm_mon == m - 1 &&
+		   timeinfo.tm_mday == d;
 }
 
 void BitcoinExchange::printError(const Str& msg, const Str& context) const {

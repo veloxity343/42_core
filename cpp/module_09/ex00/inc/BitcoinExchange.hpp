@@ -14,7 +14,7 @@ private:
 	bool parseLine(const Str& line, const Str& delim,
 				   Str& dateOut, Str& valueStrOut) const;
 	bool validEntry(const Str& date, const Str& valueStr,
-							std::pair<Str, double>& out) const;
+							std::pair<Str, double>& out, double maxValue) const;
 	void printError(const Str& msg, const Str& context) const;
 
 public:
@@ -25,9 +25,10 @@ public:
 
 	void loadDB(const Str& path);
 	void checkInput(const Str& path);
-	void printDB() const;
-	bool parseToPair(std::pair<Str, double>& p, const Str& line, const Str& delim);
+	bool parseToPair(std::pair<Str, double>& p, const Str& line,
+							const Str& delim, double maxValue);
 	void matchDB(const std::pair<Str, double>& p) const;
+	void printDB() const;
 };
 
 #endif

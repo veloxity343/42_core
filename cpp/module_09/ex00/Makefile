@@ -62,8 +62,9 @@ re:		fclean all
 test: re
 	@echo "$(YELLOW)Testing...$(RESET)"
 	@clear
-	./$(NAME) input.txt
-	./$(NAME) invalid.txt
+	./$(NAME) resources/input.txt
+# 	./$(NAME) resources/invalid.txt
+# 	./$(NAME) resources/empty.txt
 
 # Debugging
 asan:	CFLAGS	+=	$(FSAN)
