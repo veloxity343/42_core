@@ -102,6 +102,7 @@ bool BitcoinExchange::parseLine(const Str& line, const Str& delim,
 		printError("Missing delimiter", line);
 		return false;
 	}
+	
 	std::stringstream ss(line);
 	if (!std::getline(ss, dateOut, delim[0]) || !std::getline(ss, valueStrOut)) {
 		printError("Bad input", line);
