@@ -65,6 +65,7 @@ test: re
 	./$(NAME) resources/input.txt
 # 	./$(NAME) resources/invalid.txt
 # 	./$(NAME) resources/empty.txt
+# 	./$(NAME) resources/bird_pictures.txt
 
 # Debugging
 asan:	CFLAGS	+=	$(FSAN)

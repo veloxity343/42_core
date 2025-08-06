@@ -22,17 +22,17 @@ BitcoinExchange::~BitcoinExchange() {}
 void BitcoinExchange::loadDB(const Str& path) {
 	std::ifstream inFile(path.c_str());
 	if (!inFile)
-		throw std::runtime_error("Error: Could not open csv file");
+		throw std::runtime_error("Could not open csv file");
 
 	if (inFile.peek() == std::ifstream::traits_type::eof()) {
-		throw std::runtime_error("Error: CSV file is empty");
+		throw std::runtime_error("CSV file is empty");
 	}
 
 	Str line;
 	std::getline(inFile, line);
 
 	if (inFile.peek() == std::ifstream::traits_type::eof()) {
-		throw std::runtime_error("Error: CSV file contains no data");
+		throw std::runtime_error("CSV file contains no data");
 	}
 	
 	std::pair<Str, double> entry;
@@ -47,7 +47,7 @@ void BitcoinExchange::loadDB(const Str& path) {
 void BitcoinExchange::checkInput(const Str& path) {
 	std::ifstream inFile(path.c_str());
 	if (!inFile)
-		throw std::runtime_error("Error: Failed to open input file");
+		throw std::runtime_error("Failed to open input file");
 
 	if (inFile.peek() == std::ifstream::traits_type::eof()) {
 		printError("Input file is empty", "");
