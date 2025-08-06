@@ -9,7 +9,7 @@ typedef long rpn_l;
 
 class RPN {
 private:
-	std::list<rpn_l> _stack;
+	std::list<rpn_l> _list;
 	std::list<Str> _token;
 
 	void loadToken(const Str& input);
