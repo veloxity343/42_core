@@ -10,8 +10,7 @@ int main(int argc, char** argv) {
 
 	try {
 		rpn.Calculate(argv[1]);
-	}
-	catch (const std::exception& e) {
+	} catch (const std::exception& e) {
 		std::cerr << "\033[1;31mError: \033[0m" << e.what() << std::endl;
 	}
 	

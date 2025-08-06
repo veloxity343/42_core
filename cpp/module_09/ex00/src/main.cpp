@@ -18,8 +18,7 @@ int main(int argc, char** argv) {
 		btc.loadDB(dbPath);
 		btc.checkInput(argv[1]);
 		// btc.printDB();
-	}
-	catch (const std::exception& e) {
+	} catch (const std::exception& e) {
 		std::cerr << "\033[1;31mError: \033[0m" << e.what() << std::endl;
 	}
 
