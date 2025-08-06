@@ -14,10 +14,10 @@ template <typename T>
 T mergeInsertSort(const T& container);
 
 template <typename Container>
-double measureCPUTime(Container& cont, Container (*sortFunc)(const Container&));
+double measureRealTime(Container& cont, Container (*sortFunc)(const Container&));
 
 template <typename Container>
-double measureRealTime(Container& cont, Container (*sortFunc)(const Container&));
+double measureCPUTime(Container& cont, Container (*sortFunc)(const Container&));
 
 class PmergeMe {
 private:
@@ -25,8 +25,8 @@ private:
 	std::deque<std::size_t> _deque;
 
 	bool checkAndLoadInput(const Str& input);
-	void cpuRunTime(const Str& input);
 	void realRunTime(const Str& input);
+	void cpuRunTime(const Str& input);
 
 public:
 	PmergeMe();

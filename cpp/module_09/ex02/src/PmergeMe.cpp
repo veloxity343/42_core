@@ -22,10 +22,10 @@ PmergeMe::~PmergeMe() {}
 
 void PmergeMe::Run(const Str& input) {
 	if (!checkAndLoadInput(input))
-		throw std::runtime_error("Error: Input must be positive integers");
+		throw std::runtime_error("Input must be positive integers");
 	
-	cpuRunTime(input);
 	realRunTime(input);
+	// cpuRunTime(input);
 }
 
 bool PmergeMe::checkAndLoadInput(const Str& input) {
@@ -48,16 +48,16 @@ bool PmergeMe::checkAndLoadInput(const Str& input) {
 	return !input.empty();
 }
 
-void PmergeMe::cpuRunTime(const Str& input) {
-	double vecTime = measureCPUTime(_vector, mergeInsertSort<std::vector<std::size_t> >);
-	double deqTime = measureCPUTime(_deque, mergeInsertSort<std::deque<std::size_t> >);
-	printBenchmark("CPU", input, vecTime, deqTime);
-}
-
 void PmergeMe::realRunTime(const Str& input) {
 	double vecTime = measureRealTime(_vector, mergeInsertSort<std::vector<std::size_t> >);
 	double deqTime = measureRealTime(_deque, mergeInsertSort<std::deque<std::size_t> >);
 	printBenchmark("Real-time", input, vecTime, deqTime);
+}
+
+void PmergeMe::cpuRunTime(const Str& input) {
+	double vecTime = measureCPUTime(_vector, mergeInsertSort<std::vector<std::size_t> >);
+	double deqTime = measureCPUTime(_deque, mergeInsertSort<std::deque<std::size_t> >);
+	printBenchmark("CPU", input, vecTime, deqTime);
 }
 
 void PmergeMe::printBenchmark(const Str& benchmarkType, const Str& input, 
