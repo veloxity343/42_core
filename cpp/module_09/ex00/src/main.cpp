@@ -11,9 +11,9 @@ int main(int argc, char** argv) {
 	}
 
 	Str dbPath = "data.csv";
-
 	BitcoinExchange btc;
 	(void)argv;
+	
 	try {
 		btc.loadDB(dbPath);
 		btc.checkInput(argv[1]);
