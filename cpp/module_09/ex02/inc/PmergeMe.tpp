@@ -115,7 +115,7 @@ double measureRealTime(Container& cont, Container (*sortFunc)(const Container&))
 	gettimeofday(&start, NULL);
 	cont = sortFunc(cont);
 	gettimeofday(&end, NULL);
-	return (end.tv_sec - start.tv_sec) * 1000.0 + (end.tv_usec - start.tv_usec) / 1000.0;
+	return (end.tv_sec - start.tv_sec) * 1000000.0 + (end.tv_usec - start.tv_usec);
 }
 
 template <typename Container>
@@ -123,7 +123,7 @@ double measureCPUTime(Container& cont, Container (*sortFunc)(const Container&)) 
 	std::clock_t start = std::clock();
 	cont = sortFunc(cont);
 	std::clock_t end = std::clock();
-	return static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000.0;
+	return static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000.0;
 }
 
 #endif

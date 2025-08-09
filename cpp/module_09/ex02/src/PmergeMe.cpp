@@ -65,7 +65,7 @@ void PmergeMe::printBenchmark(const Str& benchmarkType, const Str& input,
 	std::cout << benchmarkType << " Benchmark\n"
 			  << "Before:\t" << input << std::endl
 			  << "After:\t" << containerToStr(_vector) << std::endl
-			  << "Time to process a range of " << _vector.size() << " elements with std::vector: " << vectorTime << " ms" << std::endl
-			  << "Time to process a range of " << _deque.size() << " elements with std::deque: " << dequeTime << " ms" << std::endl
+			  << "Time to process a range of " << _vector.size() << " elements with std::vector: " << vectorTime << " µs" << std::endl
+			  << "Time to process a range of " << _deque.size() << " elements with std::deque: " << dequeTime << " µs" << std::endl
 			  << std::endl;
 }
