@@ -10,14 +10,11 @@ typedef std::string Str;
 template <typename T>
 Str containerToStr(const T& container);
 
-template <typename T>
-T mergeInsertSort(const T& container);
+template <typename Container>
+double measureCPUTime(Container& data, Container (*sortFunc)(const Container&));
 
 template <typename Container>
-double measureRealTime(Container& cont, Container (*sortFunc)(const Container&));
-
-template <typename Container>
-double measureCPUTime(Container& cont, Container (*sortFunc)(const Container&));
+double measureRealTime(Container& data, Container (*sortFunc)(const Container&));
 
 class PmergeMe {
 private:
