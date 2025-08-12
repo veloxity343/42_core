@@ -60,8 +60,10 @@ void PmergeMe::cpuRunTime(const Str& input) {
 	printBenchmark("CPU", input, vecTime, deqTime);
 }
 
-void PmergeMe::printBenchmark(const Str& benchmarkType, const Str& input, 
-						   double vectorTime, double dequeTime) {
+void PmergeMe::printBenchmark(const Str& benchmarkType,
+							  const Str& input, 
+							  double vectorTime,
+							  double dequeTime) {
 	std::cout << benchmarkType << " Benchmark\n"
 			  << "Before:\t" << input << std::endl
 			  << "After:\t" << containerToStr(_vector) << std::endl
