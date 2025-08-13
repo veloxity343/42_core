@@ -30,10 +30,6 @@ void BitcoinExchange::loadDB(const Str& path) {
 
 	Str line;
 	std::getline(inFile, line);
-
-	if (inFile.peek() == std::ifstream::traits_type::eof()) {
-		throw std::runtime_error("CSV file contains no data");
-	}
 	
 	std::pair<Str, double> entry;
 
@@ -57,35 +53,46 @@ void BitcoinExchange::checkInput(const Str& path) {
 	Str line;
 	std::getline(inFile, line);
 
-	if (inFile.peek() == std::ifstream::traits_type::eof()) {
-		printError("Input file contains no data", "");
-		return;
-	}
-
 	std::pair<Str, double> entry;
 
 	while (std::getline(inFile, line)) {
-		if (!parseToPair(entry, line, "|", 1000.0))
+		if (!parseToPair(entry, line, " | ", 1000.0))
 			continue;
 		matchDB(entry);
 	}
 }
 
+// void BitcoinExchange::matchDB(const std::pair<Str, double>& entry) const {
+// 	std::map<Str, double>::const_iterator it = _db.lower_bound(entry.first);
+
+// 	if (it != _db.end() && it->first == entry.first) {
+// 		std::cout << entry.first << " => " << entry.second
+// 				  << " = " << entry.second * it->second << std::endl;
+// 	}
+// 	else if (it != _db.begin()) {
+// 		--it;
+// 		std::cout << entry.first << " => " << entry.second
+// 				  << " = " << entry.second * it->second << std::endl;
+// 	}
+// 	else {
+// 		printError("No earlier date found", entry.first);
+// 	}
+// }
+
 void BitcoinExchange::matchDB(const std::pair<Str, double>& entry) const {
 	std::map<Str, double>::const_iterator it = _db.lower_bound(entry.first);
 
-	if (it != _db.end() && it->first == entry.first) {
-		std::cout << entry.first << " => " << entry.second
-				  << " = " << entry.second * it->second << std::endl;
+	if (it == _db.end() || it->first != entry.first) {
+		if (it != _db.begin()) {
+			--it;
+		} else {
+			printError("No earlier date found", entry.first);
+			return;
+		}
 	}
-	else if (it != _db.begin()) {
-		--it;
-		std::cout << entry.first << " => " << entry.second
-				  << " = " << entry.second * it->second << std::endl;
-	}
-	else {
-		printError("No earlier date found", entry.first);
-	}
+
+	std::cout << entry.first << " => " << entry.second
+			  << " = " << entry.second * it->second << std::endl;
 }
 
 bool BitcoinExchange::parseToPair(std::pair<Str, double>& entry,
@@ -97,17 +104,20 @@ bool BitcoinExchange::parseToPair(std::pair<Str, double>& entry,
 }
 
 bool BitcoinExchange::parseLine(const Str& line, const Str& delim,
-								Str& dateOut, Str& valueStrOut) const {
+								 Str& dateOut, Str& valueStrOut) const {
 	if (delim.empty()) {
 		printError("Missing delimiter", line);
 		return false;
 	}
-	
-	std::stringstream ss(line);
-	if (!std::getline(ss, dateOut, delim[0]) || !std::getline(ss, valueStrOut)) {
+
+	size_t pos = line.find(delim);
+	if (pos == Str::npos) {
 		printError("Bad input", line);
 		return false;
 	}
+
+	dateOut = line.substr(0, pos);
+	valueStrOut = line.substr(pos + delim.length());
 	return true;
 }
 
