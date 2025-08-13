@@ -34,10 +34,11 @@ void RPN::Calculate(const Str& input) {
 	if (_list.size() != 1)
 		throw std::runtime_error("Invalid RPN syntax");
 
-	std::cout << "(" << input << ") = " << _list.front() << "." << std::endl;
+	std::cout << "(" << input << ") = " << _list.back() << std::endl;
 }
 
 void RPN::loadToken(const Str& input) {
+	_token.clear();
 	std::stringstream ss(input);
 	Str tok;
 
@@ -54,7 +55,7 @@ void RPN::processToken(const Str& token) {
 	} else if (token.length() == 1 && std::ispunct(token[0])) {
 		throw std::runtime_error("Invalid operator '" + token + "'");
 	} else if (!token.empty()) {
-		_list.push_front(toNumber(token));
+		_list.push_back(toNumber(token));
 	} else {
 		throw std::runtime_error("Empty token");
 	}
@@ -75,25 +76,25 @@ rpn_l RPN::toNumber(const Str& token) const {
 }
 
 void RPN::performOperation(char op) {
-	rpn_l b = _list.front();
-	_list.pop_front();
-	rpn_l a = _list.front();
-	_list.pop_front();
+	rpn_l b = _list.back();
+	_list.pop_back();
+	rpn_l a = _list.back();
+	_list.pop_back();
 
 	switch (op) {
 		case '+':
-			_list.push_front(a + b);
+			_list.push_back(a + b);
 			break;
 		case '-':
-			_list.push_front(a - b);
+			_list.push_back(a - b);
 			break;
 		case '*':
-			_list.push_front(a * b);
+			_list.push_back(a * b);
 			break;
 		case '/':
 			if (b == 0)
 				throw std::runtime_error("Division by zero");
-			_list.push_front(a / b);
+			_list.push_back(a / b);
 			break;
 		default:
 			throw std::runtime_error("Unknown operator");

@@ -62,7 +62,7 @@ re:		fclean all
 test: re
 	@echo "$(YELLOW)Testing...$(RESET)"
 	@clear
-	./$(NAME) 77 88 12 45 23 67 89 34 56 78 90 11 22 33 44 55
+	./$(NAME) 77 88 12 45 23 67 89 34 56 78 90 11 22 33 44 55 55
 
 # Debugging
 asan:	CFLAGS	+=	$(FSAN)
